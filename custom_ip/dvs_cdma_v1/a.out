@@ -1,0 +1,155 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.6 " "(v0_9_6)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0xec6960 .scope module, "dvs_cdma_v1" "dvs_cdma_v1" 2 2;
+ .timescale 0 0;
+L_0xf01ac0 .functor BUFZ 1, C4<z>, C4<0>, C4<0>, C4<0>;
+L_0xf026c0 .functor BUFZ 1, C4<z>, C4<0>, C4<0>, C4<0>;
+v0xee9290_0 .net *"_s2", 2 0, L_0xf024b0; 1 drivers
+v0xf014a0_0 .net *"_s7", 0 0, C4<0>; 1 drivers
+v0xf01540_0 .var "bram_addr", 16 0;
+v0xf015e0_0 .net "bram_clk", 0 0, C4<z>; 0 drivers
+v0xf01690_0 .net "bram_en", 0 0, L_0xf02750; 1 drivers
+v0xf01730_0 .net "bram_rddata", 31 0, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; 0 drivers
+v0xf01810_0 .net "bram_rst", 0 0, L_0xf026c0; 1 drivers
+v0xf018b0_0 .net "bram_we", 3 0, L_0xf02580; 1 drivers
+v0xf019a0_0 .var "bram_wrdata", 31 0;
+v0xf01a40_0 .var "column_counter", 8 0;
+v0xf01b40_0 .net "href", 0 0, C4<z>; 0 drivers
+v0xf01be0_0 .var "line_counter", 7 0;
+v0xf01cf0_0 .net "new_frame", 0 0, L_0xf01ac0; 1 drivers
+v0xf01d90_0 .net "pclk", 0 0, C4<z>; 0 drivers
+v0xf01eb0_0 .net "pix_data", 7 0, C4<zzzzzzzz>; 0 drivers
+v0xf01f50_0 .var "read_new_line", 0 0;
+v0xf01e10_0 .net "reset", 0 0, C4<z>; 0 drivers
+v0xf020a0_0 .net "threshold", 7 0, C4<zzzzzzzz>; 0 drivers
+v0xf021c0_0 .net "vsync", 0 0, C4<z>; 0 drivers
+v0xf02240_0 .net "write_enable_in", 0 0, C4<z>; 0 drivers
+v0xf02120_0 .var "write_enable_out", 0 0;
+v0xf02370_0 .var "write_new_line", 0 0;
+E_0xec6d30/0 .event negedge, v0xf01e10_0;
+E_0xec6d30/1 .event posedge, v0xf01d90_0;
+E_0xec6d30 .event/or E_0xec6d30/0, E_0xec6d30/1;
+E_0xec79b0/0 .event negedge, v0xf01e10_0;
+E_0xec79b0/1 .event posedge, v0xf02240_0;
+E_0xec79b0 .event/or E_0xec79b0/0, E_0xec79b0/1;
+L_0xf024b0 .concat [ 1 1 1 0], v0xf02120_0, v0xf02120_0, v0xf02120_0;
+L_0xf02580 .concat [ 3 1 0 0], L_0xf024b0, C4<0>;
+L_0xf02750 .reduce/nor C4<z>;
+    .scope S_0xec6960;
+T_0 ;
+    %wait E_0xec6d30;
+    %load/v 8, v0xf01e10_0, 1;
+    %jmp/0xz  T_0.0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0xf01f50_0, 0, 0;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v0xf01a40_0, 9;
+    %cmpi/u 8, 320, 9;
+    %mov 8, 4, 1;
+    %load/v 9, v0xf01a40_0, 9;
+    %cmpi/u 9, 0, 9;
+    %mov 9, 4, 1;
+    %load/v 10, v0xf01be0_0, 8;
+    %cmpi/u 10, 0, 8;
+    %mov 10, 4, 1;
+    %and 9, 10, 1;
+    %or 8, 9, 1;
+    %jmp/0xz  T_0.2, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0xf01f50_0, 0, 1;
+    %jmp T_0.3;
+T_0.2 ;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0xf01f50_0, 0, 0;
+T_0.3 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0xec6960;
+T_1 ;
+    %wait E_0xec6d30;
+    %load/v 8, v0xf01e10_0, 1;
+    %jmp/0xz  T_1.0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0xf02370_0, 0, 0;
+    %jmp T_1.1;
+T_1.0 ;
+    %load/v 8, v0xf01a40_0, 9;
+    %cmpi/u 8, 224, 9;
+    %jmp/0xz  T_1.2, 4;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0xf02370_0, 0, 1;
+    %jmp T_1.3;
+T_1.2 ;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0xf02370_0, 0, 0;
+T_1.3 ;
+T_1.1 ;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_0xec6960;
+T_2 ;
+    %wait E_0xec79b0;
+    %load/v 8, v0xf01e10_0, 1;
+    %jmp/0xz  T_2.0, 8;
+    %ix/load 0, 9, 0;
+    %assign/v0 v0xf01a40_0, 0, 0;
+    %jmp T_2.1;
+T_2.0 ;
+    %load/v 8, v0xf021c0_0, 1;
+    %load/v 9, v0xf01b40_0, 1;
+    %cmpi/u 9, 0, 1;
+    %or 8, 4, 1;
+    %jmp/0xz  T_2.2, 8;
+    %ix/load 0, 9, 0;
+    %assign/v0 v0xf01a40_0, 0, 0;
+    %jmp T_2.3;
+T_2.2 ;
+    %ix/load 0, 1, 0;
+    %load/vp0 8, v0xf01a40_0, 9;
+    %ix/load 0, 9, 0;
+    %assign/v0 v0xf01a40_0, 0, 8;
+T_2.3 ;
+T_2.1 ;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0xec6960;
+T_3 ;
+    %wait E_0xec6d30;
+    %load/v 8, v0xf01e10_0, 1;
+    %jmp/0xz  T_3.0, 8;
+    %ix/load 0, 8, 0;
+    %assign/v0 v0xf01be0_0, 0, 0;
+    %jmp T_3.1;
+T_3.0 ;
+    %load/v 8, v0xf021c0_0, 1;
+    %cmpi/u 8, 0, 1;
+    %jmp/0xz  T_3.2, 4;
+    %ix/load 0, 8, 0;
+    %assign/v0 v0xf01be0_0, 0, 0;
+    %jmp T_3.3;
+T_3.2 ;
+    %movi 8, 319, 9;
+    %load/v 17, v0xf01a40_0, 9;
+    %cmp/u 8, 17, 9;
+    %or 5, 4, 1;
+    %jmp/0xz  T_3.4, 5;
+    %ix/load 0, 1, 0;
+    %load/vp0 8, v0xf01be0_0, 8;
+    %ix/load 0, 8, 0;
+    %assign/v0 v0xf01be0_0, 0, 8;
+T_3.4 ;
+T_3.3 ;
+T_3.1 ;
+    %jmp T_3;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "dvs_cdma_v1.v";
