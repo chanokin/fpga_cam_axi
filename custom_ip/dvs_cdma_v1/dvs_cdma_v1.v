@@ -183,6 +183,14 @@ always @(posedge pclk or negedge reset) begin
   end
 end
 
+// write data register
+/*
+     -------------------------------------------------------------------
+ var |   ref0   | colour0 |  pixel0   |   ref1   | colour0 |  pixel0   |
+     -------------------------------------------------------------------
+ bit |  31 : 24 |  23:22  |  21 : 16  |  15 : 8  |  7 : 6  |   5 : 0   |
+     -------------------------------------------------------------------
+*/
 always @(posedge pclk or negedge reset) begin
   if ( reset == 1'b1 ) begin
     bram_wrdata <= 31'd0;
@@ -191,21 +199,40 @@ always @(posedge pclk or negedge reset) begin
     if ( pix_per_pack_count == 2'd0 &&
          write_enable_in == 1'b1 ) begin
       
-      bram_wrdata[22:16] <= pix_data[7:2];
+      bram_wrdata[21:16] <= pix_data[7:2];
       if( signed({0, pix_data}) - signed({0, bram_rddata[31:24]}) > signed({0, threshold}) ) begin
         bram_wrdata[31:24] <= pix_data;
+        bram_wrdata[23:22] <= 2'b01; // green -- positive
       end
       else begin 
         if( signed({0, pix_data}) - signed({0, bram_rddata[31:24]}) < signed(-{0, threshold}) ) begin
-          
+          bram_wrdata[31:24] <= pix_data;
+          bram_wrdata[23:22] <= 2'b10; // red -- negative
         end
         else begin
-          
+          bram_wrdata[23:22] <= 2'b00;
+        end
+      end
+    end
+    else begin if ( pix_per_pack_count == 2'd1 &&
+                    write_enable_in == 1'b1 ) begin
+      
+      bram_wrdata[5:0] <= pix_data[7:2];
+      if( signed({0, pix_data}) - signed({0, bram_rddata[15:8]}) > signed({0, threshold}) ) begin
+        bram_wrdata[15:8] <= pix_data;
+        bram_wrdata[7:6] <= 2'b01; // green -- positive
+      end
+      else begin 
+        if( signed({0, pix_data}) - signed({0, bram_rddata[15:8]}) < signed(-{0, threshold}) ) begin
+          bram_wrdata[15:8] <= pix_data;
+          bram_wrdata[7:6] <= 2'b10; // red -- negative
+        end
+        else begin
+          bram_wrdata[7:6] <= 2'b00;
         end
       end
       
     end
-  
   end
   
 end
