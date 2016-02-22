@@ -54,7 +54,7 @@ module dvs_cdma_v1(
 reg write_enable_out;
 reg [8:0] column_counter;
 reg [7:0] line_counter;
-reg [1:0] pix_per_pack_count;
+reg pix_per_pack_count;
 
 assign new_frame = vsync;
 assign bram_we  = {write_enable_out, write_enable_out, write_enable_out};
@@ -71,7 +71,7 @@ always @(posedge pclk or negedge reset) begin
   else begin
         //after writing (col_count = 224), read next
     if( column_counter == 9'd320 || 
-       (column_counter == 9'd0 && line_counter == 8'd0)) begin //first pixel, read first line
+       (column_counter == 9'd0 && line_counter == 8'd0 && new_frame == 1'b1)) begin //first pixel, read first line
 
       read_new_line <= 1'b1;
     end
@@ -117,7 +117,7 @@ end
 
 //                | | |
 // count columns  v v v is this possible?
-always @(posedge write_enable_in or negedge reset) begin
+always @(negedge write_enable_in or negedge reset) begin
 
   if(reset == 1'b1) begin
     column_counter <= 9'd0;
@@ -137,14 +137,14 @@ end
 always @(posedge write_enable_in or negedge reset) begin
 
   if(reset == 1'b1) begin
-    pix_per_pack_count <= 2'd0;
+    pix_per_pack_count <= 1'b0;
   end
   else begin
-    if (pix_per_pack_count < 2'd2) begin
-      pix_per_pack_count <= pix_per_pack_count + 2'd1;
+    if (href == 1'b1 && column_counter > 9'd0) begin
+      pix_per_pack_count <= pix_per_pack_count + 1'b1;
     end
     else begin
-      pix_per_pack_count <= 2'd0;
+      pix_per_pack_count <= 1'b0;
     end
   end
   
@@ -170,20 +170,22 @@ always @(posedge pclk or negedge reset) begin
     bram_addr <= 17'd0;
   end
   else begin
-    if ( pix_per_pack_count == 2'd1 &&
-         col_counter >= 9'd96) begin
+    if ( pix_per_pack_count == 1'b1 &&
+         column_counter >= 9'd96) begin
          
       bram_addr <= bram_addr + 17'd1;
     end
     
-    if ( col_counter == 9'd224 ) begin
+    if ( column_counter == 9'd224 ) begin
       bram_addr <= 17'd0;
     end
     
   end
 end
 
-// write data register
+
+
+// read & write data register
 /*
      -------------------------------------------------------------------
  var |   ref0   | colour0 |  pixel0   |   ref1   | colour0 |  pixel0   |
@@ -196,17 +198,18 @@ always @(posedge pclk or negedge reset) begin
     bram_wrdata <= 31'd0;
   end
   else begin
-    if ( pix_per_pack_count == 2'd0 &&
+    if ( pix_per_pack_count == 1'b0 &&
          write_enable_in == 1'b1 ) begin
       
       bram_wrdata[21:16] <= pix_data[7:2];
-      if( signed({0, pix_data}) - signed({0, bram_rddata[31:24]}) > signed({0, threshold}) ) begin
-        bram_wrdata[31:24] <= pix_data;
+      
+      if( ($signed({1'b0, pix_data[7:0]}) - $signed({1'b0, bram_rddata[31:24]})) > $signed({1'b0, threshold[7:0]}) ) begin
+        bram_wrdata[31:24] <= pix_data[7:0];
         bram_wrdata[23:22] <= 2'b01; // green -- positive
       end
       else begin 
-        if( signed({0, pix_data}) - signed({0, bram_rddata[31:24]}) < signed(-{0, threshold}) ) begin
-          bram_wrdata[31:24] <= pix_data;
+        if( ($signed({1'b0, pix_data[7:0]}) - $signed({1'b0, bram_rddata[31:24]})) < -$signed({1'b0, threshold[7:0]}) ) begin
+          bram_wrdata[31:24] <= pix_data[7:0];
           bram_wrdata[23:22] <= 2'b10; // red -- negative
         end
         else begin
@@ -214,21 +217,23 @@ always @(posedge pclk or negedge reset) begin
         end
       end
     end
-    else begin if ( pix_per_pack_count == 2'd1 &&
+    else begin if ( pix_per_pack_count == 1'b1 &&
                     write_enable_in == 1'b1 ) begin
       
-      bram_wrdata[5:0] <= pix_data[7:2];
-      if( signed({0, pix_data}) - signed({0, bram_rddata[15:8]}) > signed({0, threshold}) ) begin
-        bram_wrdata[15:8] <= pix_data;
-        bram_wrdata[7:6] <= 2'b01; // green -- positive
-      end
-      else begin 
-        if( signed({0, pix_data}) - signed({0, bram_rddata[15:8]}) < signed(-{0, threshold}) ) begin
-          bram_wrdata[15:8] <= pix_data;
-          bram_wrdata[7:6] <= 2'b10; // red -- negative
+        bram_wrdata[5:0] <= pix_data[7:2];
+        
+        if( ($signed({1'b0, pix_data[7:0]}) - $signed({1'b0, bram_rddata[15:8]})) > $signed({1'b0, threshold[7:0]}) ) begin
+          bram_wrdata[15:8] <= pix_data[7:0];
+          bram_wrdata[7:6] <= 2'b01; // green -- positive
         end
-        else begin
-          bram_wrdata[7:6] <= 2'b00;
+        else begin 
+          if( ($signed({1'b0, pix_data[7:0]}) - $signed({1'b0, bram_rddata[15:8]})) < -$signed({1'b0, threshold[7:0]}) ) begin
+            bram_wrdata[15:8] <= pix_data[7:0];
+            bram_wrdata[7:6] <= 2'b10; // red -- negative
+          end
+          else begin
+            bram_wrdata[7:6] <= 2'b00;
+          end
         end
       end
       
@@ -236,7 +241,43 @@ always @(posedge pclk or negedge reset) begin
   end
   
 end
-  
+
+//write enable out
+always @(posedge pclk or negedge reset) begin
+  if ( reset == 1'b1 ) begin
+    write_enable_out <= 1'b0;
+  end
+  else begin
+    if ( pix_per_pack_count == 1'b1 &&
+         write_enable_in == 1'b0 ) begin
+
+        write_enable_out <= 1'b1;
+    end
+    else begin
+        write_enable_out <= 1'b0;
+    end
+  end
+end
+
+//waddress out
+always @(posedge pclk or negedge reset) begin
+  if ( reset == 1'b1 ) begin
+    bram_addr <= 17'd0;
+  end
+  else begin
+    if ( read_new_line == 1'b1 ) begin
+
+      bram_addr <= 17'd0;
+    end
+    else begin 
+      if ( write_enable_out == 1'b1 ) begin
+
+        bram_addr <= bram_addr + 17'd1;
+      end
+    end
+  end
+end
+
 endmodule
 
 

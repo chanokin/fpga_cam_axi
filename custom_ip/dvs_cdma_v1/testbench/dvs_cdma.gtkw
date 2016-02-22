@@ -1,0 +1,51 @@
+[*]
+[*] GTKWave Analyzer v3.3.64 (w)1999-2014 BSI
+[*] Mon Feb 22 18:27:28 2016
+[*]
+[dumpfile] "/home/chanokin/Spinnaker/fpga_cam/fpga_cam_axi/custom_ip/dvs_cdma_v1/testbench/vcd_dvs_cdma.vcd"
+[dumpfile_mtime] "Mon Feb 22 18:26:11 2016"
+[dumpfile_size] 5889
+[savefile] "/home/chanokin/Spinnaker/fpga_cam/fpga_cam_axi/custom_ip/dvs_cdma_v1/testbench/dvs_cdma.gtkw"
+[timestart] 0
+[size] 1366 723
+[pos] -1 -1
+*-5.906890 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_dvs_cdma_v1.
+[sst_width] 209
+[signals_width] 182
+[sst_expanded] 1
+[sst_vpaned_height] 202
+@28
+tb_dvs_cdma_v1.dvs_cdma.pclk
+tb_dvs_cdma_v1.dvs_cdma.bram_clk
+tb_dvs_cdma_v1.dvs_cdma.bram_en
+@22
+tb_dvs_cdma_v1.dvs_cdma.bram_rddata[31:0]
+@28
+tb_dvs_cdma_v1.dvs_cdma.bram_rst
+@22
+tb_dvs_cdma_v1.dvs_cdma.bram_we[3:0]
+tb_dvs_cdma_v1.dvs_cdma.bram_wrdata[31:0]
+tb_dvs_cdma_v1.dvs_cdma.bram_addr[16:0]
+tb_dvs_cdma_v1.dvs_cdma.column_counter[8:0]
+@28
+tb_dvs_cdma_v1.dvs_cdma.href
+@22
+tb_dvs_cdma_v1.dvs_cdma.line_counter[7:0]
+@28
+tb_dvs_cdma_v1.dvs_cdma.new_frame
+@22
+tb_dvs_cdma_v1.dvs_cdma.pix_data[7:0]
+@28
+tb_dvs_cdma_v1.dvs_cdma.pix_per_pack_count
+tb_dvs_cdma_v1.dvs_cdma.read_new_line
+tb_dvs_cdma_v1.dvs_cdma.reset
+@22
+tb_dvs_cdma_v1.dvs_cdma.threshold[7:0]
+@28
+tb_dvs_cdma_v1.dvs_cdma.vsync
+tb_dvs_cdma_v1.dvs_cdma.write_enable_in
+tb_dvs_cdma_v1.dvs_cdma.write_enable_out
+tb_dvs_cdma_v1.dvs_cdma.write_new_line
+[pattern_trace] 1
+[pattern_trace] 0
