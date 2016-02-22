@@ -73,29 +73,31 @@ initial  begin
   #10 href = 1'b1;
   #5
   for(i=4'd0; i < 4'd4; i = i + 4'b1) begin
-    #6 pix_data = 8'd10;
+    bram_rddata = 32'd0;
 
-    #4 write_enable_in = 1'b1;
+    #5 pix_data = 8'd10;
+
+    #5 write_enable_in = 1'b1;
     #10 write_enable_in = 1'b0;
     
 
-    #6 pix_data = 8'd20;
+    #5 pix_data = 8'd20;
 
-    #4 write_enable_in = 1'b1;
+    #5 write_enable_in = 1'b1;
     #10 write_enable_in = 1'b0;
 
 
-//    bram_rddata = 32'd0;
+    bram_rddata = 32'h00002800;
 
 
-    #6 pix_data = 8'd30;
+    #5 pix_data = 8'd10;
 
-    #4 write_enable_in = 1'b1;
+    #5 write_enable_in = 1'b1;
     #10 write_enable_in = 1'b0;
 
-    #6 pix_data = 8'd40;
+    #5 pix_data = 8'd20;
 
-    #4 write_enable_in = 1'b1;
+    #5 write_enable_in = 1'b1;
     #10 write_enable_in = 1'b0;
   end
   #40 $finish;
