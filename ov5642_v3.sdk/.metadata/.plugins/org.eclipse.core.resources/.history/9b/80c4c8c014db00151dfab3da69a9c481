@@ -1,0 +1,49 @@
+/*
+ * helloworld.h
+ *
+ *  Created on: 24 Feb 2016
+ *      Author: pinedagg
+ */
+
+#ifndef HELLOWORLD_H_
+#define HELLOWORLD_H_
+
+#include <stdio.h>
+#include "platform.h"
+#include "xparameters.h"
+
+#include "xaxicdma.h"	// if CDMA is used
+#include "xscugic.h" 	// if PS GIC is used
+#include "xil_exception.h"	// if interrupt is used
+#include "xil_cache.h"
+#include "xil_printf.h"
+#include "xil_mmu.h"
+#include <xil_cache.h>
+
+
+#include "xil_cache.h"
+#include "xiicps.h"
+#include "xil_types.h"
+#include "xil_assert.h"
+#include "xstatus.h"
+#include "xtime_l.h"
+#include "xgpio.h"
+#include "sleep.h"
+
+#include "ov5642_registers.h"
+
+
+
+#define RESET_LOOP_COUNT	10	// Number of times to check reset is done
+#define BUFFER_LENGTH 32768 // source and destination buffers lengths in number of bytes
+#define CDMA_BRAM_MEMORY 0xC0000000//XPAR_AXI_CDMA_0_BASEADDR // BRAM Port B mapped through 2nd BRAM Controller accessed by CDMA
+#define CDMA_BASE_ADDR XPAR_AXICDMA_0_BASEADDR
+#define DDR_MEMORY XPAR_PS7_DDR_0_S_AXI_BASEADDR
+//#define TIMER_DEVICE_ID	XPAR_SCUTIMER_DEVICE_ID
+//#define TIMER_LOAD_VALUE 0xFFFFFFFF
+#define INTC_DEVICE_INT_ID XPAR_SCUGIC_SINGLE_DEVICE_ID
+
+
+
+
+#endif /* HELLOWORLD_H_ */
