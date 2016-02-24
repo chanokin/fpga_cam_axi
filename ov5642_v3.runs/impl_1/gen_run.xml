@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z020clg484-1" LaunchTime="1454932819">
+<GenRun Id="impl_1" LaunchPart="xc7z020clg484-1" LaunchTime="1456330698">
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <File Type="RDI-RDI" Name="design_1_wrapper.vdi"/>
   <File Type="BG-DRC" Name="design_1_wrapper.drc"/>
@@ -71,7 +71,7 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/bd/design_1/ip/design_1_ov5642_capture_v4_0_0/design_1_ov5642_capture_v4_0_0.upgrade_log"/>
-    <File Path="$PSRCDIR/sources_1/bd/design_1/ip/design_1_dvs_to_stream_v1_0_0/design_1_dvs_to_stream_v1_0_0.upgrade_log"/>
+    <File Path="$PSRCDIR/sources_1/bd/design_1/ip/design_1_dvs_cdma_v2_0_0/design_1_dvs_cdma_v2_0_0.upgrade_log"/>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
       <Option Name="TopModule" Val="design_1_wrapper"/>

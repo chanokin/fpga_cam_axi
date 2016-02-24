@@ -18,8 +18,8 @@
 <stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_ID" value="com.xilinx.sdk.debug.core.XMDDebuggerId"/>
 <stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_START_MODE" value="run"/>
 <booleanAttribute key="org.eclipse.cdt.launch.DEBUGGER_STOP_AT_MAIN" value="true"/>
-<stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value="Debug/cam_setup.elf"/>
-<stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value="cam_setup"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value="Debug/cdma_transfer_test.elf"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value="cdma_transfer_test"/>
 <booleanAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_AUTO_ATTR" value="true"/>
 <stringAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_ID_ATTR" value=""/>
 <booleanAttribute key="xilinx.profile.enable" value="false"/>

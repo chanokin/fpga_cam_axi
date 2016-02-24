@@ -1,6 +1,27 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2015.3 (lin64) Build 1368829 Mon Sep 28 20:06:39 MDT 2015
+| Date         : Wed Feb 24 12:37:29 2016
+| Host         : cspc338.cs.man.ac.uk running 64-bit Fedora release 20 (Heisenbug)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_ov5642_capture_v4_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the update of design_1_ov5642_capture_v4_0_0 (user.org:user:ov5642_capture_v4:1.0 (Rev. 4)) to current project options.
+
+
+
+
+
+
+Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2015.3 (lin64) Build 1368829 Mon Sep 28 20:06:39 MDT 2015
 | Date         : Mon Feb  8 11:50:59 2016
 | Host         : cspc338.cs.man.ac.uk running 64-bit Fedora release 20 (Heisenbug)
 | Command      : upgrade_ip
