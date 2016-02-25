@@ -3,14 +3,8 @@ create_clock -period 10.000 -name clk_main [get_ports clk_main]
 #set_input_delay -clock [get_clocks clk_fpga_0] -min -add_delay 1.000 [get_ports {PixelData[*]}]
 #set_input_delay -clock [get_clocks clk_fpga_0] -max -add_delay 1.000 [get_ports {PixelData[*]}]
 
-set_property IOSTANDARD LVCMOS33 [get_ports {PixelData[7]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {PixelData[6]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {PixelData[5]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {PixelData[4]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {PixelData[3]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {PixelData[2]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {PixelData[1]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {PixelData[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {PixelData[*]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {LEDS[*]}]
 set_property IOSTANDARD LVCMOS33 [get_ports PCLK]
 set_property IOSTANDARD LVCMOS33 [get_ports {PWDN[0]}]
 set_property IOSTANDARD LVCMOS33 [get_ports XCLK]
@@ -32,23 +26,34 @@ set_property PACKAGE_PIN W10 [get_ports VSYNC]
 set_property PACKAGE_PIN W11 [get_ports HREF]
 set_property PACKAGE_PIN V12 [get_ports PCLK]
 set_property PACKAGE_PIN W12 [get_ports XCLK]
-set_property PACKAGE_PIN AA8 [get_ports {PixelData[7]}]
-set_property PACKAGE_PIN AA9 [get_ports {PixelData[6]}]
-set_property PACKAGE_PIN AB9 [get_ports {PixelData[5]}]
-set_property PACKAGE_PIN Y10 [get_ports {PixelData[4]}]
+set_property PACKAGE_PIN AA8  [get_ports {PixelData[7]}]
+set_property PACKAGE_PIN AA9  [get_ports {PixelData[6]}]
+set_property PACKAGE_PIN AB9  [get_ports {PixelData[5]}]
+set_property PACKAGE_PIN Y10  [get_ports {PixelData[4]}]
 set_property PACKAGE_PIN AB10 [get_ports {PixelData[3]}]
 set_property PACKAGE_PIN AA11 [get_ports {PixelData[2]}]
 set_property PACKAGE_PIN AB11 [get_ports {PixelData[1]}]
-set_property PACKAGE_PIN Y11 [get_ports {PixelData[0]}]
+set_property PACKAGE_PIN Y11  [get_ports {PixelData[0]}]
 set_property PACKAGE_PIN W8 [get_ports {PWDN}]
 
 set_property PACKAGE_PIN Y9 [get_ports clk_main]
+
+set_property PACKAGE_PIN T22 [get_ports {LEDS[0]}]
+set_property PACKAGE_PIN T21 [get_ports {LEDS[1]}]
+set_property PACKAGE_PIN U22 [get_ports {LEDS[2]}]
+set_property PACKAGE_PIN U21 [get_ports {LEDS[3]}]
+set_property PACKAGE_PIN V22 [get_ports {LEDS[4]}]
+set_property PACKAGE_PIN W22 [get_ports {LEDS[5]}]
+set_property PACKAGE_PIN U19 [get_ports {LEDS[6]}]
+set_property PACKAGE_PIN U14 [get_ports {LEDS[7]}]
+
+
 
 set_property SLEW FAST [get_ports XCLK]
 set_property SLEW FAST [get_ports {PWDN}]
 
 set_property PULLUP true [get_ports {PWDN}]
-
+set_property PULLDOWN true [get_ports {LEDS[*]}]
 
 
 

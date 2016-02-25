@@ -190,7 +190,7 @@ design_1_processing_system7_0_0 your_instance_name (
   .S_AXI_HP0_WID(S_AXI_HP0_WID),                        // input wire [5 : 0] S_AXI_HP0_WID
   .S_AXI_HP0_WDATA(S_AXI_HP0_WDATA),                    // input wire [63 : 0] S_AXI_HP0_WDATA
   .S_AXI_HP0_WSTRB(S_AXI_HP0_WSTRB),                    // input wire [7 : 0] S_AXI_HP0_WSTRB
-  .IRQ_F2P(IRQ_F2P),                                    // input wire [0 : 0] IRQ_F2P
+  .IRQ_F2P(IRQ_F2P),                                    // input wire [1 : 0] IRQ_F2P
   .FCLK_CLK0(FCLK_CLK0),                                // output wire FCLK_CLK0
   .FCLK_RESET0_N(FCLK_RESET0_N),                        // output wire FCLK_RESET0_N
   .MIO(MIO),                                            // inout wire [53 : 0] MIO

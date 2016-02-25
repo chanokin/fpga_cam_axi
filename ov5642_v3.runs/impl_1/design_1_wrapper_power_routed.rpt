@@ -1,7 +1,7 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2015.3 (lin64) Build 1368829 Mon Sep 28 20:06:39 MDT 2015
-| Date             : Wed Feb 24 16:19:32 2016
+| Date             : Thu Feb 25 18:08:41 2016
 | Host             : cspc338.cs.man.ac.uk running 64-bit Fedora release 20 (Heisenbug)
 | Command          : 
 | Design           : design_1_wrapper
@@ -30,12 +30,12 @@ Table of Contents
 ----------
 
 +--------------------------+-------+
-| Total On-Chip Power (W)  | 1.858 |
-| Dynamic (W)              | 1.697 |
+| Total On-Chip Power (W)  | 1.864 |
+| Dynamic (W)              | 1.703 |
 | Device Static (W)        | 0.162 |
 | Effective TJA (C/W)      | 11.5  |
-| Max Ambient (C)          | 63.6  |
-| Junction Temperature (C) | 46.4  |
+| Max Ambient (C)          | 63.5  |
+| Junction Temperature (C) | 46.5  |
 | Confidence Level         | Low   |
 | Setting File             | ---   |
 | Simulation Activity File | ---   |
@@ -49,22 +49,22 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.016 |        7 |       --- |             --- |
-| Slice Logic              |     0.006 |    10101 |       --- |             --- |
-|   LUT as Logic           |     0.005 |     3493 |     53200 |            6.57 |
+| Clocks                   |     0.017 |        7 |       --- |             --- |
+| Slice Logic              |     0.006 |    10221 |       --- |             --- |
+|   LUT as Logic           |     0.005 |     3552 |     53200 |            6.68 |
+|   Register               |    <0.001 |     4707 |    106400 |            4.42 |
 |   CARRY4                 |    <0.001 |      104 |     13300 |            0.78 |
-|   Register               |    <0.001 |     4654 |    106400 |            4.37 |
 |   LUT as Distributed RAM |    <0.001 |       58 |     17400 |            0.33 |
 |   BUFG                   |    <0.001 |        2 |        32 |            6.25 |
 |   LUT as Shift Register  |    <0.001 |      262 |     17400 |            1.51 |
-|   Others                 |     0.000 |      444 |       --- |             --- |
-| Signals                  |     0.007 |     7347 |       --- |             --- |
+|   Others                 |     0.000 |      445 |       --- |             --- |
+| Signals                  |     0.007 |     7409 |       --- |             --- |
 | Block RAM                |     0.002 |        2 |       140 |            1.43 |
 | MMCM                     |     0.126 |        1 |         4 |           25.00 |
-| I/O                      |     0.005 |       34 |       200 |           17.00 |
+| I/O                      |     0.010 |       42 |       200 |           21.00 |
 | PS7                      |     1.535 |        1 |       --- |             --- |
 | Static Power             |     0.162 |          |           |                 |
-| Total                    |     1.858 |          |           |                 |
+| Total                    |     1.864 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -74,9 +74,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.047 |       0.031 |      0.016 |
+| Vccint    |       1.000 |     0.048 |       0.032 |      0.016 |
 | Vccaux    |       1.800 |     0.091 |       0.070 |      0.021 |
-| Vcco33    |       3.300 |     0.002 |       0.001 |      0.001 |
+| Vcco33    |       3.300 |     0.004 |       0.003 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.001 |       0.000 |      0.001 |
 | Vcco15    |       1.500 |     0.001 |       0.000 |      0.001 |
@@ -154,8 +154,8 @@ Table of Contents
 +----------------------------------------------------------------------+-----------+
 | Name                                                                 | Power (W) |
 +----------------------------------------------------------------------+-----------+
-| design_1_wrapper                                                     |     1.697 |
-|   design_1_i                                                         |     1.692 |
+| design_1_wrapper                                                     |     1.703 |
+|   design_1_i                                                         |     1.693 |
 |     RGB_v4_0                                                         |     0.000 |
 |       U0                                                             |     0.000 |
 |     VGA_v4_0                                                         |    <0.001 |
@@ -329,7 +329,7 @@ Table of Contents
 |                                 RAM_reg_0_31_0_0                     |    <0.001 |
 |                             rstblk                                   |    <0.001 |
 |               USE_WRITE.USE_SPLIT_W.write_resp_inst                  |    <0.001 |
-|               USE_WRITE.write_addr_inst                              |    <0.001 |
+|               USE_WRITE.write_addr_inst                              |     0.001 |
 |                 USE_BURSTS.cmd_queue                                 |    <0.001 |
 |                   inst                                               |    <0.001 |
 |                     fifo_gen_inst                                    |    <0.001 |
@@ -413,6 +413,7 @@ Table of Contents
 |         AXI_LITE_IPIF_I                                              |    <0.001 |
 |           I_SLAVE_ATTACHMENT                                         |    <0.001 |
 |             I_DECODER                                                |    <0.001 |
+|         INTR_CTRLR_GEN.INTERRUPT_CONTROL_I                           |    <0.001 |
 |         gpio_core_1                                                  |    <0.001 |
 |           Not_Dual.INPUT_DOUBLE_REGS3                                |    <0.001 |
 |     line_buffer                                                      |     0.002 |
@@ -457,6 +458,7 @@ Table of Contents
 |               WR.b_channel_0                                         |    <0.001 |
 |                 bid_fifo_0                                           |    <0.001 |
 |                 bresp_fifo_0                                         |    <0.001 |
+|         s00_data_fifo                                                |     0.000 |
 |       xbar                                                           |    <0.001 |
 |         inst                                                         |    <0.001 |
 |           gen_sasd.crossbar_sasd_0                                   |    <0.001 |
@@ -499,8 +501,13 @@ Table of Contents
 |           SEQ_COUNTER                                                |    <0.001 |
 |     threshold_input_v4_0                                             |    <0.001 |
 |       inst                                                           |    <0.001 |
+|     util_vector_logic_0                                              |    <0.001 |
+|       U0                                                             |    <0.001 |
 |     util_vector_logic_2                                              |    <0.001 |
+|     xlconcat_0                                                       |     0.000 |
 |     xlconcat_1                                                       |     0.000 |
+|     xlconcat_2                                                       |     0.000 |
+|     xlconcat_3                                                       |     0.000 |
 |     xlconstant_0                                                     |     0.000 |
 |   iic_0_scl_iobuf                                                    |    <0.001 |
 |   iic_0_sda_iobuf                                                    |    <0.001 |

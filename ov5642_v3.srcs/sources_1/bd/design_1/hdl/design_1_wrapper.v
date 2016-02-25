@@ -1,7 +1,7 @@
 //Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2015.3 (lin64) Build 1368829 Mon Sep 28 20:06:39 MDT 2015
-//Date        : Wed Feb 24 16:11:54 2016
+//Date        : Thu Feb 25 18:00:55 2016
 //Host        : cspc338.cs.man.ac.uk running 64-bit Fedora release 20 (Heisenbug)
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -32,6 +32,7 @@ module design_1_wrapper
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
     HREF,
+    LEDS,
     PCLK,
     PWDN,
     PixelData,
@@ -71,6 +72,7 @@ module design_1_wrapper
   inout FIXED_IO_ps_porb;
   inout FIXED_IO_ps_srstb;
   input HREF;
+  output [7:0]LEDS;
   input PCLK;
   output [0:0]PWDN;
   input [7:0]PixelData;
@@ -111,6 +113,7 @@ module design_1_wrapper
   wire FIXED_IO_ps_porb;
   wire FIXED_IO_ps_srstb;
   wire HREF;
+  wire [7:0]LEDS;
   wire PCLK;
   wire [0:0]PWDN;
   wire [7:0]PixelData;
@@ -164,6 +167,7 @@ module design_1_wrapper
         .IIC_0_sda_i(iic_0_sda_i),
         .IIC_0_sda_o(iic_0_sda_o),
         .IIC_0_sda_t(iic_0_sda_t),
+        .LEDS(LEDS),
         .PCLK(PCLK),
         .PWDN(PWDN),
         .PixelData(PixelData),

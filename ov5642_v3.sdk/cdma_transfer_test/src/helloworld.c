@@ -9,6 +9,9 @@ u8 SendBuffer[IIC_BUFFER_SIZE];    /**< Buffer for Transmitting Data */
 
 XGpio Power_Clock_GPIO;
 
+XGpio Dma_GPIO;
+u32 dma_gpio_ans = 0;
+
 XAxiCdma xcdma;
 XAxiCdma_Config * CdmaCfgPtr = NULL;
 
@@ -18,6 +21,7 @@ XScuGic_Config *GicConfig = NULL;
 volatile static int Done = 0;	/* Dma transfer is done */
 volatile static int Error = 0;	/* Dma Bus Error occurs */
 
+int exit_infinite_while = 0;
 
 static void dma_CallBack(void *CallBackRef, u32 IrqMask, int *IgnorePtr)
 {
@@ -32,6 +36,30 @@ static void dma_CallBack(void *CallBackRef, u32 IrqMask, int *IgnorePtr)
 
 }
 
+void line_stat_intr_handler(void *InstancePtr){
+
+	// Ignore second channel
+	if (XGpio_InterruptGetStatus(&Dma_GPIO) !=  XGPIO_IR_CH1_MASK) {
+		xil_printf("BLAH!\n\r");
+			return;
+	}
+
+	XGpio_InterruptDisable(&Dma_GPIO, XGPIO_IR_CH1_MASK);
+
+	dma_gpio_ans  = XGpio_DiscreteRead(&Dma_GPIO,FRAME_STATUS_GPIO_CHANNEL);
+//	if(dma_gpio_ans != 0)
+	{
+
+		xil_printf("DMA gpio: %d\r\n", dma_gpio_ans);
+
+		exit_infinite_while += 1;
+	}
+
+
+	(void)XGpio_InterruptClear(&Dma_GPIO, XGPIO_IR_CH1_MASK);
+
+	XGpio_InterruptEnable(&Dma_GPIO, XGPIO_IR_CH1_MASK);
+}
 
 int main (void) {
 
@@ -42,6 +70,8 @@ int main (void) {
     u8 * cdma_memory_source, * cdma_memory_destination;
     u32 test_done = 0;
 
+    u32 dma_log[1000];
+    XTime tStart, tEnd;
 
     u32 Status;
 
@@ -55,23 +85,48 @@ int main (void) {
 	}
 	print("i2c system initialised\r\n");
 
-    // Initialise GIC
-	Status = setup_interrupt(&Gic, GicConfig, XPAR_SCUGIC_SINGLE_DEVICE_ID);
+	// Setup camera gpio ports
+	Status = setup_cam_gpio(&Power_Clock_GPIO, XPAR_AXI_GPIO_0_DEVICE_ID,
+							PWDN_GPIO_CHANNEL, PWDN_GPIO_DIR_MASK,
+							CLOCK_GPIO_CHANNEL, CLOCK_GPIO_DIR_MASK);
 	if (Status != XST_SUCCESS) {
 		return XST_FAILURE;
 	}
-	print("Interrupt system initialised\r\n");
+	print("Camera GPIO initialised\r\n");
+
+	// Setup DMA gpio port
+	Status = setup_dma_gpio(&Dma_GPIO, XPAR_FRAME_INFO_DEVICE_ID,
+							FRAME_STATUS_GPIO_CHANNEL, FRAME_STATUS_GPIO_DIR_MASK);
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+	print("DMA GPIO initialised\r\n");
+
 
 	// Disable DCache
 	Xil_DCacheDisable();
 
 	// Setup DMA Controller
+
     Status = setup_cdma(&xcdma, CdmaCfgPtr, XPAR_AXI_CDMA_0_DEVICE_ID);
 	if (Status != XST_SUCCESS) {
 		return XST_FAILURE;
 	}
 	print("Central DMA Initialised\r\n");
 
+	/**************************************************************************/
+	// INTERRUPT SETUP
+
+    // Initialise GIC
+	Xil_ExceptionInit();
+
+	Status = setup_interrupt(&Gic, GicConfig, XPAR_SCUGIC_SINGLE_DEVICE_ID);
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+	Xil_ExceptionEnable();
+
+	print("Interrupt system initialised\r\n");
 
 	Status = setup_cdma_interrupts(&Gic, &xcdma);
 	if (Status != XST_SUCCESS) {
@@ -79,10 +134,26 @@ int main (void) {
 	}
 	print("CDMA interrupts configured\r\n");
 
-	Xil_ExceptionEnable();
+	Status = setup_line_interrupts(&Gic, &Dma_GPIO);
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+	print("Line Status interrupts configured\r\n");
 
+
+    /************************************************************************/
+	// START APPLICATION	i = 0;
+	XGpio_InterruptDisable(&Dma_GPIO, XGPIO_IR_CH1_MASK);
+
+	power_up_cam(&Power_Clock_GPIO, PWDN_GPIO_CHANNEL, CLOCK_GPIO_CHANNEL);
 	program_cam(&i2c_dev, IIC_BUFFER_SIZE, IIC_SLAVE_ADDR, SendBuffer);
 	print("Camera programmed!\r\n");
+
+	XGpio_InterruptEnable(&Dma_GPIO, XGPIO_IR_CH1_MASK);
+
+	while(exit_infinite_while < 100){
+
+	}
 
     print("-- Exiting main() --\r\n");
     return 0;
@@ -119,7 +190,32 @@ void write_i2c(XIicPs *i2c_dev, u16 address, u8 value,
 int setup_cdma_interrupts(XScuGic *GicPtr, XAxiCdma  *DmaPtr){
 	int Status;
 
-	Xil_ExceptionInit();
+	// Connect the interrupt controller interrupt handler to the hardware
+	// interrupt handling logic in the processor.
+	Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_IRQ_INT,
+			     (Xil_ExceptionHandler)XScuGic_InterruptHandler,
+			     GicPtr);
+
+	// Connect a device driver handler that will be called when an interrupt
+	// for the device occurs, the device driver handler performs the specific
+	// interrupt processing for the device
+
+	Status = XScuGic_Connect(GicPtr,
+			      XPAR_FABRIC_AXI_CDMA_0_CDMA_INTROUT_INTR,
+				 (Xil_InterruptHandler)XAxiCdma_IntrHandler,
+				 (void *)DmaPtr);
+	if (Status != XST_SUCCESS)
+		return XST_FAILURE;
+
+	// Enable the interrupt for the device
+	XScuGic_Enable(GicPtr, XPAR_FABRIC_AXI_CDMA_0_CDMA_INTROUT_INTR);
+
+	return XST_SUCCESS;
+}
+
+int setup_line_interrupts(XScuGic *GicPtr, XGpio  *GpioPtr){
+	int Status;
+
 
 	// Connect the interrupt controller interrupt handler to the hardware
 	// interrupt handling logic in the processor.
@@ -132,22 +228,27 @@ int setup_cdma_interrupts(XScuGic *GicPtr, XAxiCdma  *DmaPtr){
 	// interrupt processing for the device
 
 	Status = XScuGic_Connect(GicPtr,
-			XPAR_FABRIC_AXI_CDMA_0_CDMA_INTROUT_INTR,
-				 (Xil_InterruptHandler)XAxiCdma_IntrHandler,
-				 (void *)DmaPtr);
+			     XPAR_FABRIC_FRAME_INFO_IP2INTC_IRPT_INTR,
+				 (Xil_InterruptHandler)line_stat_intr_handler,
+				 (void *)GpioPtr);
+
 	if (Status != XST_SUCCESS)
 		return XST_FAILURE;
 
 	// Enable the interrupt for the device
-	XScuGic_Enable(GicPtr, XPAR_FABRIC_AXI_CDMA_0_CDMA_INTROUT_INTR);
+	XGpio_InterruptEnable(GpioPtr, 1);
+	XGpio_InterruptGlobalEnable(GpioPtr);
+
+	XScuGic_Enable(GicPtr, XPAR_FABRIC_FRAME_INFO_IP2INTC_IRPT_INTR);
 
 	return XST_SUCCESS;
 }
 
-int setup_cam_gpio(XGpio *gpio, u16 dev, unsigned pwr_chn, u32 pwr_dir, unsigned clk_chn, u32 clk_dir){
+
+int setup_cam_gpio(XGpio *gpio, u16 dev_id, unsigned pwr_chn, u32 pwr_dir, unsigned clk_chn, u32 clk_dir){
 	int Status;
 
-    Status = XGpio_Initialize(gpio, dev);
+    Status = XGpio_Initialize(gpio, dev_id);
     if (Status != XST_SUCCESS) {
         return XST_FAILURE;
     }
@@ -158,7 +259,18 @@ int setup_cam_gpio(XGpio *gpio, u16 dev, unsigned pwr_chn, u32 pwr_dir, unsigned
 	return XST_SUCCESS;
 }
 
-int setup_dma_gpio(XGpio *Gpio, u16 dev, unsigned dma_interaction_chan, u32 dma_chan_mask);
+int setup_dma_gpio(XGpio *gpio, u16 dev_id, unsigned dma_interaction_chan, u32 dma_chan_mask){
+	int Status;
+
+    Status = XGpio_Initialize(gpio, dev_id);
+    if (Status != XST_SUCCESS) {
+        return XST_FAILURE;
+    }
+
+    XGpio_SetDataDirection(gpio, dma_interaction_chan, dma_chan_mask);
+
+	return XST_SUCCESS;
+}
 
 int setup_i2c(XIicPs *i2c_dev, XIicPs_Config *i2c_conf, u16 i2c_dev_id, u32 i2c_clk_freq){
 	int Status;
@@ -218,7 +330,7 @@ int setup_cdma(XAxiCdma *cdma_dev, XAxiCdma_Config *cdma_conf, u32 cdma_dev_id){
 	return XST_SUCCESS;
 }
 
-void power_up_cam(XGpio *gpio, u16 dev, unsigned pwr_down_chan, unsigned clk_enable_chan){
+void power_up_cam(XGpio *gpio, unsigned pwr_down_chan, unsigned clk_enable_chan){
     XGpio_DiscreteWrite(gpio, pwr_down_chan, 1);
     usleep(5000);
     XGpio_DiscreteWrite(gpio, pwr_down_chan, 0);

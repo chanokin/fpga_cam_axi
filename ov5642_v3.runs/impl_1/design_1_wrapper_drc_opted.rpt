@@ -1,7 +1,7 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2015.3 (lin64) Build 1368829 Mon Sep 28 20:06:39 MDT 2015
-| Date         : Wed Feb 24 16:18:52 2016
+| Date         : Thu Feb 25 18:07:55 2016
 | Host         : cspc338.cs.man.ac.uk running 64-bit Fedora release 20 (Heisenbug)
 | Command      : report_drc
 ------------------------------------------------------------------------------------
@@ -20,16 +20,11 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 32
+             Violations found: 31
 
 2. REPORT DETAILS
 -----------------
 BUFC-1#1 Warning
-Input Buffer Connections  
-Input buffer disable_spikes_IBUF_inst has no loads. An input buffer must drive an internal load.
-Related violations: <none>
-
-BUFC-1#2 Warning
 Input Buffer Connections  
 Input buffer low_up_IBUF_inst has no loads. An input buffer must drive an internal load.
 Related violations: <none>

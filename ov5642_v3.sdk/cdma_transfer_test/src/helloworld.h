@@ -33,6 +33,9 @@
 #include "ov5642_registers.h"
 
 
+#define NEW_FRAME_START      1
+#define SEND_LINE_TO_PL      2
+#define READ_LINE_FROM_PL    3
 
 #define RESET_LOOP_COUNT	10	// Number of times to check reset is done
 #define BUFFER_LENGTH 32768 // source and destination buffers lengths in number of bytes
@@ -55,13 +58,21 @@
 
 #define PWDN_CLK_GPIO_DEV_ID  XPAR_AXI_GPIO_0_DEVICE_ID
 #define PWDN_GPIO_CHANNEL  1
+#define PWDN_GPIO_DIR_MASK  0
+
 #define CLOCK_GPIO_CHANNEL  2
+#define CLOCK_GPIO_DIR_MASK  0
+
+#define FRAME_STATUS_GPIO_CHANNEL   1
+#define FRAME_STATUS_GPIO_DIR_MASK  7      // 0000 0111 <-- all 3 ports are inputs
+
 
 void program_cam(XIicPs *i2c_dev, s32 buffer_size, u16 slave_address, u8 *buffer);
 void write_i2c(XIicPs *i2c_dev, u16 address, u8 value,
 		       s32 buffer_size, u16 slave_address, u8 *buffer);
 void setup_cam_vga_rgb(void);
 int setup_cdma_interrupts(XScuGic *GicPtr, XAxiCdma  *DmaPtr);
+int setup_line_interrupts(XScuGic *GicPtr, XGpio  *GpioPtr);
 int setup_dma_gpio(XGpio *Gpio, u16 dev, unsigned dma_interaction_chan, u32 dma_chan_mask);
 
 int setup_cam_gpio(XGpio *Gpio, u16 dev, unsigned pwr_down_chn, u32 pwr_down_msk,
@@ -70,7 +81,7 @@ int setup_i2c(XIicPs *i2c_dev, XIicPs_Config *i2c_conf, u16 i2c_dev_id, u32 i2c_
 int setup_interrupt(XScuGic *gic_dev, XScuGic_Config *gic_conf, u16 gic_dev_id);
 int setup_cdma(XAxiCdma *cdma_dev, XAxiCdma_Config *cdma_conf, u32 cdma_dev_id);
 
-void power_up_cam(XGpio *Gpio, u16 dev, unsigned pwr_down_chn, unsigned clk_enable_chn);
+void power_up_cam(XGpio *Gpio, unsigned pwr_down_chn, unsigned clk_enable_chn);
 
 
 void print_cdma_error(u32 error_code){

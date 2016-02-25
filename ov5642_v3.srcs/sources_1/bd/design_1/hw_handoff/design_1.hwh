@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Feb 24 16:12:17 2016" VIVADOVERSION="2015.3">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Feb 25 18:01:27 2016" VIVADOVERSION="2015.3">
 
   <SYSTEMINFO ARCH="zynq" BOARD="em.avnet.com:zed:part0:1.3" DEVICE="7z020" NAME="design_1" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
@@ -33,8 +33,8 @@
     <PORT DIR="O" NAME="IIC_0_scl_t" SIGIS="undef"/>
     <PORT DIR="I" NAME="PCLK" SIGIS="undef" SIGNAME="External_Ports_PCLK">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="neg_pclk" PORT="Op1"/>
         <CONNECTION INSTANCE="ov5642_capture_v4_0" PORT="pclk"/>
+        <CONNECTION INSTANCE="xlconcat_2" PORT="In4"/>
         <CONNECTION INSTANCE="dvs_cdma_v2_0" PORT="pclk"/>
       </CONNECTIONS>
     </PORT>
@@ -55,7 +55,13 @@
         <CONNECTION INSTANCE="dvs_cdma_v2_0" PORT="vsync"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" NAME="disable_spikes" SIGIS="undef"/>
+    <PORT DIR="I" NAME="disable_spikes" SIGIS="undef" SIGNAME="External_Ports_disable_spikes">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="xlconcat_0" PORT="In2"/>
+        <CONNECTION INSTANCE="xlconcat_0" PORT="In1"/>
+        <CONNECTION INSTANCE="xlconcat_0" PORT="In0"/>
+      </CONNECTIONS>
+    </PORT>
     <PORT DIR="O" LEFT="0" NAME="PWDN" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_0_gpio_io_o">
       <CONNECTIONS>
         <CONNECTION INSTANCE="axi_gpio_0" PORT="gpio_io_o"/>
@@ -110,6 +116,11 @@
     <PORT DIR="I" NAME="low_up" SIGIS="undef" SIGNAME="External_Ports_low_up">
       <CONNECTIONS>
         <CONNECTION INSTANCE="RGB_v4_0" PORT="low_up"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="7" NAME="LEDS" RIGHT="0" SIGIS="undef" SIGNAME="xlconcat_2_dout">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="xlconcat_2" PORT="dout"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -648,7 +659,7 @@
         </PORT>
         <PORT DIR="O" NAME="cdma_introut" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="axi_cdma_0_cdma_introut">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="IRQ_F2P"/>
+            <CONNECTION INSTANCE="xlconcat_3" PORT="In0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="s_axi_lite_awready" SIGIS="undef" SIGNAME="axi_cdma_0_s_axi_lite_awready">
@@ -2804,6 +2815,9 @@
         <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="const_0_dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="clk_wiz_0" PORT="reset"/>
+            <CONNECTION INSTANCE="xlconcat_2" PORT="In5"/>
+            <CONNECTION INSTANCE="xlconcat_2" PORT="In6"/>
+            <CONNECTION INSTANCE="xlconcat_2" PORT="In7"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -2849,16 +2863,19 @@
         <PORT DIR="O" NAME="new_frame" SIGIS="undef" SIGNAME="dvs_cdma_v2_0_new_frame">
           <CONNECTIONS>
             <CONNECTION INSTANCE="xlconcat_1" PORT="In0"/>
+            <CONNECTION INSTANCE="xlconcat_2" PORT="In0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="read_new_line" SIGIS="undef" SIGNAME="dvs_cdma_v2_0_read_new_line">
           <CONNECTIONS>
             <CONNECTION INSTANCE="xlconcat_1" PORT="In1"/>
+            <CONNECTION INSTANCE="xlconcat_2" PORT="In1"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="write_new_line" SIGIS="undef" SIGNAME="dvs_cdma_v2_0_write_new_line">
           <CONNECTIONS>
             <CONNECTION INSTANCE="xlconcat_1" PORT="In2"/>
+            <CONNECTION INSTANCE="xlconcat_2" PORT="In2"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="bram_addr" RIGHT="0" SIGIS="undef" SIGNAME="dvs_cdma_v2_0_bram_addr">
@@ -3077,7 +3094,7 @@
         <PARAMETER NAME="C_ALL_INPUTS_2" VALUE="0"/>
         <PARAMETER NAME="C_ALL_OUTPUTS" VALUE="0"/>
         <PARAMETER NAME="C_ALL_OUTPUTS_2" VALUE="0"/>
-        <PARAMETER NAME="C_INTERRUPT_PRESENT" VALUE="0"/>
+        <PARAMETER NAME="C_INTERRUPT_PRESENT" VALUE="1"/>
         <PARAMETER NAME="C_DOUT_DEFAULT" VALUE="0x00000000"/>
         <PARAMETER NAME="C_TRI_DEFAULT" VALUE="0xFFFFFFFF"/>
         <PARAMETER NAME="C_IS_DUAL" VALUE="0"/>
@@ -3187,9 +3204,14 @@
             <CONNECTION INSTANCE="processing_system7_0_axi_periph" PORT="M01_AXI_rready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="2" NAME="gpio_io_i" RIGHT="0" SIGIS="undef" SIGNAME="xlconcat_1_dout">
+        <PORT DIR="O" NAME="ip2intc_irpt" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="frame_info_ip2intc_irpt">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="xlconcat_1" PORT="dout"/>
+            <CONNECTION INSTANCE="xlconcat_3" PORT="In1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="gpio_io_i" RIGHT="0" SIGIS="undef" SIGNAME="util_vector_logic_0_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="util_vector_logic_0" PORT="Res"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -3503,24 +3525,6 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE FULLNAME="/neg_pclk" HWVERSION="2.0" INSTANCE="neg_pclk" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="C_OPERATION" VALUE="not"/>
-        <PARAMETER NAME="C_SIZE" VALUE="1"/>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_util_vector_logic_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_PCLK">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="PCLK"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef"/>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
     <MODULE FULLNAME="/neg_reset" HWVERSION="2.0" INSTANCE="neg_reset" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -3583,6 +3587,7 @@
         </PORT>
         <PORT DIR="O" NAME="write_enable" SIGIS="undef" SIGNAME="ov5642_capture_v4_0_write_enable">
           <CONNECTIONS>
+            <CONNECTION INSTANCE="xlconcat_2" PORT="In3"/>
             <CONNECTION INSTANCE="dvs_cdma_v2_0" PORT="write_enable_in"/>
           </CONNECTIONS>
         </PORT>
@@ -3628,7 +3633,7 @@
         <PARAMETER NAME="C_S_AXI_HP3_DATA_WIDTH" VALUE="64"/>
         <PARAMETER NAME="C_M_AXI_GP0_THREAD_ID_WIDTH" VALUE="12"/>
         <PARAMETER NAME="C_M_AXI_GP1_THREAD_ID_WIDTH" VALUE="12"/>
-        <PARAMETER NAME="C_NUM_F2P_INTR_INPUTS" VALUE="1"/>
+        <PARAMETER NAME="C_NUM_F2P_INTR_INPUTS" VALUE="2"/>
         <PARAMETER NAME="C_IRQ_F2P_MODE" VALUE="DIRECT"/>
         <PARAMETER NAME="C_DQ_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_DQS_WIDTH" VALUE="4"/>
@@ -3964,7 +3969,7 @@
         <PARAMETER NAME="PCW_S_AXI_HP2_DATA_WIDTH" VALUE="64"/>
         <PARAMETER NAME="PCW_S_AXI_HP3_ID_WIDTH" VALUE="6"/>
         <PARAMETER NAME="PCW_S_AXI_HP3_DATA_WIDTH" VALUE="64"/>
-        <PARAMETER NAME="PCW_NUM_F2P_INTR_INPUTS" VALUE="1"/>
+        <PARAMETER NAME="PCW_NUM_F2P_INTR_INPUTS" VALUE="2"/>
         <PARAMETER NAME="PCW_EN_DDR" VALUE="1"/>
         <PARAMETER NAME="PCW_EN_SMC" VALUE="0"/>
         <PARAMETER NAME="PCW_EN_QSPI" VALUE="1"/>
@@ -5107,9 +5112,9 @@
             <CONNECTION INSTANCE="axi_mem_intercon" PORT="M01_AXI_wstrb"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="IRQ_F2P" RIGHT="0" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="axi_cdma_0_cdma_introut">
+        <PORT DIR="I" LEFT="1" NAME="IRQ_F2P" RIGHT="0" SENSITIVITY="LEVEL_HIGH:LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="xlconcat_3_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_cdma_0" PORT="cdma_introut"/>
+            <CONNECTION INSTANCE="xlconcat_3" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="O" NAME="FCLK_CLK0" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
@@ -5456,7 +5461,7 @@
       <PARAMETERS>
         <PARAMETER NAME="NUM_SI" VALUE="1"/>
         <PARAMETER NAME="NUM_MI" VALUE="2"/>
-        <PARAMETER NAME="STRATEGY" VALUE="0"/>
+        <PARAMETER NAME="STRATEGY" VALUE="2"/>
         <PARAMETER NAME="ENABLE_ADVANCED_OPTIONS" VALUE="0"/>
         <PARAMETER NAME="ENABLE_PROTOCOL_CHECKERS" VALUE="0"/>
         <PARAMETER NAME="XBAR_DATA_WIDTH" VALUE="32"/>
@@ -5608,7 +5613,7 @@
         <PARAMETER NAME="S13_HAS_REGSLICE" VALUE="0"/>
         <PARAMETER NAME="S14_HAS_REGSLICE" VALUE="0"/>
         <PARAMETER NAME="S15_HAS_REGSLICE" VALUE="0"/>
-        <PARAMETER NAME="S00_HAS_DATA_FIFO" VALUE="0"/>
+        <PARAMETER NAME="S00_HAS_DATA_FIFO" VALUE="2"/>
         <PARAMETER NAME="S01_HAS_DATA_FIFO" VALUE="0"/>
         <PARAMETER NAME="S02_HAS_DATA_FIFO" VALUE="0"/>
         <PARAMETER NAME="S03_HAS_DATA_FIFO" VALUE="0"/>
@@ -7083,6 +7088,33 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
+    <MODULE FULLNAME="/util_vector_logic_0" HWVERSION="2.0" INSTANCE="util_vector_logic_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="C_OPERATION" VALUE="or"/>
+        <PARAMETER NAME="C_SIZE" VALUE="3"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_util_vector_logic_0_1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="2" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="xlconcat_1_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xlconcat_1" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="Op2" RIGHT="0" SIGIS="undef" SIGNAME="xlconcat_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xlconcat_0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="util_vector_logic_0_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="frame_info" PORT="gpio_io_i"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
     <MODULE FULLNAME="/util_vector_logic_2" HWVERSION="2.0" INSTANCE="util_vector_logic_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -7105,6 +7137,70 @@
         <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="util_vector_logic_2_Res">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="XCLK"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE FULLNAME="/xlconcat_0" HWVERSION="2.1" INSTANCE="xlconcat_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="IN0_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN1_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN2_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN3_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN4_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN5_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN6_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN7_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN8_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN9_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN10_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN11_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN12_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN13_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN14_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN15_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN16_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN17_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN18_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN19_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN20_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN21_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN22_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN23_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN24_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN25_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN26_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN27_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN28_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN29_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN30_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN31_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="dout_width" VALUE="3"/>
+        <PARAMETER NAME="NUM_PORTS" VALUE="3"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlconcat_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_disable_spikes">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="disable_spikes"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_disable_spikes">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="disable_spikes"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In2" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_disable_spikes">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="disable_spikes"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="xlconcat_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="util_vector_logic_0" PORT="Op2"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -7168,7 +7264,155 @@
         </PORT>
         <PORT DIR="O" LEFT="2" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="xlconcat_1_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="frame_info" PORT="gpio_io_i"/>
+            <CONNECTION INSTANCE="util_vector_logic_0" PORT="Op1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE FULLNAME="/xlconcat_2" HWVERSION="2.1" INSTANCE="xlconcat_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="IN0_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN1_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN2_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN3_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN4_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN5_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN6_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN7_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN8_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN9_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN10_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN11_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN12_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN13_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN14_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN15_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN16_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN17_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN18_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN19_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN20_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN21_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN22_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN23_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN24_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN25_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN26_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN27_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN28_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN29_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN30_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN31_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="dout_width" VALUE="8"/>
+        <PARAMETER NAME="NUM_PORTS" VALUE="8"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlconcat_2_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="dvs_cdma_v2_0_new_frame">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="dvs_cdma_v2_0" PORT="new_frame"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="dvs_cdma_v2_0_read_new_line">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="dvs_cdma_v2_0" PORT="read_new_line"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In2" RIGHT="0" SIGIS="undef" SIGNAME="dvs_cdma_v2_0_write_new_line">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="dvs_cdma_v2_0" PORT="write_new_line"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In3" RIGHT="0" SIGIS="undef" SIGNAME="ov5642_capture_v4_0_write_enable">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ov5642_capture_v4_0" PORT="write_enable"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In4" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_PCLK">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="PCLK"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In5" RIGHT="0" SIGIS="undef" SIGNAME="const_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="const_0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In6" RIGHT="0" SIGIS="undef" SIGNAME="const_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="const_0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In7" RIGHT="0" SIGIS="undef" SIGNAME="const_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="const_0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="xlconcat_2_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="LEDS"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE FULLNAME="/xlconcat_3" HWVERSION="2.1" INSTANCE="xlconcat_3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="IN0_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN1_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN2_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN3_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN4_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN5_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN6_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN7_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN8_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN9_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN10_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN11_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN12_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN13_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN14_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN15_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN16_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN17_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN18_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN19_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN20_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN21_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN22_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN23_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN24_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN25_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN26_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN27_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN28_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN29_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN30_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN31_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="dout_width" VALUE="2"/>
+        <PARAMETER NAME="NUM_PORTS" VALUE="2"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlconcat_3_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="axi_cdma_0_cdma_introut">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_cdma_0" PORT="cdma_introut"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="frame_info_ip2intc_irpt">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="frame_info" PORT="ip2intc_irpt"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="xlconcat_3_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="IRQ_F2P"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
