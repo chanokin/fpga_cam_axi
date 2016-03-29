@@ -1,0 +1,109 @@
+module block_to_pixel_v1(input pclk,
+                          input [16:0] qvga_address,
+                          input [7:0] row_count,
+                          input [8:0] col_count,
+                          output reg get_new_block,
+                          output reg [9:0] pixel_out,
+      // bram interface
+                          output reg [31:0] bram_addr,
+                          input  [31:0] bram_rddata,
+                          output bram_en,
+                          output bram_rst,
+                          output [3:0] bram_we,
+      // block reset
+                          input  reset);
+
+parameter MAX_LIFE_COUNT = 6'd60;
+parameter LIFE_ZERO = 6'd0;
+parameter LIFE_ONE = 6'd1;
+
+reg pix_per_pack_count;
+reg [5:0] get_new_block_life; 
+reg even_odd_pixel;
+
+assign bram_rst = reset;
+assign bram_we = {reset, reset, reset};
+assign bram_en = !reset;
+
+// grab new block signal
+always @(posedge pclk or negedge reset) begin
+
+  if (reset == 1'b1) begin
+    get_new_block <= 1'b0; 
+    get_new_block_life <= LIFE_ZERO;
+  end
+  else begin
+// ask for new info at the beginning of the frame to desynchronize DMA accesses
+    if( (col_count == 9'd1 &&  ( row_count == 9'd88  || row_count == 9'd120 || 
+                                 row_count == 9'd152 || row_count == 9'd184)   ) || 
+        (get_new_block_life > LIFE_ZERO && get_new_block_life < MAX_LIFE_COUNT ) ) begin
+
+      get_new_block <= 1'b1;
+      get_new_block_life <= get_new_block_life + LIFE_ONE;
+    end
+    else begin
+      get_new_block <= 1'b0;
+      get_new_block_life <= LIFE_ZERO;
+    end
+  end
+  
+end
+
+
+// BRAM address
+always @(posedge pclk or negedge reset) begin
+  if (reset == 1'b1) begin
+    bram_addr <= 31'd0;
+  end
+  else begin
+    if ( get_new_block == 1'b1 ) begin
+      bram_addr <= 31'd0;
+    end
+    else begin
+        if ( col_count >= 9'd96 && col_count <= 9'd224 ) begin
+          bram_addr <= bram_addr + 31'd1;
+        end
+    end
+  end
+  
+end
+
+// Pixel decoding
+// read & write data register
+/*
+     -------------------------------------------------------------------
+ var |   ref0   | colour0 |  pixel0   |   ref1   | colour0 |  pixel0   |
+     -------------------------------------------------------------------
+ bit |  31 : 24 |  23:22  |  21 : 16  |  15 : 8  |  7 : 6  |   5 : 0   |
+     -------------------------------------------------------------------
+*/
+always @(posedge pclk or negedge reset) begin
+  if (reset == 1'b1) begin
+    even_odd_pixel <= 1'b0;
+    pixel_out <= 10'd0;
+  end
+  else begin
+    even_odd_pixel <= even_odd_pixel + 1'b1;
+    if ( col_count >= 9'd96 && col_count <= 9'd224 ) begin
+      if(even_odd_pixel == 1'b1) begin
+        pixel_out <= {bram_rddata[21:16], 2'b0, bram_rddata[23:22]};
+      end
+      else begin
+        pixel_out <= {bram_rddata[5:0], 2'b0, bram_rddata[7:6]};
+      end
+    end
+    else begin
+      pixel <= {8'd150, 2'd0};
+    end
+  end
+end
+
+
+endmodule
+
+
+
+
+
+
+

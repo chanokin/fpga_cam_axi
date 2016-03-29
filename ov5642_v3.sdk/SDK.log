@@ -166,3 +166,1134 @@
 18:10:11 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
 18:10:14 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
 18:10:26 INFO  : Processor reset is completed for ps7_cortexa9_0
+17:56:05 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:56:06 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+17:56:08 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+17:56:21 INFO  : ps7_init is completed.
+17:56:21 INFO  : ps7_post_config is completed.
+17:56:22 INFO  : Processor reset is completed for ps7_cortexa9_0
+17:57:54 INFO  : Processor reset is completed for ps7_cortexa9_0
+18:01:53 INFO  : Processor reset is completed for ps7_cortexa9_0
+18:06:24 INFO  : Processor reset is completed for ps7_cortexa9_0
+18:06:57 INFO  : Processor reset is completed for ps7_cortexa9_0
+18:54:51 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+18:54:51 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+18:54:54 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+18:54:59 INFO  : ps7_init is completed.
+18:54:59 INFO  : ps7_post_config is completed.
+18:54:59 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:00:18 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1456840170000,  Project:1456423740000
+14:00:18 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+14:00:21 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+14:03:37 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+14:03:59 INFO  : 
+14:03:59 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+14:04:00 INFO  : Clearing existing target manager status.
+14:04:00 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+14:04:14 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+14:04:20 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+14:04:21 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+14:04:59 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+14:05:04 ERROR : Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+14:16:27 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+14:16:30 INFO  : XSDB server has started successfully.
+14:16:36 INFO  : Processing command line option -hwspec /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf.
+14:16:36 INFO  : Checking for hwspec changes in the project design_1_wrapper_hw_platform_0.
+14:18:13 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+14:18:14 INFO  : XSDB server has started successfully.
+14:18:18 INFO  : Processing command line option -hwspec /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf.
+14:18:20 INFO  : Checking for hwspec changes in the project design_1_wrapper_hw_platform_0.
+14:27:23 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:27:23 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+14:27:26 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+14:27:47 INFO  : ps7_init is completed.
+14:27:47 INFO  : ps7_post_config is completed.
+14:27:47 INFO  : Processor reset is completed for ps7_cortexa9_0
+18:22:55 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1456847594000,  Project:1456840170000
+18:22:55 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+18:22:58 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+18:23:03 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+18:23:08 INFO  : 
+18:23:09 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+18:23:09 INFO  : Clearing existing target manager status.
+18:23:09 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+18:23:10 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+18:23:11 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+18:23:37 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+18:23:37 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+18:23:40 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+18:23:49 INFO  : Processor reset is completed for ps7_cortexa9_0
+09:42:26 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+09:42:27 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+09:42:29 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+09:42:33 INFO  : ps7_init is completed.
+09:42:33 INFO  : ps7_post_config is completed.
+09:42:34 INFO  : Processor reset is completed for ps7_cortexa9_0
+09:55:31 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1456912444000,  Project:1456847594000
+09:55:31 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+09:55:44 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+09:55:50 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+09:55:55 INFO  : 
+09:55:56 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+09:55:56 INFO  : Clearing existing target manager status.
+09:55:56 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+09:55:57 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+09:55:58 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+09:56:51 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+09:56:52 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+09:56:54 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+09:57:17 INFO  : Processor reset is completed for ps7_cortexa9_0
+18:01:32 ERROR : Checking FPGA configuration failed..Connection to Board Failed
+
+
+    Failed to open Cable Node jsn-Zed-210248690442 on TCP:127.0.0.1:3121
+
+
+18:01:32 ERROR : Unexpected error while launching program.
+com.xilinx.sdk.targetmanager.TMException: Connection to Board Failed
+
+
+    Failed to open Cable Node jsn-Zed-210248690442 on TCP:127.0.0.1:3121
+
+
+	at com.xilinx.sdk.targetmanager.internal.TM.isFPGAConfigured(TM.java:374)
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.isFpgaConfigured(XilinxAppLaunchConfigurationDelegate.java:381)
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.launch(XilinxAppLaunchConfigurationDelegate.java:290)
+	at com.xilinx.sdk.debug.ui.XilinxAppLaunchDelegateWrapper.launch(XilinxAppLaunchDelegateWrapper.java:31)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1018)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1222)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+18:02:15 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+18:02:15 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+18:02:17 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+18:02:58 INFO  : ps7_init is completed.
+18:02:58 INFO  : ps7_post_config is completed.
+18:02:58 INFO  : Processor reset is completed for ps7_cortexa9_0
+18:19:06 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1457029072000,  Project:1456912444000
+18:19:06 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+18:19:08 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+18:19:14 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+18:19:19 INFO  : 
+18:19:20 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+18:19:20 INFO  : Clearing existing target manager status.
+18:19:20 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+18:19:22 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+18:19:22 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+18:19:22 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+18:19:23 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+18:20:32 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+18:20:32 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+18:20:37 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+18:20:45 INFO  : Processor reset is completed for ps7_cortexa9_0
+18:21:08 INFO  : Processor reset is completed for ps7_cortexa9_0
+18:22:11 INFO  : Processor reset is completed for ps7_cortexa9_0
+18:22:23 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+18:22:26 INFO  : Processor reset is completed for ps7_cortexa9_0
+18:27:33 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+18:27:33 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+18:27:39 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+18:27:42 INFO  : ps7_init is completed.
+18:27:42 INFO  : ps7_post_config is completed.
+18:27:43 INFO  : Processor reset is completed for ps7_cortexa9_0
+18:29:48 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+18:29:49 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+18:29:55 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+18:29:58 INFO  : ps7_init is completed.
+18:29:58 INFO  : ps7_post_config is completed.
+18:29:58 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:09:53 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1457031751000,  Project:1457029072000
+10:09:53 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+10:10:40 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+10:10:44 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+10:10:48 INFO  : 
+10:10:49 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+10:10:49 INFO  : Clearing existing target manager status.
+10:10:49 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+10:10:50 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+10:10:51 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+10:11:02 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:11:02 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+10:11:08 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+10:11:21 INFO  : ps7_init is completed.
+10:11:21 INFO  : ps7_post_config is completed.
+10:11:21 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:12:35 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:14:19 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:14:20 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+10:14:26 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+10:14:29 INFO  : ps7_init is completed.
+10:14:29 INFO  : ps7_post_config is completed.
+10:14:29 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:14:52 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:14:52 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+10:14:58 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+10:15:32 INFO  : ps7_init is completed.
+10:15:32 INFO  : ps7_post_config is completed.
+10:15:32 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:17:44 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:17:45 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+10:17:51 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+10:45:14 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1457088018000,  Project:1457031751000
+10:45:14 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+10:45:16 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+10:45:23 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+10:45:29 INFO  : 
+10:45:29 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+10:45:29 INFO  : Clearing existing target manager status.
+10:45:29 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+10:45:31 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+10:45:31 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+10:45:31 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+10:45:32 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+10:45:38 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+10:45:59 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:46:00 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+10:46:06 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+10:46:28 INFO  : ps7_init is completed.
+10:46:28 INFO  : ps7_post_config is completed.
+10:46:28 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:46:39 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:46:40 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+10:46:46 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+10:46:55 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+10:47:21 ERROR : Unexpected error while launching program.
+java.lang.RuntimeException: Error in Resetting Target
+
+    Could not stop the processor after reset
+
+
+	at com.xilinx.sdk.targetmanager.internal.TM.doProcessorReset(TM.java:1011)
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.runTargetSetup(XilinxAppLaunchConfigurationDelegate.java:506)
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.runApplication(XilinxAppLaunchConfigurationDelegate.java:588)
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.launch(XilinxAppLaunchConfigurationDelegate.java:296)
+	at com.xilinx.sdk.debug.ui.XilinxAppLaunchDelegateWrapper.launch(XilinxAppLaunchDelegateWrapper.java:31)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1018)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1222)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+10:47:35 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:47:35 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+10:47:35 ERROR : Error occured during Prog B register check
+10:47:43 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:47:44 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+10:47:44 ERROR : Cannot find memory context of target ARM_DAP
+10:47:52 ERROR : Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+10:48:15 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+10:48:18 INFO  : XSDB server has started successfully.
+10:48:24 INFO  : Processing command line option -hwspec /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf.
+10:48:25 INFO  : Checking for hwspec changes in the project design_1_wrapper_hw_platform_0.
+13:10:13 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1457096968000,  Project:1457088018000
+13:10:13 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+13:22:24 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+13:22:29 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+13:22:33 INFO  : 
+13:22:34 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+13:22:34 INFO  : Clearing existing target manager status.
+13:22:53 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:22:53 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+13:22:55 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+13:23:05 INFO  : ps7_init is completed.
+13:23:05 INFO  : ps7_post_config is completed.
+13:23:06 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:23:27 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:26:10 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:26:24 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:26:37 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:26:51 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:27:10 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:28:12 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:28:12 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+13:28:15 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+13:28:18 INFO  : ps7_init is completed.
+13:28:19 INFO  : ps7_post_config is completed.
+13:28:19 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:28:31 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:38:30 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:53:56 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1457099383000,  Project:1457096968000
+13:53:56 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+13:54:02 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+13:54:07 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+13:54:11 INFO  : 
+13:54:12 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+13:54:12 INFO  : Clearing existing target manager status.
+14:12:30 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:12:30 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+14:12:32 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+14:12:40 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:14:08 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:14:39 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:15:17 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:15:18 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+14:15:20 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+14:15:43 INFO  : ps7_init is completed.
+14:15:43 INFO  : ps7_post_config is completed.
+14:15:43 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:16:13 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:16:14 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+14:16:16 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+14:16:21 INFO  : ps7_init is completed.
+14:16:21 INFO  : ps7_post_config is completed.
+14:16:21 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:17:14 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+14:17:15 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:17:33 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+14:17:36 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:22:09 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:30:48 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:30:48 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+14:30:51 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+14:30:55 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:32:00 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:32:00 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+14:32:03 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+14:32:06 INFO  : ps7_init is completed.
+14:32:06 INFO  : ps7_post_config is completed.
+14:32:06 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:32:37 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+14:32:39 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:33:01 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+14:33:04 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:56:37 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1457102670000,  Project:1457099383000
+14:56:37 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+14:56:39 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+14:56:44 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+14:56:48 INFO  : 
+14:56:49 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+14:56:49 INFO  : Clearing existing target manager status.
+14:58:02 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:58:02 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+14:58:07 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+14:58:13 INFO  : ps7_init is completed.
+14:58:13 INFO  : ps7_post_config is completed.
+14:58:13 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:59:10 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:59:49 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:59:49 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+14:59:55 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:00:02 INFO  : ps7_init is completed.
+15:00:02 INFO  : ps7_post_config is completed.
+15:00:02 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:00:37 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:00:37 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+15:00:43 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:00:57 INFO  : ps7_init is completed.
+15:00:57 INFO  : ps7_post_config is completed.
+15:00:57 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:17:15 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1457104246000,  Project:1457102670000
+15:17:15 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+15:17:17 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+15:17:22 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+15:17:23 INFO  : 
+15:17:24 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+15:17:24 INFO  : Clearing existing target manager status.
+15:31:44 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:31:44 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+15:31:49 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:32:02 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:32:02 ERROR : Unexpected error while launching program.
+java.lang.RuntimeException: Unknown Error Occured
+    Target '64' Does NOT exist in the Current System
+
+
+	at com.xilinx.sdk.targetmanager.internal.TM.downloadELF(TM.java:686)
+	at com.xilinx.sdk.debug.core.internal.AppRunner.run(AppRunner.java:129)
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.runApplication(XilinxAppLaunchConfigurationDelegate.java:609)
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.launch(XilinxAppLaunchConfigurationDelegate.java:296)
+	at com.xilinx.sdk.debug.ui.XilinxAppLaunchDelegateWrapper.launch(XilinxAppLaunchDelegateWrapper.java:31)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1018)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1222)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+15:32:26 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:32:26 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+15:32:32 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:32:51 ERROR : Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+15:33:44 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+15:33:46 INFO  : XSDB server has started successfully.
+15:33:52 INFO  : Processing command line option -hwspec /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf.
+15:33:53 INFO  : Checking for hwspec changes in the project design_1_wrapper_hw_platform_0.
+15:34:05 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:34:05 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+15:34:08 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:34:27 INFO  : ps7_init is completed.
+15:34:27 INFO  : ps7_post_config is completed.
+15:34:28 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:35:01 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:35:01 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+15:35:03 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:35:23 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:35:26 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:48:19 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1457106236000,  Project:1457104246000
+15:48:19 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+15:48:20 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+15:48:24 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+15:48:25 INFO  : 
+15:48:26 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+15:48:26 INFO  : Clearing existing target manager status.
+15:48:38 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:48:38 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+15:48:41 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:48:48 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:49:48 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:50:16 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:53:04 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:54:05 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:54:06 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+15:54:08 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:54:22 INFO  : ps7_init is completed.
+15:54:22 INFO  : ps7_post_config is completed.
+15:54:22 INFO  : Processor reset is completed for ps7_cortexa9_0
+18:58:02 ERROR : Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+13:50:03 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+13:50:06 INFO  : XSDB server has started successfully.
+13:50:09 INFO  : Processing command line option -hwspec /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf.
+13:50:10 INFO  : Checking for hwspec changes in the project design_1_wrapper_hw_platform_0.
+13:50:13 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1458568122000,  Project:1457106236000
+13:50:13 INFO  : The hardware specification for project 'design_1_wrapper_hw_platform_0' is different from /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf.
+13:50:14 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+13:50:17 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+13:50:22 INFO  : 
+13:50:22 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+13:50:22 INFO  : Clearing existing target manager status.
+13:51:49 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:52:00 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:52:01 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+13:52:03 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+13:52:13 INFO  : ps7_init is completed.
+13:52:13 INFO  : ps7_post_config is completed.
+13:52:13 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:11:25 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1458569163000,  Project:1458568122000
+14:11:25 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+14:11:26 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+14:11:31 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+14:11:32 INFO  : 
+14:11:33 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+14:11:33 INFO  : Clearing existing target manager status.
+14:11:33 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+14:13:37 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:13:38 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+14:13:40 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+14:13:47 INFO  : ps7_init is completed.
+14:13:47 INFO  : ps7_post_config is completed.
+14:13:48 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:09:33 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1458572938000,  Project:1458569163000
+15:09:33 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+15:09:35 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+15:09:40 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+15:09:44 INFO  : 
+15:09:45 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+15:09:45 INFO  : Clearing existing target manager status.
+15:10:31 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:10:31 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+15:10:33 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:10:44 INFO  : ps7_init is completed.
+15:10:44 INFO  : ps7_post_config is completed.
+15:10:45 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:32:48 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1458573860000,  Project:1458572938000
+15:32:48 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+15:32:54 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+15:32:58 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+15:33:00 INFO  : 
+15:33:00 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+15:33:00 INFO  : Clearing existing target manager status.
+15:33:07 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:33:07 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+15:33:10 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:33:22 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:33:23 ERROR : Unexpected error while launching program.
+java.lang.RuntimeException: Unknown Error Occured
+    Target '64' Does NOT exist in the Current System
+
+
+	at com.xilinx.sdk.targetmanager.internal.TM.downloadELF(TM.java:686)
+	at com.xilinx.sdk.debug.core.internal.AppRunner.run(AppRunner.java:129)
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.runApplication(XilinxAppLaunchConfigurationDelegate.java:609)
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.launch(XilinxAppLaunchConfigurationDelegate.java:296)
+	at com.xilinx.sdk.debug.ui.XilinxAppLaunchDelegateWrapper.launch(XilinxAppLaunchDelegateWrapper.java:31)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1018)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1222)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+15:33:45 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:33:45 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+15:33:48 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:34:03 ERROR : Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+15:34:26 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+15:34:27 INFO  : XSDB server has started successfully.
+15:34:34 INFO  : Processing command line option -hwspec /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf.
+15:34:36 INFO  : Checking for hwspec changes in the project design_1_wrapper_hw_platform_0.
+15:34:50 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:34:51 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+15:34:53 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:35:03 INFO  : ps7_init is completed.
+15:35:03 INFO  : ps7_post_config is completed.
+15:35:03 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:36:30 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:36:32 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:38:57 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:39:03 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:52:08 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1458575513000,  Project:1458573860000
+15:52:08 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+15:52:10 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+15:52:14 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+15:52:16 INFO  : 
+15:52:16 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+15:52:16 INFO  : Clearing existing target manager status.
+15:56:45 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:56:54 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:56:54 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+15:56:56 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:57:00 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:06:39 INFO  : Processor reset is completed for ps7_cortexa9_0
+09:15:04 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1458637458000,  Project:1458575513000
+09:15:04 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+09:15:06 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+09:15:11 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+09:15:16 INFO  : 
+09:15:17 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+09:15:17 INFO  : Clearing existing target manager status.
+09:15:17 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+09:15:19 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+09:15:20 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+09:15:20 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+09:15:22 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+10:52:17 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:52:17 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+10:52:19 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+10:52:27 INFO  : ps7_init is completed.
+10:52:27 INFO  : ps7_post_config is completed.
+10:52:27 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:51:02 INFO  : Processor reset is completed for ps7_cortexa9_0
+12:50:03 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:50:03 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+12:50:06 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+12:50:14 INFO  : ps7_init is completed.
+12:50:14 INFO  : ps7_post_config is completed.
+12:50:14 INFO  : Processor reset is completed for ps7_cortexa9_0
+12:50:54 INFO  : Processor reset is completed for ps7_cortexa9_0
+12:52:48 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+12:52:55 INFO  : Processor reset is completed for ps7_cortexa9_0
+12:53:37 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+12:53:38 INFO  : Processor reset is completed for ps7_cortexa9_0
+12:54:13 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+12:54:15 INFO  : Processor reset is completed for ps7_cortexa9_0
+12:55:51 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+12:55:54 INFO  : Processor reset is completed for ps7_cortexa9_0
+12:57:49 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+12:57:51 INFO  : Processor reset is completed for ps7_cortexa9_0
+12:58:06 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+12:58:11 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+12:58:13 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:02:00 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:04:46 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:21:20 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1458652630000,  Project:1458637458000
+13:21:20 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+13:21:22 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+13:21:28 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+13:21:33 INFO  : 
+13:21:34 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+13:21:34 INFO  : Clearing existing target manager status.
+13:21:34 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+13:21:36 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+13:21:36 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+13:21:36 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+13:27:34 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:27:34 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+13:27:37 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+13:27:43 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:28:57 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:30:31 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:31:02 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:31:57 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:32:15 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:33:22 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:33:33 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:50:39 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1458654527000,  Project:1458652630000
+13:50:39 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+13:50:40 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+13:50:46 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+13:50:51 INFO  : 
+13:50:51 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+13:50:51 INFO  : Clearing existing target manager status.
+13:50:51 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+13:50:53 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+13:50:53 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+13:50:54 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+13:52:53 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:54:46 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:54:46 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+13:54:49 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+13:54:56 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:57:24 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:58:24 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:59:06 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:00:24 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:06:54 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:11:21 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:11:39 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:11:55 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:13:09 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:14:16 ERROR : Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+14:45:57 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+14:45:58 INFO  : XSDB server has started successfully.
+14:45:58 INFO  : Processing command line option -hwspec /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf.
+14:45:58 INFO  : Checking for hwspec changes in the project design_1_wrapper_hw_platform_0.
+14:47:36 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:47:36 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+14:47:39 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+14:47:46 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:50:45 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:57:39 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:57:54 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:59:06 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:08:48 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:10:40 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:12:38 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:14:58 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:15:27 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:15:43 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:15:44 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+15:15:46 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:15:50 INFO  : ps7_init is completed.
+15:15:50 INFO  : ps7_post_config is completed.
+15:15:50 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:15:55 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:15:59 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:16:03 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:24:00 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:24:05 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:24:26 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:24:27 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+15:24:31 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:24:33 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+15:24:35 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:24:52 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:24:52 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+15:24:57 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:25:01 INFO  : ps7_init is completed.
+15:25:01 INFO  : ps7_post_config is completed.
+15:25:01 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:27:21 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:28:08 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:28:33 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:29:13 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:30:42 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:31:08 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:31:31 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:32:15 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:33:21 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:33:58 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:53:50 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:04:08 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:09:30 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:09:45 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:10:03 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:13:32 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:14:29 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:25:50 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:28:59 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:29:37 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:30:24 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:31:22 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:35:14 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:37:41 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:38:56 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:39:22 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:39:40 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:43:06 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:44:20 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:45:38 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:47:15 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:50:57 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:10:12 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:10:12 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+11:10:18 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+11:10:22 INFO  : ps7_init is completed.
+11:10:22 INFO  : ps7_post_config is completed.
+11:10:23 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:11:04 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:11:29 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:16:05 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:16:28 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:16:51 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:17:27 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:18:43 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:19:12 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:19:59 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:20:23 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:20:56 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:21:44 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:25:17 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:26:07 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:26:36 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:27:25 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:28:04 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:29:11 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:29:21 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:29:56 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:34:35 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:36:33 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:37:53 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:38:23 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:39:35 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:40:20 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:41:14 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:41:29 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:43:02 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:44:29 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:41:22 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1458742902000,  Project:1458654527000
+14:41:22 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+14:41:24 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+14:41:29 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+14:41:34 INFO  : 
+14:41:35 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+14:41:35 INFO  : Clearing existing target manager status.
+14:41:35 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+14:41:37 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+14:41:37 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+14:41:37 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+14:41:37 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+14:41:38 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+14:41:38 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+14:42:49 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:42:50 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+14:42:56 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+14:43:26 INFO  : ps7_init is completed.
+14:43:26 INFO  : ps7_post_config is completed.
+14:43:26 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:43:54 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:44:12 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:58:01 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1458744842000,  Project:1458742902000
+14:58:01 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+14:58:03 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+14:58:07 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+14:58:09 INFO  : 
+14:58:09 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+14:58:09 INFO  : Clearing existing target manager status.
+14:58:09 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+14:58:11 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+14:58:11 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+14:58:11 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+15:24:29 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1458746478000,  Project:1458744842000
+15:24:29 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+15:24:30 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+15:24:35 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+15:24:36 INFO  : 
+15:24:37 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+15:24:37 INFO  : Clearing existing target manager status.
+15:24:37 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+15:24:38 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+15:24:39 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+15:24:39 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+15:26:44 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:26:44 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+15:26:48 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:27:52 INFO  : ps7_init is completed.
+15:27:52 INFO  : ps7_post_config is completed.
+15:27:53 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:34:41 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:16:51 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1458747910000,  Project:1458746478000
+16:16:51 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+16:27:03 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+16:27:08 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+16:27:09 INFO  : 
+16:27:10 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+16:27:10 INFO  : Clearing existing target manager status.
+16:27:10 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+16:27:11 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+16:27:12 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+16:27:12 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+16:47:11 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:47:11 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+16:47:17 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+16:48:28 INFO  : ps7_init is completed.
+16:48:28 INFO  : ps7_post_config is completed.
+16:48:29 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:48:38 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:48:52 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:48:52 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+16:48:57 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+16:49:00 INFO  : Processor reset is completed for ps7_cortexa9_0
+09:52:10 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+09:52:10 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+09:52:17 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+09:52:41 INFO  : ps7_init is completed.
+09:52:41 INFO  : ps7_post_config is completed.
+09:52:42 INFO  : Processor reset is completed for ps7_cortexa9_0
+09:53:10 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:07:29 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1459242373000,  Project:1458747910000
+10:07:29 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+10:07:55 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+10:08:03 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+10:08:08 INFO  : 
+10:08:09 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+10:08:09 INFO  : Clearing existing target manager status.
+10:08:09 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+10:08:11 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+10:08:11 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+10:08:18 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+10:09:06 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:09:06 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+10:09:12 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+10:09:33 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:09:46 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:09:53 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:10:00 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:10:44 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:10:54 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:13:49 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:15:26 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:15:27 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+10:15:33 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+10:15:36 INFO  : ps7_init is completed.
+10:15:36 INFO  : ps7_post_config is completed.
+10:15:36 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:17:25 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:17:39 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:18:53 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:19:13 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:20:08 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:20:15 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:20:36 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:22:13 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:36:52 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:37:30 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:37:48 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+10:37:51 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:38:00 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+10:38:12 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+10:38:15 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:38:39 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+10:38:40 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:39:25 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:39:40 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:39:51 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:39:51 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+10:39:57 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+10:40:12 INFO  : ps7_init is completed.
+10:40:12 INFO  : ps7_post_config is completed.
+10:40:13 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:40:24 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:41:35 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:41:45 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:42:07 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:42:18 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:59:07 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1459245434000,  Project:1459242373000
+10:59:07 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+10:59:09 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+10:59:14 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+10:59:18 INFO  : 
+10:59:18 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+10:59:18 INFO  : Clearing existing target manager status.
+10:59:18 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+10:59:20 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+10:59:20 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+10:59:20 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+10:59:39 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:59:39 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+10:59:45 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+10:59:54 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:00:04 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:17:56 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1459246466000,  Project:1459245434000
+11:17:56 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+11:18:10 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+11:18:15 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+11:18:16 INFO  : 
+11:18:17 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+11:18:17 INFO  : Clearing existing target manager status.
+11:18:17 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+11:18:19 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+11:18:19 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+11:18:19 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+11:18:58 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:18:58 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+11:19:03 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+11:19:17 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:42:06 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1459248103000,  Project:1459246466000
+11:42:06 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+11:42:09 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+11:42:14 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+11:42:15 INFO  : 
+11:42:16 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+11:42:21 INFO  : Clearing existing target manager status.
+11:42:21 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+11:42:22 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+11:42:22 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+11:42:33 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+11:42:44 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:42:44 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+11:42:50 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+11:43:04 INFO  : ps7_init is completed.
+11:43:05 INFO  : ps7_post_config is completed.
+11:43:05 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:55:20 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1459248870000,  Project:1459248103000
+11:55:20 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+11:55:21 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+11:55:27 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+11:55:28 INFO  : 
+11:55:29 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+11:55:30 INFO  : Clearing existing target manager status.
+11:55:30 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+11:55:32 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+11:55:32 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+11:55:36 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+11:56:41 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:56:51 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:56:51 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+11:56:56 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+11:57:06 INFO  : ps7_init is completed.
+11:57:06 INFO  : ps7_post_config is completed.
+11:57:07 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:57:54 INFO  : Processor reset is completed for ps7_cortexa9_0
+12:24:42 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1459250313000,  Project:1459248870000
+12:24:42 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+12:24:44 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+12:24:49 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+12:24:54 INFO  : 
+12:24:54 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+12:24:54 INFO  : Clearing existing target manager status.
+12:24:54 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+12:24:56 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+12:24:56 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+12:24:57 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+12:25:23 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:25:23 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+12:25:29 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+12:28:04 INFO  : ps7_init is completed.
+12:28:04 INFO  : ps7_post_config is completed.
+12:28:04 INFO  : Processor reset is completed for ps7_cortexa9_0
+12:28:56 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:28:57 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+12:29:03 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+12:29:07 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:26:46 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1459252940000,  Project:1459250313000
+13:26:46 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+13:26:47 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+13:26:52 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+13:26:53 INFO  : 
+13:26:54 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+13:26:54 INFO  : Clearing existing target manager status.
+13:26:54 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+13:26:56 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+13:26:56 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+13:26:56 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+13:27:17 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:27:17 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+13:27:23 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+13:27:34 INFO  : ps7_init is completed.
+13:27:34 INFO  : ps7_post_config is completed.
+13:27:35 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:27:55 INFO  : Processor reset is completed for ps7_cortexa9_0
+13:44:33 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1459255387000,  Project:1459252940000
+13:44:33 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+13:45:10 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+13:45:14 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+13:45:16 INFO  : 
+13:45:17 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+13:45:19 INFO  : Clearing existing target manager status.
+13:45:19 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+13:45:20 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+13:45:20 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+13:45:25 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+13:45:35 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:45:36 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+13:45:42 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+13:45:50 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:04:57 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1459256534000,  Project:1459255387000
+14:04:57 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+14:04:59 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+14:05:04 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+14:05:07 INFO  : 
+14:05:07 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+14:05:07 INFO  : Clearing existing target manager status.
+14:05:07 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+14:05:09 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+14:05:09 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+14:05:09 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+14:05:18 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:05:18 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+14:05:24 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+14:05:35 INFO  : ps7_init is completed.
+14:05:35 INFO  : ps7_post_config is completed.
+14:05:35 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:20:52 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1459257501000,  Project:1459256534000
+14:20:52 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+14:20:54 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+14:20:59 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+14:21:01 INFO  : 
+14:21:01 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+14:21:01 INFO  : Clearing existing target manager status.
+14:21:01 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+14:21:03 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+14:21:03 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+14:21:03 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+14:21:45 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:21:45 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+14:21:51 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+14:21:58 INFO  : ps7_init is completed.
+14:21:58 INFO  : ps7_post_config is completed.
+14:21:58 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:24:47 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:39:17 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1459258711000,  Project:1459257501000
+14:39:17 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+14:39:19 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+14:39:24 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+14:39:25 INFO  : 
+14:39:26 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+14:39:26 INFO  : Clearing existing target manager status.
+14:39:26 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+14:39:27 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+14:39:28 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+14:39:28 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+14:39:45 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:39:55 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:39:56 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+14:40:01 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+14:41:44 INFO  : ps7_init is completed.
+14:41:45 INFO  : ps7_post_config is completed.
+14:41:45 INFO  : Processor reset is completed for ps7_cortexa9_0
+14:46:02 ERROR : Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+14:51:18 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+14:51:19 INFO  : XSDB server has started successfully.
+14:51:19 INFO  : Processing command line option -hwspec /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf.
+14:51:20 INFO  : Checking for hwspec changes in the project design_1_wrapper_hw_platform_0.
+14:53:58 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:53:58 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+14:54:01 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+14:54:10 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:04:51 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1459260242000,  Project:1459258711000
+15:04:51 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+15:04:53 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+15:04:57 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+15:04:58 INFO  : 
+15:04:59 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+15:05:04 INFO  : Clearing existing target manager status.
+15:05:28 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:05:28 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+15:05:30 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:05:37 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:05:37 ERROR : Unexpected error while launching program.
+java.lang.RuntimeException: Unknown Error Occured
+    Target '64' Does NOT exist in the Current System
+
+
+	at com.xilinx.sdk.targetmanager.internal.TM.downloadELF(TM.java:686)
+	at com.xilinx.sdk.debug.core.internal.AppRunner.run(AppRunner.java:129)
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.runApplication(XilinxAppLaunchConfigurationDelegate.java:609)
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.launch(XilinxAppLaunchConfigurationDelegate.java:296)
+	at com.xilinx.sdk.debug.ui.XilinxAppLaunchDelegateWrapper.launch(XilinxAppLaunchDelegateWrapper.java:31)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1018)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1222)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+15:05:47 ERROR : Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+15:06:01 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+15:06:03 INFO  : XSDB server has started successfully.
+15:06:03 INFO  : Processing command line option -hwspec /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf.
+15:06:03 INFO  : Checking for hwspec changes in the project design_1_wrapper_hw_platform_0.
+15:06:08 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:06:08 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+15:06:11 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:06:31 INFO  : ps7_init is completed.
+15:06:31 INFO  : ps7_post_config is completed.
+15:06:32 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:24:57 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1459261475000,  Project:1459260242000
+15:24:57 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+15:25:02 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+15:25:07 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+15:25:08 INFO  : 
+15:25:09 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+15:25:09 INFO  : Clearing existing target manager status.
+15:25:22 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:25:22 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+15:25:24 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:25:32 INFO  : ps7_init is completed.
+15:25:32 INFO  : ps7_post_config is completed.
+15:25:32 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:25:37 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:25:47 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:25:47 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+15:25:52 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+15:25:56 INFO  : Processor reset is completed for ps7_cortexa9_0
+15:26:12 INFO  : Processor reset is completed for ps7_cortexa9_0
+16:29:57 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1459265323000,  Project:1459261475000
+16:29:57 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+16:30:00 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+16:30:04 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+16:30:06 INFO  : 
+16:30:06 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+16:30:06 INFO  : Clearing existing target manager status.
+16:30:31 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:30:32 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+16:30:37 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+16:30:45 INFO  : ps7_init is completed.
+16:30:45 INFO  : ps7_post_config is completed.
+16:30:45 INFO  : Processor reset is completed for ps7_cortexa9_0
+17:30:53 ERROR : Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+17:38:18 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+17:38:20 INFO  : XSDB server has started successfully.
+17:38:20 INFO  : Processing command line option -hwspec /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf.
+17:38:20 INFO  : Checking for hwspec changes in the project design_1_wrapper_hw_platform_0.
+17:38:22 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1459268255000,  Project:1459265323000
+17:38:22 INFO  : The hardware specification for project 'design_1_wrapper_hw_platform_0' is different from /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf.
+17:38:22 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+17:38:30 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+17:38:31 INFO  : 
+17:38:32 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+17:38:32 INFO  : Clearing existing target manager status.
+17:40:19 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:40:19 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+17:40:22 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+17:40:29 INFO  : ps7_init is completed.
+17:40:29 INFO  : ps7_post_config is completed.
+17:40:29 INFO  : Processor reset is completed for ps7_cortexa9_0
+17:41:11 INFO  : Processor reset is completed for ps7_cortexa9_0
+17:41:52 INFO  : Processor reset is completed for ps7_cortexa9_0
+17:42:30 INFO  : Processor reset is completed for ps7_cortexa9_0
+17:47:55 INFO  : Processor reset is completed for ps7_cortexa9_0
+17:48:21 INFO  : Processor reset is completed for ps7_cortexa9_0
+17:49:00 INFO  : Processor reset is completed for ps7_cortexa9_0
+17:50:34 INFO  : Processor reset is completed for ps7_cortexa9_0
+17:51:26 INFO  : Processor reset is completed for ps7_cortexa9_0

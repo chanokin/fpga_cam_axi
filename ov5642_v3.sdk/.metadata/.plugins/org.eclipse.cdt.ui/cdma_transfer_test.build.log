@@ -1,62 +1,6 @@
-18:10:51 **** Auto Build of configuration Debug for project cdma_transfer_test ****
+17:51:25 **** Incremental Build of configuration Debug for project cdma_transfer_test ****
 make all 
-Building file: ../src/helloworld.c
-Invoking: ARM gcc compiler
-arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -I../../cdma_transfer_test_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.d" -o "src/helloworld.o" "../src/helloworld.c"
-../src/helloworld.c: In function 'main':
-../src/helloworld.c:74:19: warning: unused variable 'tEnd' [-Wunused-variable]
-     XTime tStart, tEnd;
-                   ^
-../src/helloworld.c:74:11: warning: unused variable 'tStart' [-Wunused-variable]
-     XTime tStart, tEnd;
-           ^
-../src/helloworld.c:73:9: warning: unused variable 'dma_log' [-Wunused-variable]
-     u32 dma_log[1000];
-         ^
-../src/helloworld.c:71:9: warning: unused variable 'test_done' [-Wunused-variable]
-     u32 test_done = 0;
-         ^
-../src/helloworld.c:70:32: warning: unused variable 'cdma_memory_destination' [-Wunused-variable]
-     u8 * cdma_memory_source, * cdma_memory_destination;
-                                ^
-../src/helloworld.c:70:10: warning: unused variable 'cdma_memory_source' [-Wunused-variable]
-     u8 * cdma_memory_source, * cdma_memory_destination;
-          ^
-../src/helloworld.c:69:20: warning: unused variable 'destination' [-Wunused-variable]
-     u8 * source, * destination;
-                    ^
-../src/helloworld.c:69:10: warning: unused variable 'source' [-Wunused-variable]
-     u8 * source, * destination;
-          ^
-../src/helloworld.c:68:9: warning: unused variable 'numofbytes' [-Wunused-variable]
-     int numofbytes;
-         ^
-../src/helloworld.c:67:9: warning: unused variable 'CDMA_Status' [-Wunused-variable]
-  int i, CDMA_Status;
-         ^
-../src/helloworld.c:67:6: warning: unused variable 'i' [-Wunused-variable]
-  int i, CDMA_Status;
-      ^
-../src/helloworld.c:66:5: warning: unused variable 'select' [-Wunused-variable]
-  u8 select;
-     ^
-../src/helloworld.c: At top level:
-../src/helloworld.c:26:13: warning: 'dma_CallBack' defined but not used [-Wunused-function]
- static void dma_CallBack(void *CallBackRef, u32 IrqMask, int *IgnorePtr)
-             ^
-Finished building: ../src/helloworld.c
- 
-Building target: cdma_transfer_test.elf
-Invoking: ARM gcc linker
-arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../cdma_transfer_test_bsp/ps7_cortexa9_0/lib -o "cdma_transfer_test.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
-Finished building target: cdma_transfer_test.elf
- 
-Invoking: ARM Print Size
-arm-xilinx-eabi-size cdma_transfer_test.elf  |tee "cdma_transfer_test.elf.size"
-   text	   data	    bss	    dec	    hex	filename
-  50756	   2000	  23076	  75832	  12838	cdma_transfer_test.elf
-Finished building: cdma_transfer_test.elf.size
- 
+make: Nothing to be done for `all'.
 
-18:10:51 Build Finished (took 168ms)
+17:51:25 Build Finished (took 65ms)
 

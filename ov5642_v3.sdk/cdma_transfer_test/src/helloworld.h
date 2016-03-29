@@ -9,6 +9,7 @@
 #define HELLOWORLD_H_
 
 #include <stdio.h>
+#include <string.h>
 #include "platform.h"
 #include "xparameters.h"
 
@@ -39,7 +40,8 @@
 
 #define RESET_LOOP_COUNT	10	// Number of times to check reset is done
 #define BUFFER_LENGTH 32768 // source and destination buffers lengths in number of bytes
-#define CDMA_BRAM_MEMORY 0xC0000000//XPAR_AXI_CDMA_0_BASEADDR // BRAM Port B mapped through 2nd BRAM Controller accessed by CDMA
+#define CDMA_BRAM_MEMORY 0xC0000000 // BRAM Port mapped through AXI Controller accessed by CDMA
+#define VGA_CDMA_BRAM_MEMORY 0xC2000000 // BRAM Port mapped through AXI Controller accessed by CDMA
 #define CDMA_BASE_ADDR XPAR_AXICDMA_0_BASEADDR
 #define DDR_MEMORY XPAR_PS7_DDR_0_S_AXI_BASEADDR
 //#define TIMER_DEVICE_ID	XPAR_SCUTIMER_DEVICE_ID
@@ -66,14 +68,41 @@
 #define FRAME_STATUS_GPIO_CHANNEL   1
 #define FRAME_STATUS_GPIO_DIR_MASK  7      // 0000 0111 <-- all 3 ports are inputs
 
+#define NEW_FRAME_INTERRUPT_BIT  62
+#define PL2PS_LINE_INTERRUPT_BIT 63
+#define VGA_LINE_INTERRUPT_BIT 64
+
+
+#define MAX_INTERRUPT_RECORDS 90
+
+#define WIDTH 128
+#define HEIGHT 128
+#define BYTES_PER_PIXEL 2
+#define PIXELS_PER_WORD 2
+#define BLOCKS_PER_IMAGE 4
+#define WORDS_PER_LINE WIDTH/PIXELS_PER_WORD
+#define LINES_PER_BLOCK HEIGHT/BLOCKS_PER_IMAGE
+#define WORDS_PER_BLOCK LINES_PER_BLOCK*WORDS_PER_LINE
+#define WORDS_PER_IMAGE WORDS_PER_LINE*HEIGHT
+#define BYTES_PER_WORD BYTES_PER_PIXEL*PIXELS_PER_WORD
+#define BYTES_PER_BLOCK BYTES_PER_WORD*WORDS_PER_BLOCK
+#define BYTES_PER_IMAGE WIDTH*HEIGHT*BYTES_PER_PIXEL
+#define NUM_BUFFERS 3
+
+
+void read_dma_CallBack(void *CallBackRef, u32 IrqMask, int *IgnorePtr);
+void write_dma_CallBack(void *CallBackRef, u32 IrqMask, int *IgnorePtr);
+void new_frame_intr_handler(void *InstancePtr);
+void pl2ps_line_intr_handler(void *InstancePtr);
+void vga_new_block_intr_handler(void *InstancePtr);
 
 void program_cam(XIicPs *i2c_dev, s32 buffer_size, u16 slave_address, u8 *buffer);
 void write_i2c(XIicPs *i2c_dev, u16 address, u8 value,
 		       s32 buffer_size, u16 slave_address, u8 *buffer);
 void setup_cam_vga_rgb(void);
 int setup_cdma_interrupts(XScuGic *GicPtr, XAxiCdma  *DmaPtr);
-int setup_line_interrupts(XScuGic *GicPtr, XGpio  *GpioPtr);
-int setup_dma_gpio(XGpio *Gpio, u16 dev, unsigned dma_interaction_chan, u32 dma_chan_mask);
+int setup_frame_stat_interrupts(XScuGic *GicPtr);
+//int setup_dma_gpio(XGpio *Gpio, u16 dev, unsigned dma_interaction_chan, u32 dma_chan_mask);
 
 int setup_cam_gpio(XGpio *Gpio, u16 dev, unsigned pwr_down_chn, u32 pwr_down_msk,
    	 	 	 	   unsigned clk_enable_chn, u32 clk_enable_msk);
@@ -85,7 +114,7 @@ void power_up_cam(XGpio *Gpio, unsigned pwr_down_chn, unsigned clk_enable_chn);
 
 
 void print_cdma_error(u32 error_code){
-	char *error_str = "Datamover internal err";
+	char *error_str = "No error was found !!!";
 	switch(error_code){
 		case XAXICDMA_SR_IDLE_MASK:
 			error_str = "DMA channel idle";

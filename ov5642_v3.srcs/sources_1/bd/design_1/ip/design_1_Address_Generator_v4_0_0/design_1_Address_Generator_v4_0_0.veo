@@ -47,7 +47,7 @@
 // DO NOT MODIFY THIS FILE.
 
 // IP VLNV: user.org:user:Address_Generator_v4:1.0
-// IP Revision: 2
+// IP Revision: 4
 
 // The following must be inserted into your Verilog file for this
 // core to be instantiated. Change the instance name and port connections
@@ -55,11 +55,13 @@
 
 //----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
 design_1_Address_Generator_v4_0_0 your_instance_name (
-  .CLK25(CLK25),      // input wire CLK25
-  .enable(enable),    // input wire enable
-  .vsync(vsync),      // input wire vsync
-  .hsync(hsync),      // input wire hsync
-  .address(address)  // output wire [16 : 0] address
+  .CLK25(CLK25),          // input wire CLK25
+  .enable(enable),        // input wire enable
+  .vsync(vsync),          // input wire vsync
+  .hsync(hsync),          // input wire hsync
+  .address(address),      // output wire [16 : 0] address
+  .row_count(row_count),  // output wire [7 : 0] row_count
+  .col_count(col_count)  // output wire [8 : 0] col_count
 );
 // INST_TAG_END ------ End INSTANTIATION Template ---------
 

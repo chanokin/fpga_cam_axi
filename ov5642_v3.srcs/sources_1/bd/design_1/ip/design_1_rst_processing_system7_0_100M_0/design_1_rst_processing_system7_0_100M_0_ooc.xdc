@@ -52,7 +52,7 @@
 # #########################################################
 
 
-create_clock -period 10 -name slowest_sync_clk [get_ports slowest_sync_clk]
+create_clock -period 4 -name slowest_sync_clk [get_ports slowest_sync_clk]
 set_property HD.CLK_SRC BUFGCTRL_X0Y0 [get_ports slowest_sync_clk]
 
 

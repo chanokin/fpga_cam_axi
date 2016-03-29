@@ -9,8 +9,8 @@ u8 SendBuffer[IIC_BUFFER_SIZE];    /**< Buffer for Transmitting Data */
 
 XGpio Power_Clock_GPIO;
 
-XGpio Dma_GPIO;
-u32 dma_gpio_ans = 0;
+//XGpio Dma_GPIO;
+u32 frame_status[3];
 
 XAxiCdma xcdma;
 XAxiCdma_Config * CdmaCfgPtr = NULL;
@@ -22,61 +22,129 @@ volatile static int Done = 0;	/* Dma transfer is done */
 volatile static int Error = 0;	/* Dma Bus Error occurs */
 
 int exit_infinite_while = 0;
+int frame_log_idx = 0;
+int ps2pl_log_idx = 0;
+int pl2ps_log_idx = 0;
 
-static void dma_CallBack(void *CallBackRef, u32 IrqMask, int *IgnorePtr)
-{
 
-	if (IrqMask & XAXICDMA_XR_IRQ_ERROR_MASK) {
-		Error = 1;
+
+u8 image_buffer[NUM_BUFFERS][BYTES_PER_IMAGE];
+u8 dvs_curr_buffer = 0;
+u8 dvs_curr_block = 0;
+u8 vga_curr_block = 0;
+u8 writing = 0;
+u8 reading = 0;
+u8 done_writing = 0;
+u8 done_reading = 0;
+
+
+void new_frame_intr_handler(void *InstancePtr){
+//	xil_printf("Frame number (%d)\r\n", exit_infinite_while);
+//	xil_printf("\t=================================================================\r\n");
+
+	u8 dvs_next_buffer = dvs_curr_buffer + 1;
+    if (dvs_next_buffer == NUM_BUFFERS){
+    	dvs_next_buffer = 0;
+    }
+    memcpy(image_buffer[dvs_next_buffer], image_buffer[dvs_curr_buffer], BYTES_PER_IMAGE);
+
+    dvs_curr_block = 0;
+    dvs_curr_buffer = dvs_next_buffer;
+
+
+	exit_infinite_while += 1;
+}
+
+void vga_new_block_intr_handler(void *InstancePtr){
+	u32 Status;
+	u32 buffer_address;
+
+	u8 vga_curr_buffer = dvs_curr_buffer - 1;
+	if (vga_curr_buffer == 255){
+		vga_curr_buffer = NUM_BUFFERS - 1;
 	}
+	xil_printf("Frame number (%d), buffer number (%d), block number (%d)\r\n",
+			   exit_infinite_while, vga_curr_buffer, vga_curr_block);
 
-	if (IrqMask & XAXICDMA_XR_IRQ_IOC_MASK) {
-		Done = 1;
+	buffer_address = (u32)&(image_buffer[vga_curr_buffer][vga_curr_block*BYTES_PER_BLOCK]);
+//	xil_printf("reading block address = 0x%08x\r\n", buffer_address);
+
+//    XTime_GetTime(&tStart);
+	Status = XAxiCdma_SimpleTransfer(&xcdma, buffer_address, (u32)VGA_CDMA_BRAM_MEMORY,
+									 BYTES_PER_BLOCK, NULL, NULL);
+	while (XAxiCdma_IsBusy(&xcdma));
+
+	vga_curr_block += 1;
+	if (vga_curr_block >= BLOCKS_PER_IMAGE){
+		vga_curr_block = 0;
 	}
 
 }
 
-void line_stat_intr_handler(void *InstancePtr){
+void pl2ps_line_intr_handler(void *InstancePtr){
+	u32 Status;
+	u32 buffer_address;
 
-	// Ignore second channel
-	if (XGpio_InterruptGetStatus(&Dma_GPIO) !=  XGPIO_IR_CH1_MASK) {
-		xil_printf("BLAH!\n\r");
-			return;
+	// start Copy from PL to DDR
+
+	xil_printf("Frame number (%d), buffer number (%d), block number (%d)\r\n", exit_infinite_while, dvs_curr_buffer, dvs_curr_block);
+
+	buffer_address = (u32)&(image_buffer[dvs_curr_buffer][dvs_curr_block*BYTES_PER_BLOCK]);
+
+	Status = XAxiCdma_SimpleTransfer(&xcdma, (u32)CDMA_BRAM_MEMORY, buffer_address,
+									 BYTES_PER_BLOCK, NULL, NULL);
+	while (XAxiCdma_IsBusy(&xcdma));
+
+
+
+	dvs_curr_block += 1;
+	if (dvs_curr_block >= BLOCKS_PER_IMAGE){
+		dvs_curr_block = BLOCKS_PER_IMAGE - 1; // or 0 ???
 	}
 
-	XGpio_InterruptDisable(&Dma_GPIO, XGPIO_IR_CH1_MASK);
+	// start Copy from DDR to PL
 
-	dma_gpio_ans  = XGpio_DiscreteRead(&Dma_GPIO,FRAME_STATUS_GPIO_CHANNEL);
-//	if(dma_gpio_ans != 0)
-	{
-
-		xil_printf("DMA gpio: %d\r\n", dma_gpio_ans);
-
-		exit_infinite_while += 1;
-	}
+	buffer_address = (u32)&(image_buffer[dvs_curr_buffer][dvs_curr_block*BYTES_PER_BLOCK]);
 
 
-	(void)XGpio_InterruptClear(&Dma_GPIO, XGPIO_IR_CH1_MASK);
-
-	XGpio_InterruptEnable(&Dma_GPIO, XGPIO_IR_CH1_MASK);
+	Status = XAxiCdma_SimpleTransfer(&xcdma, buffer_address, (u32)CDMA_BRAM_MEMORY,
+									 BYTES_PER_BLOCK, NULL, NULL);
+	while (XAxiCdma_IsBusy(&xcdma));
 }
 
 int main (void) {
 
 	u8 select;
-	int i, CDMA_Status;
+	int i, j, CDMA_Status;
     int numofbytes;
     u8 * source, * destination;
     u8 * cdma_memory_source, * cdma_memory_destination;
     u32 test_done = 0;
 
-    u32 dma_log[1000];
     XTime tStart, tEnd;
 
     u32 Status;
 
+//    u8 default_mem_val = 0xB8; // red
+//    u8 default_mem_val = 0x47; // green
+    u8 default_mem_val = 0; // black
+//    u8 default_mem_val = 0x3F; // whitest
 
-    print("-- Simple DMA Design Example --\r\n");
+    memset(image_buffer, default_mem_val, BYTES_PER_IMAGE*NUM_BUFFERS);
+
+    for(i = 0; i < NUM_BUFFERS; i += 1){
+
+    	xil_printf("Buffer %d address = 0x%08x\n\r", i, image_buffer[i]);
+    	for(j = 0; j < BYTES_PER_IMAGE; j++){
+    		if(image_buffer[i][j] != default_mem_val){
+    			xil_printf("Image %d has non default value in pixel %d\n\r", i, j);
+    		}
+    	}
+    }
+
+    xil_printf("-- Simple DMA Design Example --\r\n");
+    xil_printf("Words per block (%d)\r\n", WORDS_PER_BLOCK);
+    xil_printf("Bytes per block (%d)\r\n", BYTES_PER_BLOCK);
 
     // Initialise i2c
     Status = setup_i2c(&i2c_dev, i2c_config, XPAR_PS7_I2C_0_DEVICE_ID, IIC_SCLK_RATE);
@@ -94,13 +162,7 @@ int main (void) {
 	}
 	print("Camera GPIO initialised\r\n");
 
-	// Setup DMA gpio port
-	Status = setup_dma_gpio(&Dma_GPIO, XPAR_FRAME_INFO_DEVICE_ID,
-							FRAME_STATUS_GPIO_CHANNEL, FRAME_STATUS_GPIO_DIR_MASK);
-	if (Status != XST_SUCCESS) {
-		return XST_FAILURE;
-	}
-	print("DMA GPIO initialised\r\n");
+
 
 
 	// Disable DCache
@@ -124,7 +186,7 @@ int main (void) {
 	if (Status != XST_SUCCESS) {
 		return XST_FAILURE;
 	}
-	Xil_ExceptionEnable();
+
 
 	print("Interrupt system initialised\r\n");
 
@@ -134,38 +196,56 @@ int main (void) {
 	}
 	print("CDMA interrupts configured\r\n");
 
-	Status = setup_line_interrupts(&Gic, &Dma_GPIO);
+	Status = setup_frame_stat_interrupts(&Gic);
 	if (Status != XST_SUCCESS) {
 		return XST_FAILURE;
 	}
 	print("Line Status interrupts configured\r\n");
 
-
+//	Xil_ExceptionEnable();
     /************************************************************************/
 	// START APPLICATION	i = 0;
-	XGpio_InterruptDisable(&Dma_GPIO, XGPIO_IR_CH1_MASK);
 
+	Xil_ExceptionDisable();
 	power_up_cam(&Power_Clock_GPIO, PWDN_GPIO_CHANNEL, CLOCK_GPIO_CHANNEL);
 	program_cam(&i2c_dev, IIC_BUFFER_SIZE, IIC_SLAVE_ADDR, SendBuffer);
 	print("Camera programmed!\r\n");
 
-	XGpio_InterruptEnable(&Dma_GPIO, XGPIO_IR_CH1_MASK);
+	Xil_ExceptionEnable();
+	XAxiCdma_IntrEnable(&xcdma, XAXICDMA_XR_IRQ_ALL_MASK);
+	u32 src_address;
 
-	while(exit_infinite_while < 100){
-
+	while(exit_infinite_while < MAX_INTERRUPT_RECORDS){
+//		xil_printf("Frame number (%d)\r\n", exit_infinite_while);
+//		xil_printf("\t=================================================================\r\n");
 	}
 
-    print("-- Exiting main() --\r\n");
-    return 0;
+	Xil_ExceptionDisable();
+	print("interrupt disabled\n\r");
+
+	for(i = 0; i < 16; i += 1){
+		for(j = 0; j < 16*2; j += 1){
+			if (j%2 == 1){
+
+				xil_printf("%03d  ", image_buffer[0][i*(WIDTH*2) + j/2]);
+			}
+		}
+
+		xil_printf("\r\n");
+	}
+
+	print("-- Exiting main() --\r\n");
+
+	return 0;
 }
 
 void program_cam(XIicPs *i2c_dev, s32 buffer_size, u16 slave_address, u8 *buffer){
 	int i, num_regs;
     write_i2c(i2c_dev, 0x3008, 0x80, buffer_size, slave_address, buffer); //software reset (application notes for ov5642)
     usleep(1000);
-    num_regs = sizeof(OV5642_QVGA_30FPS)/sizeof(struct reg_val);
+    num_regs = sizeof(OV5642_YUV_QVGA)/sizeof(struct reg_val);
     for(i = 0; i < num_regs; i++){
-    	write_i2c(i2c_dev, OV5642_QVGA_30FPS[i].reg, OV5642_QVGA_30FPS[i].val,
+    	write_i2c(i2c_dev, OV5642_YUV_QVGA[i].reg, OV5642_YUV_QVGA[i].val,
     			  buffer_size, slave_address, buffer);
     }
 
@@ -213,33 +293,60 @@ int setup_cdma_interrupts(XScuGic *GicPtr, XAxiCdma  *DmaPtr){
 	return XST_SUCCESS;
 }
 
-int setup_line_interrupts(XScuGic *GicPtr, XGpio  *GpioPtr){
+int setup_frame_stat_interrupts(XScuGic *GicPtr){
 	int Status;
-
-
 	// Connect the interrupt controller interrupt handler to the hardware
 	// interrupt handling logic in the processor.
 	Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_IRQ_INT,
 			     (Xil_ExceptionHandler)XScuGic_InterruptHandler,
 			     GicPtr);
 
-	// Connect a device driver handler that will be called when an interrupt
-	// for the device occurs, the device driver handler performs the specific
-	// interrupt processing for the device
-
 	Status = XScuGic_Connect(GicPtr,
-			     XPAR_FABRIC_FRAME_INFO_IP2INTC_IRPT_INTR,
-				 (Xil_InterruptHandler)line_stat_intr_handler,
-				 (void *)GpioPtr);
+			     NEW_FRAME_INTERRUPT_BIT,
+				 (Xil_InterruptHandler)new_frame_intr_handler,
+				 NULL);
 
 	if (Status != XST_SUCCESS)
 		return XST_FAILURE;
 
-	// Enable the interrupt for the device
-	XGpio_InterruptEnable(GpioPtr, 1);
-	XGpio_InterruptGlobalEnable(GpioPtr);
+	XScuGic_SetPriorityTriggerType(GicPtr,NEW_FRAME_INTERRUPT_BIT,
+			                       0xA0, // low-ish priority
+			                       0b11); //active high, rising edge
 
-	XScuGic_Enable(GicPtr, XPAR_FABRIC_FRAME_INFO_IP2INTC_IRPT_INTR);
+	XScuGic_Enable(GicPtr, NEW_FRAME_INTERRUPT_BIT);
+
+
+
+	Status = XScuGic_Connect(GicPtr,
+			     PL2PS_LINE_INTERRUPT_BIT,
+				 (Xil_InterruptHandler)pl2ps_line_intr_handler,
+				 NULL);
+
+	if (Status != XST_SUCCESS)
+		return XST_FAILURE;
+
+	XScuGic_SetPriorityTriggerType(GicPtr,PL2PS_LINE_INTERRUPT_BIT,
+			                       0xA0, // high priority
+			                       0b11); //active high, rising edge
+
+
+	XScuGic_Enable(GicPtr, PL2PS_LINE_INTERRUPT_BIT);
+
+	Status = XScuGic_Connect(GicPtr,
+			     VGA_LINE_INTERRUPT_BIT,
+				 (Xil_InterruptHandler)vga_new_block_intr_handler,
+				 NULL);
+
+	if (Status != XST_SUCCESS)
+		return XST_FAILURE;
+
+	XScuGic_SetPriorityTriggerType(GicPtr, VGA_LINE_INTERRUPT_BIT,
+			                       0xA8, // high priority
+			                       0b11); //active high, rising edge
+
+
+	XScuGic_Enable(GicPtr, VGA_LINE_INTERRUPT_BIT);
+
 
 	return XST_SUCCESS;
 }

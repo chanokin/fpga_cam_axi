@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: user.org:user:Address_Generator_v4:1.0
--- IP Revision: 2
+-- IP Revision: 4
 
 -- The following code must appear in the VHDL architecture header.
 
@@ -58,7 +58,9 @@ COMPONENT design_1_Address_Generator_v4_0_0
     enable : IN STD_LOGIC;
     vsync : IN STD_LOGIC;
     hsync : IN STD_LOGIC;
-    address : OUT STD_LOGIC_VECTOR(16 DOWNTO 0)
+    address : OUT STD_LOGIC_VECTOR(16 DOWNTO 0);
+    row_count : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+    col_count : OUT STD_LOGIC_VECTOR(8 DOWNTO 0)
   );
 END COMPONENT;
 -- COMP_TAG_END ------ End COMPONENT Declaration ------------
@@ -73,7 +75,9 @@ your_instance_name : design_1_Address_Generator_v4_0_0
     enable => enable,
     vsync => vsync,
     hsync => hsync,
-    address => address
+    address => address,
+    row_count => row_count,
+    col_count => col_count
   );
 -- INST_TAG_END ------ End INSTANTIATION Template ---------
 

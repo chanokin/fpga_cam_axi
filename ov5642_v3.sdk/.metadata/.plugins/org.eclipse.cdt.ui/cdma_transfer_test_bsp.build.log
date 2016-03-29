@@ -1,4 +1,4 @@
-18:09:58 **** Build of project cdma_transfer_test_bsp ****
+17:39:26 **** Auto Build of project cdma_transfer_test_bsp ****
 make -k all 
 Running Make include in ps7_cortexa9_0/libsrc/ddrps_v1_0/src
 make -C ps7_cortexa9_0/libsrc/ddrps_v1_0/src -s include  "SHELL=/bin/sh" "COMPILER=arm-xilinx-eabi-gcc" "ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-g"
@@ -107,5 +107,5 @@ xaxicdma_bdring.c:204:10: warning: cast to pointer from integer of different siz
           ^
 Finished building libraries
 
-18:10:04 Build Finished (took 5s.828ms)
+17:39:31 Build Finished (took 5s.519ms)
 

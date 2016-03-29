@@ -26,12 +26,12 @@
 /* Definitions for peripheral AXI_CDMA_0 */
 #define XPAR_AXI_CDMA_0_DEVICE_ID 0
 #define XPAR_AXI_CDMA_0_BASEADDR 0x8E200000
-#define XPAR_AXI_CDMA_0_HIGHADDR 0x8E200FFF
+#define XPAR_AXI_CDMA_0_HIGHADDR 0x8E201FFF
 #define XPAR_AXI_CDMA_0_INCLUDE_DRE 0
 #define XPAR_AXI_CDMA_0_USE_DATAMOVER_LITE 0
 #define XPAR_AXI_CDMA_0_M_AXI_DATA_WIDTH 32
 #define XPAR_AXI_CDMA_0_INCLUDE_SG 0
-#define XPAR_AXI_CDMA_0_M_AXI_MAX_BURST_LEN 16
+#define XPAR_AXI_CDMA_0_M_AXI_MAX_BURST_LEN 256
 #define XPAR_AXI_CDMA_0_ADDR_WIDTH 32
 
 
@@ -40,12 +40,12 @@
 /* Canonical definitions for peripheral AXI_CDMA_0 */
 #define XPAR_AXICDMA_0_DEVICE_ID XPAR_AXI_CDMA_0_DEVICE_ID
 #define XPAR_AXICDMA_0_BASEADDR 0x8E200000
-#define XPAR_AXICDMA_0_HIGHADDR 0x8E200FFF
+#define XPAR_AXICDMA_0_HIGHADDR 0x8E201FFF
 #define XPAR_AXICDMA_0_INCLUDE_DRE 0
 #define XPAR_AXICDMA_0_USE_DATAMOVER_LITE 0
 #define XPAR_AXICDMA_0_M_AXI_DATA_WIDTH 32
 #define XPAR_AXICDMA_0_INCLUDE_SG 0
-#define XPAR_AXICDMA_0_M_AXI_MAX_BURST_LEN 16
+#define XPAR_AXICDMA_0_M_AXI_MAX_BURST_LEN 256
 #define XPAR_AXICDMA_0_ADDR_WIDTH 32
 
 
@@ -237,7 +237,7 @@
 /******************************************************************/
 
 /* Definitions for driver GPIO */
-#define XPAR_XGPIO_NUM_INSTANCES 2
+#define XPAR_XGPIO_NUM_INSTANCES 1
 
 /* Definitions for peripheral AXI_GPIO_0 */
 #define XPAR_AXI_GPIO_0_BASEADDR 0x41200000
@@ -245,14 +245,6 @@
 #define XPAR_AXI_GPIO_0_DEVICE_ID 0
 #define XPAR_AXI_GPIO_0_INTERRUPT_PRESENT 0
 #define XPAR_AXI_GPIO_0_IS_DUAL 1
-
-
-/* Definitions for peripheral FRAME_INFO */
-#define XPAR_FRAME_INFO_BASEADDR 0x41210000
-#define XPAR_FRAME_INFO_HIGHADDR 0x41210FFF
-#define XPAR_FRAME_INFO_DEVICE_ID 1
-#define XPAR_FRAME_INFO_INTERRUPT_PRESENT 1
-#define XPAR_FRAME_INFO_IS_DUAL 0
 
 
 /******************************************************************/
@@ -263,13 +255,6 @@
 #define XPAR_GPIO_0_DEVICE_ID XPAR_AXI_GPIO_0_DEVICE_ID
 #define XPAR_GPIO_0_INTERRUPT_PRESENT 0
 #define XPAR_GPIO_0_IS_DUAL 1
-
-/* Canonical definitions for peripheral FRAME_INFO */
-#define XPAR_GPIO_1_BASEADDR 0x41210000
-#define XPAR_GPIO_1_HIGHADDR 0x41210FFF
-#define XPAR_GPIO_1_DEVICE_ID XPAR_FRAME_INFO_DEVICE_ID
-#define XPAR_GPIO_1_INTERRUPT_PRESENT 1
-#define XPAR_GPIO_1_IS_DUAL 0
 
 
 /******************************************************************/
@@ -339,7 +324,6 @@
 
 /* Definitions for Fabric interrupts connected to ps7_scugic_0 */
 #define XPAR_FABRIC_AXI_CDMA_0_CDMA_INTROUT_INTR 61
-#define XPAR_FABRIC_FRAME_INFO_IP2INTC_IRPT_INTR 62
 
 /******************************************************************/
 

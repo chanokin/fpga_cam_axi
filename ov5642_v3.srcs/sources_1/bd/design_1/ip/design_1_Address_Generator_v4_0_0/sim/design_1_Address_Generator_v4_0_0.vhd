@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: user.org:user:Address_Generator_v4:1.0
--- IP Revision: 2
+-- IP Revision: 4
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -59,7 +59,9 @@ ENTITY design_1_Address_Generator_v4_0_0 IS
     enable : IN STD_LOGIC;
     vsync : IN STD_LOGIC;
     hsync : IN STD_LOGIC;
-    address : OUT STD_LOGIC_VECTOR(16 DOWNTO 0)
+    address : OUT STD_LOGIC_VECTOR(16 DOWNTO 0);
+    row_count : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+    col_count : OUT STD_LOGIC_VECTOR(8 DOWNTO 0)
   );
 END design_1_Address_Generator_v4_0_0;
 
@@ -73,7 +75,9 @@ ARCHITECTURE design_1_Address_Generator_v4_0_0_arch OF design_1_Address_Generato
       enable : IN STD_LOGIC;
       vsync : IN STD_LOGIC;
       hsync : IN STD_LOGIC;
-      address : OUT STD_LOGIC_VECTOR(16 DOWNTO 0)
+      address : OUT STD_LOGIC_VECTOR(16 DOWNTO 0);
+      row_count : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+      col_count : OUT STD_LOGIC_VECTOR(8 DOWNTO 0)
     );
   END COMPONENT Address_Generator_v4;
 BEGIN
@@ -83,6 +87,8 @@ BEGIN
       enable => enable,
       vsync => vsync,
       hsync => hsync,
-      address => address
+      address => address,
+      row_count => row_count,
+      col_count => col_count
     );
 END design_1_Address_Generator_v4_0_0_arch;
