@@ -194,8 +194,10 @@ CONFIG.SINGLE_PORT_BRAM {1} \
   # Create instance: axi_cdma_0, and set properties
   set axi_cdma_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_cdma:4.1 axi_cdma_0 ]
   set_property -dict [ list \
+CONFIG.C_INCLUDE_DRE {0} \
 CONFIG.C_INCLUDE_SG {0} \
 CONFIG.C_M_AXI_MAX_BURST_LEN {256} \
+CONFIG.C_USE_DATAMOVER_LITE {0} \
  ] $axi_cdma_0
 
   # Create instance: axi_gpio_0, and set properties
@@ -214,7 +216,7 @@ CONFIG.USE_BOARD_FLOW {true} \
   # Create instance: axi_mem_intercon, and set properties
   set axi_mem_intercon [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 axi_mem_intercon ]
   set_property -dict [ list \
-CONFIG.NUM_MI {3} \
+CONFIG.NUM_MI {4} \
  ] $axi_mem_intercon
 
   # Create instance: blk_mem_gen_0, and set properties
@@ -249,6 +251,10 @@ CONFIG.use_bram_block {Stand_Alone} \
 
   # Create instance: block_to_pixel_v1_0, and set properties
   set block_to_pixel_v1_0 [ create_bd_cell -type ip -vlnv user.org:user:block_to_pixel_v1:1.0 block_to_pixel_v1_0 ]
+  set_property -dict [ list \
+CONFIG.DEFAULT_GRAY_LEVEL {7} \
+CONFIG.MAX_LIFE_COUNT {2} \
+ ] $block_to_pixel_v1_0
 
   # Create instance: clk_wiz_0, and set properties
   set clk_wiz_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:5.2 clk_wiz_0 ]
@@ -280,6 +286,9 @@ CONFIG.CONST_VAL {0} \
 
   # Create instance: dvs_cdma_v3_0, and set properties
   set dvs_cdma_v3_0 [ create_bd_cell -type ip -vlnv user.org:user:dvs_cdma_v3:1.0 dvs_cdma_v3_0 ]
+  set_property -dict [ list \
+CONFIG.MAX_LIFE_COUNT {2} \
+ ] $dvs_cdma_v3_0
 
   # Create instance: line_buffer, and set properties
   set line_buffer [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.3 line_buffer ]
@@ -325,6 +334,7 @@ CONFIG.PCW_QSPI_GRP_SINGLE_SS_ENABLE {1} \
 CONFIG.PCW_USE_FABRIC_INTERRUPT {1} \
 CONFIG.PCW_USE_M_AXI_GP1 {1} \
 CONFIG.PCW_USE_S_AXI_HP0 {1} \
+CONFIG.PCW_USE_S_AXI_HP1 {0} \
 CONFIG.preset {ZedBoard} \
  ] $processing_system7_0
 
@@ -371,7 +381,7 @@ CONFIG.NUM_PORTS {8} \
   # Create instance: xlconcat_3, and set properties
   set xlconcat_3 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_3 ]
   set_property -dict [ list \
-CONFIG.NUM_PORTS {4} \
+CONFIG.NUM_PORTS {5} \
  ] $xlconcat_3
 
   # Create instance: xlslice_0, and set properties
@@ -381,13 +391,6 @@ CONFIG.DIN_FROM {10} \
 CONFIG.DOUT_WIDTH {11} \
  ] $xlslice_0
 
-  # Create instance: xlslice_1, and set properties
-  set xlslice_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_1 ]
-  set_property -dict [ list \
-CONFIG.DIN_FROM {10} \
-CONFIG.DOUT_WIDTH {11} \
- ] $xlslice_1
-
   # Create instance: xlslice_2, and set properties
   set xlslice_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_2 ]
   set_property -dict [ list \
@@ -395,6 +398,13 @@ CONFIG.DIN_FROM {0} \
 CONFIG.DIN_TO {0} \
 CONFIG.DIN_WIDTH {4} \
  ] $xlslice_2
+
+  # Create instance: xlslice_3, and set properties
+  set xlslice_3 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_3 ]
+  set_property -dict [ list \
+CONFIG.DIN_FROM {10} \
+CONFIG.DOUT_WIDTH {11} \
+ ] $xlslice_3
 
   # Create interface connections
   connect_bd_intf_net -intf_net axi_bram_ctrl_0_BRAM_PORTA [get_bd_intf_pins axi_bram_ctrl_0/BRAM_PORTA] [get_bd_intf_pins line_buffer/BRAM_PORTA]
@@ -416,20 +426,20 @@ CONFIG.DIN_WIDTH {4} \
   connect_bd_net -net Address_Generator_v4_0_col_count [get_bd_pins Address_Generator_v4_0/col_count] [get_bd_pins block_to_pixel_v1_0/col_count]
   connect_bd_net -net Address_Generator_v4_0_row_count [get_bd_pins Address_Generator_v4_0/row_count] [get_bd_pins block_to_pixel_v1_0/row_count]
   connect_bd_net -net HREF_1 [get_bd_ports HREF] [get_bd_pins dvs_cdma_v3_0/href] [get_bd_pins ov5642_capture_v4_0/href]
-  connect_bd_net -net PCLK_1 [get_bd_ports PCLK] [get_bd_pins ov5642_capture_v4_0/pclk] [get_bd_pins util_vector_logic_0/Op1]
+  connect_bd_net -net PCLK_1 [get_bd_ports PCLK] [get_bd_pins dvs_cdma_v3_0/pclk] [get_bd_pins ov5642_capture_v4_0/pclk]
   connect_bd_net -net PixelData_1 [get_bd_ports PixelData] [get_bd_pins ov5642_capture_v4_0/cam_data]
   connect_bd_net -net RGB_v4_0_B [get_bd_ports VGA_B] [get_bd_pins RGB_v4_0/B]
   connect_bd_net -net RGB_v4_0_G [get_bd_ports VGA_G] [get_bd_pins RGB_v4_0/G]
   connect_bd_net -net RGB_v4_0_R [get_bd_ports VGA_R] [get_bd_pins RGB_v4_0/R]
   connect_bd_net -net VGA_v3_0_Hsync [get_bd_ports VGA_HSYNC] [get_bd_pins Address_Generator_v4_0/hsync] [get_bd_pins VGA_v4_0/Hsync]
-  connect_bd_net -net VGA_v3_0_Vsync [get_bd_ports VGA_VSYNC] [get_bd_pins Address_Generator_v4_0/vsync] [get_bd_pins VGA_v4_0/Vsync]
+  connect_bd_net -net VGA_v3_0_Vsync [get_bd_ports VGA_VSYNC] [get_bd_pins Address_Generator_v4_0/vsync] [get_bd_pins VGA_v4_0/Vsync] [get_bd_pins util_vector_logic_0/Op1]
   connect_bd_net -net VGA_v3_0_activeArea [get_bd_pins Address_Generator_v4_0/enable] [get_bd_pins RGB_v4_0/Nblank] [get_bd_pins VGA_v4_0/activeArea]
   connect_bd_net -net VSYNC_1 [get_bd_ports VSYNC] [get_bd_pins dvs_cdma_v3_0/vsync] [get_bd_pins ov5642_capture_v4_0/vsync] [get_bd_pins threshold_input_v4_0/clk]
   connect_bd_net -net axi_cdma_0_cdma_introut [get_bd_pins axi_cdma_0/cdma_introut] [get_bd_pins xlconcat_3/In0]
   connect_bd_net -net axi_gpio_0_gpio2_io_o [get_bd_pins axi_gpio_0/gpio2_io_o] [get_bd_pins util_vector_logic_2/Op1]
   connect_bd_net -net axi_gpio_0_gpio_io_o [get_bd_ports PWDN] [get_bd_pins axi_gpio_0/gpio_io_o] [get_bd_pins block_to_pixel_v1_0/reset] [get_bd_pins dvs_cdma_v3_0/reset] [get_bd_pins neg_reset/Op1]
-  connect_bd_net -net blk_mem_gen_1_doutb [get_bd_pins blk_mem_gen_1/doutb] [get_bd_pins block_to_pixel_v1_0/bram_rddata]
-  connect_bd_net -net block_to_pixel_v1_0_bram_addr [get_bd_pins blk_mem_gen_0/addrb] [get_bd_pins block_to_pixel_v1_0/bram_addr] [get_bd_pins xlslice_1/Din]
+  connect_bd_net -net blk_mem_gen_0_doutb [get_bd_pins blk_mem_gen_0/doutb] [get_bd_pins block_to_pixel_v1_0/bram_rddata]
+  connect_bd_net -net block_to_pixel_v1_0_bram_addr1 [get_bd_pins blk_mem_gen_0/addrb] [get_bd_pins block_to_pixel_v1_0/bram_addr] [get_bd_pins xlslice_3/Din]
   connect_bd_net -net block_to_pixel_v1_0_bram_en [get_bd_pins blk_mem_gen_0/enb] [get_bd_pins block_to_pixel_v1_0/bram_en]
   connect_bd_net -net block_to_pixel_v1_0_bram_rst [get_bd_pins blk_mem_gen_0/rstb] [get_bd_pins block_to_pixel_v1_0/bram_rst]
   connect_bd_net -net block_to_pixel_v1_0_bram_we [get_bd_pins blk_mem_gen_0/web] [get_bd_pins block_to_pixel_v1_0/bram_we]
@@ -452,26 +462,27 @@ CONFIG.DIN_WIDTH {4} \
   connect_bd_net -net low_up_1 [get_bd_ports low_up] [get_bd_pins RGB_v4_0/low_up]
   connect_bd_net -net ov5642_capture_v3_0_write_enable [get_bd_pins dvs_cdma_v3_0/write_enable_in] [get_bd_pins ov5642_capture_v4_0/write_enable]
   connect_bd_net -net ov5642_capture_v4_0_pix_data [get_bd_pins dvs_cdma_v3_0/pix_data] [get_bd_pins ov5642_capture_v4_0/pix_data]
-  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins axi_bram_ctrl_0/s_axi_aclk] [get_bd_pins axi_bram_ctrl_1/s_axi_aclk] [get_bd_pins axi_cdma_0/m_axi_aclk] [get_bd_pins axi_cdma_0/s_axi_lite_aclk] [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axi_mem_intercon/ACLK] [get_bd_pins axi_mem_intercon/M00_ACLK] [get_bd_pins axi_mem_intercon/M01_ACLK] [get_bd_pins axi_mem_intercon/M02_ACLK] [get_bd_pins axi_mem_intercon/S00_ACLK] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins processing_system7_0/M_AXI_GP1_ACLK] [get_bd_pins processing_system7_0/S_AXI_HP0_ACLK] [get_bd_pins processing_system7_0_axi_periph/ACLK] [get_bd_pins processing_system7_0_axi_periph/M00_ACLK] [get_bd_pins processing_system7_0_axi_periph/M01_ACLK] [get_bd_pins processing_system7_0_axi_periph/S00_ACLK] [get_bd_pins processing_system7_0_axi_periph_1/ACLK] [get_bd_pins processing_system7_0_axi_periph_1/M00_ACLK] [get_bd_pins processing_system7_0_axi_periph_1/M01_ACLK] [get_bd_pins processing_system7_0_axi_periph_1/S00_ACLK] [get_bd_pins rst_processing_system7_0_100M/slowest_sync_clk]
+  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins axi_bram_ctrl_0/s_axi_aclk] [get_bd_pins axi_bram_ctrl_1/s_axi_aclk] [get_bd_pins axi_cdma_0/m_axi_aclk] [get_bd_pins axi_cdma_0/s_axi_lite_aclk] [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axi_mem_intercon/ACLK] [get_bd_pins axi_mem_intercon/M00_ACLK] [get_bd_pins axi_mem_intercon/M01_ACLK] [get_bd_pins axi_mem_intercon/M02_ACLK] [get_bd_pins axi_mem_intercon/M03_ACLK] [get_bd_pins axi_mem_intercon/S00_ACLK] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins processing_system7_0/M_AXI_GP1_ACLK] [get_bd_pins processing_system7_0/S_AXI_HP0_ACLK] [get_bd_pins processing_system7_0_axi_periph/ACLK] [get_bd_pins processing_system7_0_axi_periph/M00_ACLK] [get_bd_pins processing_system7_0_axi_periph/M01_ACLK] [get_bd_pins processing_system7_0_axi_periph/S00_ACLK] [get_bd_pins processing_system7_0_axi_periph_1/ACLK] [get_bd_pins processing_system7_0_axi_periph_1/M00_ACLK] [get_bd_pins processing_system7_0_axi_periph_1/M01_ACLK] [get_bd_pins processing_system7_0_axi_periph_1/S00_ACLK] [get_bd_pins rst_processing_system7_0_100M/slowest_sync_clk]
   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins processing_system7_0/FCLK_RESET0_N] [get_bd_pins rst_processing_system7_0_100M/ext_reset_in]
   connect_bd_net -net rst_processing_system7_0_100M_interconnect_aresetn [get_bd_pins axi_mem_intercon/ARESETN] [get_bd_pins processing_system7_0_axi_periph/ARESETN] [get_bd_pins processing_system7_0_axi_periph_1/ARESETN] [get_bd_pins rst_processing_system7_0_100M/interconnect_aresetn]
-  connect_bd_net -net rst_processing_system7_0_100M_peripheral_aresetn [get_bd_pins axi_bram_ctrl_0/s_axi_aresetn] [get_bd_pins axi_bram_ctrl_1/s_axi_aresetn] [get_bd_pins axi_cdma_0/s_axi_lite_aresetn] [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins axi_mem_intercon/M00_ARESETN] [get_bd_pins axi_mem_intercon/M01_ARESETN] [get_bd_pins axi_mem_intercon/M02_ARESETN] [get_bd_pins axi_mem_intercon/S00_ARESETN] [get_bd_pins processing_system7_0_axi_periph/M00_ARESETN] [get_bd_pins processing_system7_0_axi_periph/M01_ARESETN] [get_bd_pins processing_system7_0_axi_periph/S00_ARESETN] [get_bd_pins processing_system7_0_axi_periph_1/M00_ARESETN] [get_bd_pins processing_system7_0_axi_periph_1/M01_ARESETN] [get_bd_pins processing_system7_0_axi_periph_1/S00_ARESETN] [get_bd_pins rst_processing_system7_0_100M/peripheral_aresetn]
+  connect_bd_net -net rst_processing_system7_0_100M_peripheral_aresetn [get_bd_pins axi_bram_ctrl_0/s_axi_aresetn] [get_bd_pins axi_bram_ctrl_1/s_axi_aresetn] [get_bd_pins axi_cdma_0/s_axi_lite_aresetn] [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins axi_mem_intercon/M00_ARESETN] [get_bd_pins axi_mem_intercon/M01_ARESETN] [get_bd_pins axi_mem_intercon/M02_ARESETN] [get_bd_pins axi_mem_intercon/M03_ARESETN] [get_bd_pins axi_mem_intercon/S00_ARESETN] [get_bd_pins processing_system7_0_axi_periph/M00_ARESETN] [get_bd_pins processing_system7_0_axi_periph/M01_ARESETN] [get_bd_pins processing_system7_0_axi_periph/S00_ARESETN] [get_bd_pins processing_system7_0_axi_periph_1/M00_ARESETN] [get_bd_pins processing_system7_0_axi_periph_1/M01_ARESETN] [get_bd_pins processing_system7_0_axi_periph_1/S00_ARESETN] [get_bd_pins rst_processing_system7_0_100M/peripheral_aresetn]
   connect_bd_net -net threshold_input_v4_0_threshold [get_bd_pins dvs_cdma_v3_0/threshold] [get_bd_pins threshold_input_v4_0/threshold]
-  connect_bd_net -net util_vector_logic_0_Res [get_bd_pins dvs_cdma_v3_0/pclk] [get_bd_pins util_vector_logic_0/Res]
+  connect_bd_net -net util_vector_logic_0_Res [get_bd_pins util_vector_logic_0/Res] [get_bd_pins xlconcat_3/In4]
   connect_bd_net -net util_vector_logic_2_Res [get_bd_ports XCLK] [get_bd_pins util_vector_logic_2/Res]
   connect_bd_net -net util_vector_logic_3_Res [get_bd_pins neg_reset/Res] [get_bd_pins ov5642_capture_v4_0/reset_n]
   connect_bd_net -net xlconcat_2_dout [get_bd_ports LEDS] [get_bd_pins xlconcat_2/dout]
   connect_bd_net -net xlconcat_3_dout [get_bd_pins processing_system7_0/IRQ_F2P] [get_bd_pins xlconcat_3/dout]
   connect_bd_net -net xlconstant_0_dout [get_bd_pins clk_wiz_0/reset] [get_bd_pins const_0/dout] [get_bd_pins xlconcat_2/In1] [get_bd_pins xlconcat_2/In2] [get_bd_pins xlconcat_2/In3] [get_bd_pins xlconcat_2/In4] [get_bd_pins xlconcat_2/In5] [get_bd_pins xlconcat_2/In6] [get_bd_pins xlconcat_2/In7]
   connect_bd_net -net xlslice_0_Dout [get_bd_pins blk_mem_gen_1/addra] [get_bd_pins xlslice_0/Dout]
-  connect_bd_net -net xlslice_1_Dout [get_bd_pins blk_mem_gen_1/addrb] [get_bd_pins xlslice_1/Dout]
   connect_bd_net -net xlslice_2_Dout [get_bd_pins blk_mem_gen_1/wea] [get_bd_pins xlslice_2/Dout]
+  connect_bd_net -net xlslice_3_Dout [get_bd_pins blk_mem_gen_1/addrb] [get_bd_pins xlslice_3/Dout]
 
   # Create address segments
-  create_bd_addr_seg -range 0x2000 -offset 0xC0000000 [get_bd_addr_spaces axi_cdma_0/Data] [get_bd_addr_segs axi_bram_ctrl_0/S_AXI/Mem0] SEG_axi_bram_ctrl_0_Mem0
-  create_bd_addr_seg -range 0x2000 -offset 0xC2000000 [get_bd_addr_spaces axi_cdma_0/Data] [get_bd_addr_segs axi_bram_ctrl_1/S_AXI/Mem0] SEG_axi_bram_ctrl_1_Mem0
+  create_bd_addr_seg -range 0x4000 -offset 0xC0000000 [get_bd_addr_spaces axi_cdma_0/Data] [get_bd_addr_segs axi_bram_ctrl_0/S_AXI/Mem0] SEG_axi_bram_ctrl_0_Mem0
+  create_bd_addr_seg -range 0x4000 -offset 0xC2000000 [get_bd_addr_spaces axi_cdma_0/Data] [get_bd_addr_segs axi_bram_ctrl_1/S_AXI/Mem0] SEG_axi_bram_ctrl_1_Mem0
   create_bd_addr_seg -range 0x20000000 -offset 0x0 [get_bd_addr_spaces axi_cdma_0/Data] [get_bd_addr_segs processing_system7_0/S_AXI_HP0/HP0_DDR_LOWOCM] SEG_processing_system7_0_HP0_DDR_LOWOCM
-  create_bd_addr_seg -range 0x2000 -offset 0x8E200000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_cdma_0/S_AXI_LITE/Reg] SEG_axi_cdma_0_Reg
+  create_bd_addr_seg -range 0x20000000 -offset 0x0 [get_bd_addr_spaces axi_cdma_0/Data] [get_bd_addr_segs processing_system7_0/S_AXI_HP1/HP1_DDR_LOWOCM] SEG_processing_system7_0_HP1_DDR_LOWOCM
+  create_bd_addr_seg -range 0x4000 -offset 0x8E200000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_cdma_0/S_AXI_LITE/Reg] SEG_axi_cdma_0_Reg
   create_bd_addr_seg -range 0x1000 -offset 0x41200000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_gpio_0/S_AXI/Reg] SEG_axi_gpio_0_Reg
 
   # Perform GUI Layout
@@ -481,14 +492,14 @@ CONFIG.DIN_WIDTH {4} \
 preplace port DDR -pg 1 -y 60 -defaultsOSRD
 preplace port VSYNC -pg 1 -y 550 -defaultsOSRD
 preplace port VGA_VSYNC -pg 1 -y 740 -defaultsOSRD
-preplace port low_up -pg 1 -lvl 10:70 -defaultsOSRD -bot
+preplace port low_up -pg 1 -lvl 9:70 -defaultsOSRD -bot
 preplace port HREF -pg 1 -y 530 -defaultsOSRD
 preplace port PCLK -pg 1 -y 570 -defaultsOSRD
-preplace port clk_main -pg 1 -lvl 9:-100 -defaultsOSRD -bot
+preplace port clk_main -pg 1 -lvl 8:-100 -defaultsOSRD -bot
 preplace port VGA_HSYNC -pg 1 -y 720 -defaultsOSRD
 preplace port IIC_0 -pg 1 -y 100 -defaultsOSRD
 preplace port FIXED_IO -pg 1 -y 80 -defaultsOSRD
-preplace port disable_spikes -pg 1 -lvl 7:-130 -defaultsOSRD -bot
+preplace port disable_spikes -pg 1 -lvl 6:-130 -defaultsOSRD -bot
 preplace port button_down -pg 1 -lvl 4:-120 -defaultsOSRD -bot
 preplace port button_up -pg 1 -lvl 3:100 -defaultsOSRD -bot
 preplace portBus PixelData -pg 1 -y 510 -defaultsOSRD
@@ -498,103 +509,103 @@ preplace portBus VGA_R -pg 1 -y 950 -defaultsOSRD
 preplace portBus VGA_G -pg 1 -y 970 -defaultsOSRD
 preplace portBus PWDN -pg 1 -y 340 -defaultsOSRD
 preplace portBus LEDS -pg 1 -y 580 -defaultsOSRD
-preplace inst dvs_cdma_v3_0 -pg 1 -lvl 7 -y 580 -defaultsOSRD
-preplace inst xlslice_0 -pg 1 -lvl 8 -y 910 -defaultsOSRD
+preplace inst dvs_cdma_v3_0 -pg 1 -lvl 6 -y 570 -defaultsOSRD
+preplace inst xlslice_0 -pg 1 -lvl 7 -y 940 -defaultsOSRD
 preplace inst threshold_input_v4_0 -pg 1 -lvl 4 -y 810 -defaultsOSRD
-preplace inst xlslice_1 -pg 1 -lvl 10 -y 1130 -defaultsOSRD
-preplace inst Address_Generator_v4_0 -pg 1 -lvl 12 -y 820 -defaultsOSRD
+preplace inst Address_Generator_v4_0 -pg 1 -lvl 11 -y 820 -defaultsOSRD
 preplace inst rst_processing_system7_0_100M -pg 1 -lvl 1 -y 300 -defaultsOSRD
-preplace inst xlslice_2 -pg 1 -lvl 8 -y 740 -defaultsOSRD
+preplace inst xlslice_2 -pg 1 -lvl 7 -y 1030 -defaultsOSRD
+preplace inst xlslice_3 -pg 1 -lvl 7 -y 1140 -defaultsOSRD
 preplace inst axi_cdma_0 -pg 1 -lvl 3 -y 400 -defaultsOSRD
-preplace inst util_vector_logic_0 -pg 1 -lvl 6 -y 730 -defaultsOSRD
-preplace inst line_buffer -pg 1 -lvl 9 -y 590 -defaultsOSRD
-preplace inst axi_gpio_0 -pg 1 -lvl 10 -y 420 -defaultsOSRD
-preplace inst blk_mem_gen_0 -pg 1 -lvl 11 -y 1050 -defaultsOSRD
+preplace inst util_vector_logic_0 -pg 1 -lvl 9 -y 1010 -defaultsOSRD
+preplace inst line_buffer -pg 1 -lvl 8 -y 590 -defaultsOSRD
+preplace inst axi_gpio_0 -pg 1 -lvl 9 -y 400 -defaultsOSRD
+preplace inst blk_mem_gen_0 -pg 1 -lvl 10 -y 1090 -defaultsOSRD
 preplace inst ov5642_capture_v4_0 -pg 1 -lvl 4 -y 530 -defaultsOSRD
-preplace inst VGA_v4_0 -pg 1 -lvl 10 -y 800 -defaultsOSRD
+preplace inst VGA_v4_0 -pg 1 -lvl 9 -y 800 -defaultsOSRD
 preplace inst neg_reset -pg 1 -lvl 3 -y 620 -defaultsOSRD
-preplace inst blk_mem_gen_1 -pg 1 -lvl 9 -y 960 -defaultsOSRD
-preplace inst xlconcat_2 -pg 1 -lvl 11 -y 630 -defaultsOSRD
-preplace inst util_vector_logic_2 -pg 1 -lvl 12 -y 460 -defaultsOSRD
-preplace inst block_to_pixel_v1_0 -pg 1 -lvl 10 -y 1320 -defaultsOSRD
+preplace inst blk_mem_gen_1 -pg 1 -lvl 8 -y 1030 -defaultsOSRD
+preplace inst xlconcat_2 -pg 1 -lvl 10 -y 630 -defaultsOSRD
+preplace inst util_vector_logic_2 -pg 1 -lvl 11 -y 460 -defaultsOSRD
+preplace inst block_to_pixel_v1_0 -pg 1 -lvl 6 -y 780 -defaultsOSRD
 preplace inst xlconcat_3 -pg 1 -lvl 5 -y 260 -defaultsOSRD
-preplace inst RGB_v4_0 -pg 1 -lvl 12 -y 970 -defaultsOSRD
+preplace inst RGB_v4_0 -pg 1 -lvl 11 -y 970 -defaultsOSRD
 preplace inst processing_system7_0_axi_periph_1 -pg 1 -lvl 2 -y 190 -defaultsOSRD
-preplace inst const_0 -pg 1 -lvl 7 -y 1070 -defaultsOSRD
-preplace inst clk_wiz_0 -pg 1 -lvl 9 -y 1340 -defaultsOSRD
+preplace inst const_0 -pg 1 -lvl 6 -y 1070 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 8 -y 1400 -defaultsOSRD
 preplace inst axi_mem_intercon -pg 1 -lvl 4 -y 170 -defaultsOSRD
-preplace inst axi_bram_ctrl_0 -pg 1 -lvl 7 -y 310 -defaultsOSRD
-preplace inst axi_bram_ctrl_1 -pg 1 -lvl 11 -y 1240 -defaultsOSRD
-preplace inst processing_system7_0_axi_periph -pg 1 -lvl 9 -y 220 -defaultsOSRD
-preplace inst processing_system7_0 -pg 1 -lvl 7 -y 40 -defaultsOSRD
-preplace netloc PixelData_1 1 0 4 NJ 490 NJ 490 NJ 490 NJ
-preplace netloc xlslice_2_Dout 1 8 1 2650
-preplace netloc ov5642_capture_v3_0_write_enable 1 4 3 NJ 550 NJ 550 NJ
-preplace netloc axi_gpio_0_gpio2_io_o 1 10 2 NJ 450 NJ
-preplace netloc util_vector_logic_0_Res 1 6 1 1890
-preplace netloc axi_mem_intercon_M01_AXI 1 4 3 1190 10 NJ 10 NJ
-preplace netloc processing_system7_0_FIXED_IO 1 7 6 NJ -40 NJ -40 NJ -40 NJ -40 NJ -40 NJ
-preplace netloc dvs_cdma_v2_0_write_new_line 1 4 4 1200 410 NJ 410 NJ 410 NJ
-preplace netloc line_buffer_doutb 1 6 3 NJ 460 NJ 460 NJ
-preplace netloc VGA_v3_0_activeArea 1 10 2 NJ 830 3810
-preplace netloc low_up_1 1 10 2 NJ 920 NJ
-preplace netloc dvs_cdma_v3_0_bram_rst 1 7 2 NJ 630 2650
-preplace netloc xlconcat_2_dout 1 11 2 NJ 580 N
-preplace netloc clk_main_1 1 8 1 2740
+preplace inst axi_bram_ctrl_0 -pg 1 -lvl 6 -y 310 -defaultsOSRD
+preplace inst axi_bram_ctrl_1 -pg 1 -lvl 10 -y 1320 -defaultsOSRD
+preplace inst processing_system7_0_axi_periph -pg 1 -lvl 8 -y 220 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 6 -y 40 -defaultsOSRD
+preplace netloc PixelData_1 1 0 4 NJ 510 NJ 510 NJ 510 NJ
+preplace netloc xlslice_2_Dout 1 7 1 3090
+preplace netloc ov5642_capture_v3_0_write_enable 1 4 2 NJ 550 NJ
+preplace netloc axi_gpio_0_gpio2_io_o 1 9 2 NJ 430 NJ
+preplace netloc util_vector_logic_0_Res 1 4 6 1520 450 NJ 450 NJ 450 NJ 450 NJ 500 4090
+preplace netloc axi_mem_intercon_M01_AXI 1 4 2 1470 10 NJ
+preplace netloc processing_system7_0_FIXED_IO 1 6 6 NJ -40 NJ -40 NJ -40 NJ -40 NJ -40 NJ
+preplace netloc dvs_cdma_v2_0_write_new_line 1 4 3 1510 370 NJ 380 NJ
+preplace netloc line_buffer_doutb 1 5 3 NJ 890 NJ 610 NJ
+preplace netloc VGA_v3_0_activeArea 1 9 2 NJ 830 4490
+preplace netloc low_up_1 1 9 2 NJ 940 NJ
+preplace netloc dvs_cdma_v3_0_bram_rst 1 6 2 NJ 620 3120
+preplace netloc xlconcat_2_dout 1 10 2 NJ 580 N
+preplace netloc clk_main_1 1 7 1 3130
 preplace netloc button_down_1 1 3 1 NJ
-preplace netloc RGB_v4_0_R 1 12 1 NJ
-preplace netloc axi_bram_ctrl_1_BRAM_PORTA 1 10 2 3550 940 3820
-preplace netloc dvs_cdma_v3_0_bram_we 1 7 2 NJ 670 N
-preplace netloc processing_system7_0_DDR 1 7 6 NJ -60 NJ -60 NJ -60 NJ -60 NJ -60 NJ
-preplace netloc Address_Generator_v4_0_row_count 1 9 4 3110 720 NJ 770 NJ 730 4080
-preplace netloc dvs_cdma_v3_0_bram_wrdata 1 7 2 NJ 590 2670
-preplace netloc axi_cdma_0_M_AXI 1 3 1 840
-preplace netloc processing_system7_0_axi_periph_1_M00_AXI 1 2 1 530
-preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 8 -160 390 NJ 330 NJ 320 NJ 330 NJ 350 NJ 350 1860 390 2410
-preplace netloc dvs_cdma_v3_0_bram_en 1 7 2 NJ 610 2660
-preplace netloc xlslice_1_Dout 1 8 3 2720 1180 NJ 1180 3440
-preplace netloc axi_bram_ctrl_0_BRAM_PORTA 1 7 2 NJ 310 2690
-preplace netloc blk_mem_gen_1_doutb 1 8 2 NJ 1420 NJ
-preplace netloc block_to_pixel_v1_0_get_new_block 1 4 7 1210 400 NJ 400 NJ 400 NJ 400 NJ 400 NJ 330 3450
-preplace netloc xlslice_0_Dout 1 8 1 2680
-preplace netloc HREF_1 1 0 7 NJ 530 NJ 530 NJ 530 850 620 NJ 510 NJ 510 NJ
-preplace netloc processing_system7_0_IIC_0 1 7 6 NJ -20 NJ -20 NJ -20 NJ -20 NJ -20 NJ
-preplace netloc dvs_cdma_v2_0_new_frame 1 4 4 1210 160 NJ 160 NJ 230 NJ
-preplace netloc dvs_cdma_v3_0_bram_addr 1 7 2 2430 550 N
-preplace netloc Address_Generator_v4_0_address 1 9 4 3100 700 NJ 750 NJ 700 4090
-preplace netloc block_to_pixel_v1_0_bram_rst 1 10 1 3540
-preplace netloc VGA_v3_0_Vsync 1 10 3 NJ 790 NJ 740 NJ
-preplace netloc processing_system7_0_FCLK_CLK0 1 0 11 -160 210 210 40 540 40 860 10 NJ 30 NJ 30 1890 220 2430 160 NJ 360 NJ 300 3490
-preplace netloc VSYNC_1 1 0 7 NJ 540 NJ 540 NJ 540 860 650 NJ 540 NJ 540 NJ
-preplace netloc rst_processing_system7_0_100M_interconnect_aresetn 1 1 8 200 50 NJ 50 850 -30 NJ -30 NJ -30 NJ 210 NJ 180 NJ
-preplace netloc VGA_v3_0_Hsync 1 10 3 NJ 780 NJ 720 NJ
-preplace netloc block_to_pixel_v1_0_bram_en 1 10 1 3520
-preplace netloc dvs_cdma_v3_0_bram_clk 1 7 2 NJ 570 2690
-preplace netloc block_to_pixel_v1_0_bram_addr 1 9 2 3120 1190 3500
-preplace netloc processing_system7_0_axi_periph_M00_AXI 1 9 1 3070
-preplace netloc block_to_pixel_v1_0_pixel_out 1 10 2 3470 910 NJ
+preplace netloc RGB_v4_0_R 1 11 1 NJ
+preplace netloc axi_bram_ctrl_1_BRAM_PORTA 1 9 2 4210 960 4470
+preplace netloc dvs_cdma_v3_0_bram_we 1 6 2 NJ 670 N
+preplace netloc xlslice_3_Dout 1 7 1 3130
+preplace netloc block_to_pixel_v1_0_bram_addr1 1 6 4 2780 1200 NJ 1200 NJ 1060 NJ
+preplace netloc processing_system7_0_DDR 1 6 6 NJ -60 NJ -60 NJ -60 NJ -60 NJ -60 NJ
+preplace netloc Address_Generator_v4_0_row_count 1 5 7 1880 910 2860 740 NJ 740 NJ 710 NJ 770 NJ 740 4750
+preplace netloc dvs_cdma_v3_0_bram_wrdata 1 6 2 NJ 580 3090
+preplace netloc axi_cdma_0_M_AXI 1 3 1 990
+preplace netloc processing_system7_0_axi_periph_1_M00_AXI 1 2 1 680
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 7 -160 500 NJ 500 NJ 500 NJ 430 NJ 430 NJ 390 2760
+preplace netloc dvs_cdma_v3_0_bram_en 1 6 2 NJ 600 3130
+preplace netloc axi_bram_ctrl_0_BRAM_PORTA 1 6 2 NJ 310 3100
+preplace netloc block_to_pixel_v1_0_get_new_block 1 4 6 1530 350 NJ 420 NJ 440 NJ 430 NJ 560 N
+preplace netloc xlslice_0_Dout 1 7 1 3080
+preplace netloc HREF_1 1 0 6 NJ 530 NJ 530 NJ 530 1030 390 NJ 390 NJ
+preplace netloc processing_system7_0_IIC_0 1 6 6 NJ -20 NJ -20 NJ -20 NJ -20 NJ -20 NJ
+preplace netloc dvs_cdma_v2_0_new_frame 1 4 3 1500 400 NJ 400 NJ
+preplace netloc dvs_cdma_v3_0_bram_addr 1 6 2 NJ 550 N
+preplace netloc Address_Generator_v4_0_address 1 5 7 NJ 880 NJ 730 NJ 730 NJ 700 NJ 750 NJ 700 4760
+preplace netloc block_to_pixel_v1_0_bram_rst 1 6 4 NJ 820 NJ 910 NJ 910 4110
+preplace netloc VGA_v3_0_Vsync 1 8 4 3770 880 NJ 790 NJ 730 NJ
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 10 -160 210 200 390 680 490 1000 360 NJ 360 NJ 200 2770 160 NJ 390 NJ 520 4150
+preplace netloc VSYNC_1 1 0 6 NJ 560 NJ 560 NJ 560 1070 420 NJ 420 NJ
+preplace netloc rst_processing_system7_0_100M_interconnect_aresetn 1 1 7 220 330 NJ 320 1050 440 NJ 440 NJ 430 NJ 430 NJ
+preplace netloc VGA_v3_0_Hsync 1 9 3 NJ 780 NJ 680 NJ
+preplace netloc block_to_pixel_v1_0_bram_en 1 6 4 NJ 790 NJ 900 NJ 920 4100
+preplace netloc dvs_cdma_v3_0_bram_clk 1 6 2 NJ 560 3110
+preplace netloc processing_system7_0_axi_periph_M00_AXI 1 8 1 3760
+preplace netloc block_to_pixel_v1_0_pixel_out 1 6 5 NJ 810 NJ 810 NJ 900 NJ 900 NJ
 preplace netloc util_vector_logic_3_Res 1 3 1 NJ
 preplace netloc button_up_1 1 3 1 NJ
-preplace netloc RGB_v4_0_B 1 12 1 NJ
-preplace netloc PCLK_1 1 0 6 NJ 560 NJ 560 NJ 560 870 630 NJ 630 1410
-preplace netloc util_vector_logic_2_Res 1 12 1 NJ
-preplace netloc clk_wiz_0_clk_out1 1 9 3 NJ 500 NJ 470 NJ
-preplace netloc axi_mem_intercon_M02_AXI 1 4 7 NJ 180 NJ 180 NJ 190 NJ 80 NJ 80 NJ 80 3510
-preplace netloc xlconcat_3_dout 1 5 2 1410 90 NJ
-preplace netloc Address_Generator_v4_0_col_count 1 9 4 3090 710 NJ 760 NJ 710 4100
-preplace netloc block_to_pixel_v1_0_bram_we 1 10 1 3550
-preplace netloc clk_wiz_0_clk_out2 1 8 4 2710 830 3080 890 NJ 890 3850
-preplace netloc processing_system7_0_M_AXI_GP0 1 7 2 NJ 20 2710
-preplace netloc xlconstant_0_dout 1 7 4 NJ 1070 NJ 720 NJ 680 3520
-preplace netloc RGB_v4_0_G 1 12 1 NJ
-preplace netloc processing_system7_0_M_AXI_GP1 1 1 7 220 -10 NJ -10 NJ -10 NJ -10 NJ -10 1900 200 2420
-preplace netloc axi_gpio_0_gpio_io_o 1 2 11 540 570 NJ 640 NJ 640 NJ 640 NJ 450 NJ 450 NJ 450 NJ 320 3440 340 NJ 340 NJ
-preplace netloc axi_mem_intercon_M00_AXI 1 4 3 NJ 150 NJ 150 1860
-preplace netloc axi_cdma_0_cdma_introut 1 3 2 NJ 0 NJ
-preplace netloc threshold_input_v4_0_threshold 1 4 3 NJ 610 NJ 610 NJ
-preplace netloc rst_processing_system7_0_100M_peripheral_aresetn 1 1 10 220 340 550 300 870 340 NJ 340 NJ 340 1900 380 2440 370 NJ 370 NJ 340 3430
-preplace netloc ov5642_capture_v4_0_pix_data 1 4 3 N 530 NJ 530 NJ
-levelinfo -pg 1 -180 30 380 700 1030 1320 1760 2170 2550 2900 3280 3680 3970 4120 -top -110 -bot 1590
+preplace netloc RGB_v4_0_B 1 11 1 NJ
+preplace netloc PCLK_1 1 0 6 NJ 550 NJ 550 NJ 550 1060 410 NJ 410 NJ
+preplace netloc util_vector_logic_2_Res 1 11 1 NJ
+preplace netloc clk_wiz_0_clk_out1 1 8 3 NJ 510 NJ 510 NJ
+preplace netloc axi_mem_intercon_M02_AXI 1 4 6 NJ 170 NJ 190 NJ 190 NJ 460 NJ 490 4170
+preplace netloc xlconcat_3_dout 1 5 1 1810
+preplace netloc Address_Generator_v4_0_col_count 1 5 7 1910 900 2830 720 NJ 720 N 720 NJ 760 NJ 710 4770
+preplace netloc block_to_pixel_v1_0_bram_we 1 6 4 NJ 830 NJ 830 NJ 890 4120
+preplace netloc clk_wiz_0_clk_out2 1 5 6 1860 1120 2850 1090 NJ 1150 3760 930 NJ 930 4520
+preplace netloc processing_system7_0_M_AXI_GP0 1 6 2 NJ 20 3130
+preplace netloc xlconstant_0_dout 1 6 4 NJ 1080 NJ 750 NJ 680 4210
+preplace netloc RGB_v4_0_G 1 11 1 NJ
+preplace netloc processing_system7_0_M_AXI_GP1 1 1 6 200 -110 NJ -110 NJ -110 NJ -110 NJ -110 2760
+preplace netloc blk_mem_gen_0_doutb 1 5 5 1890 1190 NJ 1190 NJ 1190 NJ 1110 NJ
+preplace netloc axi_gpio_0_gpio_io_o 1 2 10 680 670 NJ 670 NJ 670 NJ 410 NJ 410 NJ 400 NJ 480 4090 340 NJ 340 NJ
+preplace netloc axi_mem_intercon_M00_AXI 1 4 2 NJ 140 NJ
+preplace netloc axi_cdma_0_cdma_introut 1 3 2 NJ 400 NJ
+preplace netloc threshold_input_v4_0_threshold 1 4 2 NJ 600 NJ
+preplace netloc rst_processing_system7_0_100M_peripheral_aresetn 1 1 9 210 340 670 480 1010 350 NJ 150 NJ 220 NJ 220 NJ 420 NJ 530 4130
+preplace netloc ov5642_capture_v4_0_pix_data 1 4 2 N 530 NJ
+levelinfo -pg 1 -180 30 520 853 1313 1693 2533 2980 3550 3943 4340 4640 4800 -top -340 -bot 1640
 ",
 }
 

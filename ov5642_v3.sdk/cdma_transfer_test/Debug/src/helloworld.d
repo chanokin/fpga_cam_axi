@@ -1,7 +1,5 @@
 src/helloworld.o src/helloworld.d: ../src/helloworld.c \
- ../src/helloworld.h ../src/platform.h ../src/platform_config.h \
- ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xparameters.h \
- ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xparameters_ps.h \
+ ../src/helloworld.h \
  ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xaxicdma.h \
  ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xaxicdma_bd.h \
  ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xstatus.h \
@@ -14,12 +12,15 @@ src/helloworld.o src/helloworld.d: ../src/helloworld.c \
  ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xpseudo_asm_gcc.h \
  ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xil_printf.h \
  ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xparameters.h \
+ ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xparameters_ps.h \
  ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xdebug.h \
  ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xil_cache.h \
  ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xscugic.h \
  ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xscugic_hw.h \
  ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xil_exception.h \
  ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xil_exception.h \
+ ../src/functions.h ../src/platform.h ../src/platform_config.h \
+ ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xparameters.h \
  ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xil_cache.h \
  ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xil_printf.h \
  ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xil_mmu.h \
@@ -36,14 +37,6 @@ src/helloworld.o src/helloworld.d: ../src/helloworld.c \
  ../src/ov5642_registers.h
 
 ../src/helloworld.h:
-
-../src/platform.h:
-
-../src/platform_config.h:
-
-../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xparameters.h:
-
-../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xparameters_ps.h:
 
 ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xaxicdma.h:
 
@@ -69,6 +62,8 @@ src/helloworld.o src/helloworld.d: ../src/helloworld.c \
 
 ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xparameters.h:
 
+../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xparameters_ps.h:
+
 ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xdebug.h:
 
 ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xil_cache.h:
@@ -80,6 +75,14 @@ src/helloworld.o src/helloworld.d: ../src/helloworld.c \
 ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xil_exception.h:
 
 ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xil_exception.h:
+
+../src/functions.h:
+
+../src/platform.h:
+
+../src/platform_config.h:
+
+../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xparameters.h:
 
 ../../cdma_transfer_test_bsp/ps7_cortexa9_0/include/xil_cache.h:
 

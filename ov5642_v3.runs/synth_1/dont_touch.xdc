@@ -93,11 +93,11 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1_blk_me
 # IP: bd/design_1/ip/design_1_xlslice_0_0/design_1_xlslice_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1_xlslice_0_0 || ORIG_REF_NAME==design_1_xlslice_0_0}]
 
-# IP: bd/design_1/ip/design_1_xlslice_1_0/design_1_xlslice_1_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1_xlslice_1_0 || ORIG_REF_NAME==design_1_xlslice_1_0}]
-
 # IP: bd/design_1/ip/design_1_xlslice_2_0/design_1_xlslice_2_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1_xlslice_2_0 || ORIG_REF_NAME==design_1_xlslice_2_0}]
+
+# IP: bd/design_1/ip/design_1_xlslice_3_0/design_1_xlslice_3_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1_xlslice_3_0 || ORIG_REF_NAME==design_1_xlslice_3_0}]
 
 # IP: bd/design_1/ip/design_1_util_vector_logic_0_0/design_1_util_vector_logic_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1_util_vector_logic_0_0 || ORIG_REF_NAME==design_1_util_vector_logic_0_0}]

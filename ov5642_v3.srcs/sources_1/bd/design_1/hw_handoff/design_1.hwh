@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Mar 29 17:08:55 2016" VIVADOVERSION="2015.3">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Mar 31 17:58:33 2016" VIVADOVERSION="2015.3">
 
   <SYSTEMINFO ARCH="zynq" BOARD="em.avnet.com:zed:part0:1.3" DEVICE="7z020" NAME="design_1" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
@@ -35,7 +35,7 @@
     <PORT DIR="I" NAME="PCLK" SIGIS="undef" SIGNAME="External_Ports_PCLK">
       <CONNECTIONS>
         <CONNECTION INSTANCE="ov5642_capture_v4_0" PORT="pclk"/>
-        <CONNECTION INSTANCE="util_vector_logic_0" PORT="Op1"/>
+        <CONNECTION INSTANCE="dvs_cdma_v3_0" PORT="pclk"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" NAME="VGA_VSYNC" SIGIS="undef" SIGNAME="VGA_v4_0_Vsync">
@@ -286,6 +286,7 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="VGA_VSYNC"/>
             <CONNECTION INSTANCE="Address_Generator_v4_0" PORT="vsync"/>
+            <CONNECTION INSTANCE="util_vector_logic_0" PORT="Op1"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="Nblank" SIGIS="undef"/>
@@ -307,9 +308,9 @@
       </ADDRESSBLOCKS>
       <PARAMETERS>
         <PARAMETER NAME="C_BRAM_INST_MODE" VALUE="EXTERNAL"/>
-        <PARAMETER NAME="C_MEMORY_DEPTH" VALUE="2048"/>
-        <PARAMETER NAME="C_BRAM_ADDR_WIDTH" VALUE="11"/>
-        <PARAMETER NAME="C_S_AXI_ADDR_WIDTH" VALUE="13"/>
+        <PARAMETER NAME="C_MEMORY_DEPTH" VALUE="4096"/>
+        <PARAMETER NAME="C_BRAM_ADDR_WIDTH" VALUE="12"/>
+        <PARAMETER NAME="C_S_AXI_ADDR_WIDTH" VALUE="14"/>
         <PARAMETER NAME="C_S_AXI_DATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_S_AXI_ID_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_S_AXI_PROTOCOL" VALUE="AXI4"/>
@@ -333,11 +334,11 @@
         <PARAMETER NAME="ECC_ONOFF_RESET_VALUE" VALUE="0"/>
         <PARAMETER NAME="Component_Name" VALUE="design_1_axi_bram_ctrl_0_0"/>
         <PARAMETER NAME="BMG_INSTANCE" VALUE="EXTERNAL"/>
-        <PARAMETER NAME="MEM_DEPTH" VALUE="2048"/>
+        <PARAMETER NAME="MEM_DEPTH" VALUE="4096"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
         <PARAMETER NAME="EDK_SPECIAL" VALUE="BRAM_CTRL"/>
         <PARAMETER NAME="C_S_AXI_BASEADDR" VALUE="0xC0000000"/>
-        <PARAMETER NAME="C_S_AXI_HIGHADDR" VALUE="0xC0001FFF"/>
+        <PARAMETER NAME="C_S_AXI_HIGHADDR" VALUE="0xC0003FFF"/>
       </PARAMETERS>
       <PORTS>
         <PORT CLKFREQUENCY="250000000" DIR="I" NAME="s_axi_aclk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
@@ -350,7 +351,7 @@
             <CONNECTION INSTANCE="rst_processing_system7_0_100M" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="12" NAME="s_axi_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_bram_ctrl_0_s_axi_awaddr">
+        <PORT DIR="I" LEFT="13" NAME="s_axi_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_bram_ctrl_0_s_axi_awaddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_mem_intercon" PORT="M00_AXI_awaddr"/>
           </CONNECTIONS>
@@ -435,7 +436,7 @@
             <CONNECTION INSTANCE="axi_mem_intercon" PORT="M00_AXI_bready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="12" NAME="s_axi_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_bram_ctrl_0_s_axi_araddr">
+        <PORT DIR="I" LEFT="13" NAME="s_axi_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_bram_ctrl_0_s_axi_araddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_mem_intercon" PORT="M00_AXI_araddr"/>
           </CONNECTIONS>
@@ -525,7 +526,7 @@
             <CONNECTION INSTANCE="line_buffer" PORT="wea"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="12" NAME="bram_addr_a" RIGHT="0" SIGIS="undef" SIGNAME="axi_bram_ctrl_0_bram_addr_a">
+        <PORT DIR="O" LEFT="13" NAME="bram_addr_a" RIGHT="0" SIGIS="undef" SIGNAME="axi_bram_ctrl_0_bram_addr_a">
           <CONNECTIONS>
             <CONNECTION INSTANCE="line_buffer" PORT="addra"/>
           </CONNECTIONS>
@@ -547,7 +548,7 @@
           <PARAMETER NAME="PROTOCOL" VALUE="AXI4"/>
           <PARAMETER NAME="FREQ_HZ" VALUE="250000000"/>
           <PARAMETER NAME="ID_WIDTH" VALUE="0"/>
-          <PARAMETER NAME="ADDR_WIDTH" VALUE="13"/>
+          <PARAMETER NAME="ADDR_WIDTH" VALUE="14"/>
           <PARAMETER NAME="AWUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="ARUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="WUSER_WIDTH" VALUE="0"/>
@@ -605,7 +606,7 @@
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="axi_bram_ctrl_0_BRAM_PORTA" NAME="BRAM_PORTA" TYPE="INITIATOR">
           <PARAMETER NAME="MASTER_TYPE" VALUE="BRAM_CTRL"/>
-          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
+          <PARAMETER NAME="MEM_SIZE" VALUE="16384"/>
           <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
           <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
           <PORTMAPS>
@@ -629,9 +630,9 @@
       </ADDRESSBLOCKS>
       <PARAMETERS>
         <PARAMETER NAME="C_BRAM_INST_MODE" VALUE="EXTERNAL"/>
-        <PARAMETER NAME="C_MEMORY_DEPTH" VALUE="2048"/>
-        <PARAMETER NAME="C_BRAM_ADDR_WIDTH" VALUE="11"/>
-        <PARAMETER NAME="C_S_AXI_ADDR_WIDTH" VALUE="13"/>
+        <PARAMETER NAME="C_MEMORY_DEPTH" VALUE="4096"/>
+        <PARAMETER NAME="C_BRAM_ADDR_WIDTH" VALUE="12"/>
+        <PARAMETER NAME="C_S_AXI_ADDR_WIDTH" VALUE="14"/>
         <PARAMETER NAME="C_S_AXI_DATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_S_AXI_ID_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_S_AXI_PROTOCOL" VALUE="AXI4"/>
@@ -655,11 +656,11 @@
         <PARAMETER NAME="ECC_ONOFF_RESET_VALUE" VALUE="0"/>
         <PARAMETER NAME="Component_Name" VALUE="design_1_axi_bram_ctrl_1_0"/>
         <PARAMETER NAME="BMG_INSTANCE" VALUE="EXTERNAL"/>
-        <PARAMETER NAME="MEM_DEPTH" VALUE="2048"/>
+        <PARAMETER NAME="MEM_DEPTH" VALUE="4096"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
         <PARAMETER NAME="EDK_SPECIAL" VALUE="BRAM_CTRL"/>
         <PARAMETER NAME="C_S_AXI_BASEADDR" VALUE="0xC2000000"/>
-        <PARAMETER NAME="C_S_AXI_HIGHADDR" VALUE="0xC2001FFF"/>
+        <PARAMETER NAME="C_S_AXI_HIGHADDR" VALUE="0xC2003FFF"/>
       </PARAMETERS>
       <PORTS>
         <PORT CLKFREQUENCY="250000000" DIR="I" NAME="s_axi_aclk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
@@ -672,7 +673,7 @@
             <CONNECTION INSTANCE="rst_processing_system7_0_100M" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="12" NAME="s_axi_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_bram_ctrl_1_s_axi_awaddr">
+        <PORT DIR="I" LEFT="13" NAME="s_axi_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_bram_ctrl_1_s_axi_awaddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_mem_intercon" PORT="M02_AXI_awaddr"/>
           </CONNECTIONS>
@@ -757,7 +758,7 @@
             <CONNECTION INSTANCE="axi_mem_intercon" PORT="M02_AXI_bready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="12" NAME="s_axi_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_bram_ctrl_1_s_axi_araddr">
+        <PORT DIR="I" LEFT="13" NAME="s_axi_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_bram_ctrl_1_s_axi_araddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_mem_intercon" PORT="M02_AXI_araddr"/>
           </CONNECTIONS>
@@ -847,7 +848,7 @@
             <CONNECTION INSTANCE="blk_mem_gen_0" PORT="wea"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="12" NAME="bram_addr_a" RIGHT="0" SIGIS="undef" SIGNAME="axi_bram_ctrl_1_bram_addr_a">
+        <PORT DIR="O" LEFT="13" NAME="bram_addr_a" RIGHT="0" SIGIS="undef" SIGNAME="axi_bram_ctrl_1_bram_addr_a">
           <CONNECTIONS>
             <CONNECTION INSTANCE="blk_mem_gen_0" PORT="addra"/>
           </CONNECTIONS>
@@ -869,7 +870,7 @@
           <PARAMETER NAME="PROTOCOL" VALUE="AXI4"/>
           <PARAMETER NAME="FREQ_HZ" VALUE="250000000"/>
           <PARAMETER NAME="ID_WIDTH" VALUE="0"/>
-          <PARAMETER NAME="ADDR_WIDTH" VALUE="13"/>
+          <PARAMETER NAME="ADDR_WIDTH" VALUE="14"/>
           <PARAMETER NAME="AWUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="ARUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="WUSER_WIDTH" VALUE="0"/>
@@ -927,7 +928,7 @@
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="axi_bram_ctrl_1_BRAM_PORTA" NAME="BRAM_PORTA" TYPE="INITIATOR">
           <PARAMETER NAME="MASTER_TYPE" VALUE="BRAM_CTRL"/>
-          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
+          <PARAMETER NAME="MEM_SIZE" VALUE="16384"/>
           <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
           <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
           <PORTMAPS>
@@ -968,7 +969,7 @@
         <PARAMETER NAME="C_ADDR_WIDTH" VALUE="32"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
         <PARAMETER NAME="C_BASEADDR" VALUE="0x8E200000"/>
-        <PARAMETER NAME="C_HIGHADDR" VALUE="0x8E201FFF"/>
+        <PARAMETER NAME="C_HIGHADDR" VALUE="0x8E203FFF"/>
       </PARAMETERS>
       <PORTS>
         <PORT CLKFREQUENCY="250000000" DIR="I" NAME="m_axi_aclk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
@@ -1326,8 +1327,8 @@
       </BUSINTERFACES>
       <MEMORYMAP>
         <MEMRANGE ADDRESSBLOCK="HP0_DDR_LOWOCM" BASENAME="C_BASEADDR" BASEVALUE="0x00000000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x1FFFFFFF" INSTANCE="processing_system7_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI" MEMTYPE="MEMORY" SLAVEBUSINTERFACE="S_AXI_HP0"/>
-        <MEMRANGE ADDRESSBLOCK="Mem0" BASENAME="C_S_AXI_BASEADDR" BASEVALUE="0xC0000000" HIGHNAME="C_S_AXI_HIGHADDR" HIGHVALUE="0xC0001FFF" INSTANCE="axi_bram_ctrl_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI" MEMTYPE="MEMORY" SLAVEBUSINTERFACE="S_AXI"/>
-        <MEMRANGE ADDRESSBLOCK="Mem0" BASENAME="C_S_AXI_BASEADDR" BASEVALUE="0xC2000000" HIGHNAME="C_S_AXI_HIGHADDR" HIGHVALUE="0xC2001FFF" INSTANCE="axi_bram_ctrl_1" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI" MEMTYPE="MEMORY" SLAVEBUSINTERFACE="S_AXI"/>
+        <MEMRANGE ADDRESSBLOCK="Mem0" BASENAME="C_S_AXI_BASEADDR" BASEVALUE="0xC0000000" HIGHNAME="C_S_AXI_HIGHADDR" HIGHVALUE="0xC0003FFF" INSTANCE="axi_bram_ctrl_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI" MEMTYPE="MEMORY" SLAVEBUSINTERFACE="S_AXI"/>
+        <MEMRANGE ADDRESSBLOCK="Mem0" BASENAME="C_S_AXI_BASEADDR" BASEVALUE="0xC2000000" HIGHNAME="C_S_AXI_HIGHADDR" HIGHVALUE="0xC2003FFF" INSTANCE="axi_bram_ctrl_1" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI" MEMTYPE="MEMORY" SLAVEBUSINTERFACE="S_AXI"/>
       </MEMORYMAP>
       <PERIPHERALS>
         <PERIPHERAL INSTANCE="processing_system7_0"/>
@@ -1698,7 +1699,7 @@
       </DOCUMENTS>
       <PARAMETERS>
         <PARAMETER NAME="NUM_SI" VALUE="1"/>
-        <PARAMETER NAME="NUM_MI" VALUE="3"/>
+        <PARAMETER NAME="NUM_MI" VALUE="4"/>
         <PARAMETER NAME="STRATEGY" VALUE="0"/>
         <PARAMETER NAME="ENABLE_ADVANCED_OPTIONS" VALUE="0"/>
         <PARAMETER NAME="ENABLE_PROTOCOL_CHECKERS" VALUE="0"/>
@@ -2194,7 +2195,7 @@
             <CONNECTION INSTANCE="axi_cdma_0" PORT="m_axi_wvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="12" NAME="M00_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_bram_ctrl_0_s_axi_araddr">
+        <PORT DIR="O" LEFT="13" NAME="M00_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_bram_ctrl_0_s_axi_araddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_bram_ctrl_0" PORT="s_axi_araddr"/>
           </CONNECTIONS>
@@ -2239,7 +2240,7 @@
             <CONNECTION INSTANCE="axi_bram_ctrl_0" PORT="s_axi_arvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="12" NAME="M00_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_bram_ctrl_0_s_axi_awaddr">
+        <PORT DIR="O" LEFT="13" NAME="M00_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_bram_ctrl_0_s_axi_awaddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_bram_ctrl_0" PORT="s_axi_awaddr"/>
           </CONNECTIONS>
@@ -2539,7 +2540,7 @@
             <CONNECTION INSTANCE="processing_system7_0" PORT="S_AXI_HP0_WSTRB"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="12" NAME="M02_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_bram_ctrl_1_s_axi_araddr">
+        <PORT DIR="O" LEFT="13" NAME="M02_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_bram_ctrl_1_s_axi_araddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_bram_ctrl_1" PORT="s_axi_araddr"/>
           </CONNECTIONS>
@@ -2584,7 +2585,7 @@
             <CONNECTION INSTANCE="axi_bram_ctrl_1" PORT="s_axi_arvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="12" NAME="M02_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_bram_ctrl_1_s_axi_awaddr">
+        <PORT DIR="O" LEFT="13" NAME="M02_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_bram_ctrl_1_s_axi_awaddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_bram_ctrl_1" PORT="s_axi_awaddr"/>
           </CONNECTIONS>
@@ -2694,6 +2695,51 @@
             <CONNECTION INSTANCE="axi_bram_ctrl_1" PORT="s_axi_wvalid"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="M03_ACLK" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="M03_ARESETN" RIGHT="0" SIGIS="rst" SIGNAME="rst_processing_system7_0_100M_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="rst_processing_system7_0_100M" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M03_AXI_awaddr" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="3" NAME="M03_AXI_awlen" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="2" NAME="M03_AXI_awsize" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="1" NAME="M03_AXI_awburst" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="1" NAME="M03_AXI_awlock" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="3" NAME="M03_AXI_awcache" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="2" NAME="M03_AXI_awprot" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M03_AXI_awregion" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="3" NAME="M03_AXI_awqos" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M03_AXI_awvalid" SIGIS="undef"/>
+        <PORT DIR="I" NAME="M03_AXI_awready" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="63" NAME="M03_AXI_wdata" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="7" NAME="M03_AXI_wstrb" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M03_AXI_wlast" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M03_AXI_wvalid" SIGIS="undef"/>
+        <PORT DIR="I" NAME="M03_AXI_wready" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="1" NAME="M03_AXI_bresp" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" NAME="M03_AXI_bvalid" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M03_AXI_bready" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="31" NAME="M03_AXI_araddr" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="3" NAME="M03_AXI_arlen" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="2" NAME="M03_AXI_arsize" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="1" NAME="M03_AXI_arburst" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="1" NAME="M03_AXI_arlock" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="3" NAME="M03_AXI_arcache" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="2" NAME="M03_AXI_arprot" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M03_AXI_arregion" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="3" NAME="M03_AXI_arqos" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M03_AXI_arvalid" SIGIS="undef"/>
+        <PORT DIR="I" NAME="M03_AXI_arready" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="63" NAME="M03_AXI_rdata" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="1" NAME="M03_AXI_rresp" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" NAME="M03_AXI_rlast" SIGIS="undef"/>
+        <PORT DIR="I" NAME="M03_AXI_rvalid" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M03_AXI_rready" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="axi_cdma_0_M_AXI" DATAWIDTH="32" NAME="S00_AXI" TYPE="SLAVE">
@@ -2841,6 +2887,45 @@
             <PORTMAP PHYSICAL="M02_AXI_wvalid"/>
           </PORTMAPS>
         </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="M03_AXI" TYPE="MASTER">
+          <PORTMAPS>
+            <PORTMAP PHYSICAL="M03_AXI_awaddr"/>
+            <PORTMAP PHYSICAL="M03_AXI_awlen"/>
+            <PORTMAP PHYSICAL="M03_AXI_awsize"/>
+            <PORTMAP PHYSICAL="M03_AXI_awburst"/>
+            <PORTMAP PHYSICAL="M03_AXI_awlock"/>
+            <PORTMAP PHYSICAL="M03_AXI_awcache"/>
+            <PORTMAP PHYSICAL="M03_AXI_awprot"/>
+            <PORTMAP PHYSICAL="M03_AXI_awregion"/>
+            <PORTMAP PHYSICAL="M03_AXI_awqos"/>
+            <PORTMAP PHYSICAL="M03_AXI_awvalid"/>
+            <PORTMAP PHYSICAL="M03_AXI_awready"/>
+            <PORTMAP PHYSICAL="M03_AXI_wdata"/>
+            <PORTMAP PHYSICAL="M03_AXI_wstrb"/>
+            <PORTMAP PHYSICAL="M03_AXI_wlast"/>
+            <PORTMAP PHYSICAL="M03_AXI_wvalid"/>
+            <PORTMAP PHYSICAL="M03_AXI_wready"/>
+            <PORTMAP PHYSICAL="M03_AXI_bresp"/>
+            <PORTMAP PHYSICAL="M03_AXI_bvalid"/>
+            <PORTMAP PHYSICAL="M03_AXI_bready"/>
+            <PORTMAP PHYSICAL="M03_AXI_araddr"/>
+            <PORTMAP PHYSICAL="M03_AXI_arlen"/>
+            <PORTMAP PHYSICAL="M03_AXI_arsize"/>
+            <PORTMAP PHYSICAL="M03_AXI_arburst"/>
+            <PORTMAP PHYSICAL="M03_AXI_arlock"/>
+            <PORTMAP PHYSICAL="M03_AXI_arcache"/>
+            <PORTMAP PHYSICAL="M03_AXI_arprot"/>
+            <PORTMAP PHYSICAL="M03_AXI_arregion"/>
+            <PORTMAP PHYSICAL="M03_AXI_arqos"/>
+            <PORTMAP PHYSICAL="M03_AXI_arvalid"/>
+            <PORTMAP PHYSICAL="M03_AXI_arready"/>
+            <PORTMAP PHYSICAL="M03_AXI_rdata"/>
+            <PORTMAP PHYSICAL="M03_AXI_rresp"/>
+            <PORTMAP PHYSICAL="M03_AXI_rlast"/>
+            <PORTMAP PHYSICAL="M03_AXI_rvalid"/>
+            <PORTMAP PHYSICAL="M03_AXI_rready"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
     <MODULE FULLNAME="/blk_mem_gen_0" HWVERSION="8.3" INSTANCE="blk_mem_gen_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="MEMORY" MODTYPE="blk_mem_gen" VLNV="xilinx.com:ip:blk_mem_gen:8.3">
@@ -2879,8 +2964,8 @@
         <PARAMETER NAME="C_WRITE_MODE_A" VALUE="WRITE_FIRST"/>
         <PARAMETER NAME="C_WRITE_WIDTH_A" VALUE="32"/>
         <PARAMETER NAME="C_READ_WIDTH_A" VALUE="32"/>
-        <PARAMETER NAME="C_WRITE_DEPTH_A" VALUE="2048"/>
-        <PARAMETER NAME="C_READ_DEPTH_A" VALUE="2048"/>
+        <PARAMETER NAME="C_WRITE_DEPTH_A" VALUE="4096"/>
+        <PARAMETER NAME="C_READ_DEPTH_A" VALUE="4096"/>
         <PARAMETER NAME="C_ADDRA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_HAS_RSTB" VALUE="1"/>
         <PARAMETER NAME="C_RST_PRIORITY_B" VALUE="CE"/>
@@ -2893,8 +2978,8 @@
         <PARAMETER NAME="C_WRITE_MODE_B" VALUE="WRITE_FIRST"/>
         <PARAMETER NAME="C_WRITE_WIDTH_B" VALUE="32"/>
         <PARAMETER NAME="C_READ_WIDTH_B" VALUE="32"/>
-        <PARAMETER NAME="C_WRITE_DEPTH_B" VALUE="2048"/>
-        <PARAMETER NAME="C_READ_DEPTH_B" VALUE="2048"/>
+        <PARAMETER NAME="C_WRITE_DEPTH_B" VALUE="4096"/>
+        <PARAMETER NAME="C_READ_DEPTH_B" VALUE="4096"/>
         <PARAMETER NAME="C_ADDRB_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_HAS_MEM_OUTPUT_REGS_A" VALUE="0"/>
         <PARAMETER NAME="C_HAS_MEM_OUTPUT_REGS_B" VALUE="0"/>
@@ -2918,9 +3003,9 @@
         <PARAMETER NAME="C_EN_SHUTDOWN_PIN" VALUE="0"/>
         <PARAMETER NAME="C_EN_SAFETY_CKT" VALUE="0"/>
         <PARAMETER NAME="C_DISABLE_WARN_BHV_RANGE" VALUE="0"/>
-        <PARAMETER NAME="C_COUNT_36K_BRAM" VALUE="2"/>
+        <PARAMETER NAME="C_COUNT_36K_BRAM" VALUE="4"/>
         <PARAMETER NAME="C_COUNT_18K_BRAM" VALUE="0"/>
-        <PARAMETER NAME="C_EST_POWER_SUMMARY" VALUE="Estimated Power for IP     :     10.7492 mW"/>
+        <PARAMETER NAME="C_EST_POWER_SUMMARY" VALUE="Estimated Power for IP     :     20.388 mW"/>
         <PARAMETER NAME="Component_Name" VALUE="design_1_blk_mem_gen_0_0"/>
         <PARAMETER NAME="Interface_Type" VALUE="Native"/>
         <PARAMETER NAME="AXI_Type" VALUE="AXI4_Full"/>
@@ -2947,7 +3032,7 @@
         <PARAMETER NAME="Primitive" VALUE="8kx2"/>
         <PARAMETER NAME="Assume_Synchronous_Clk" VALUE="false"/>
         <PARAMETER NAME="Write_Width_A" VALUE="32"/>
-        <PARAMETER NAME="Write_Depth_A" VALUE="2048"/>
+        <PARAMETER NAME="Write_Depth_A" VALUE="4096"/>
         <PARAMETER NAME="Read_Width_A" VALUE="32"/>
         <PARAMETER NAME="Operating_Mode_A" VALUE="WRITE_FIRST"/>
         <PARAMETER NAME="Enable_A" VALUE="Use_ENA_Pin"/>
@@ -3055,11 +3140,15 @@
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="dinb" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="31" NAME="doutb" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="31" NAME="doutb" RIGHT="0" SIGIS="undef" SIGNAME="blk_mem_gen_0_doutb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="block_to_pixel_v1_0" PORT="bram_rddata"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="axi_bram_ctrl_1_BRAM_PORTA" NAME="BRAM_PORTA" TYPE="TARGET">
-          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
+          <PARAMETER NAME="MEM_SIZE" VALUE="16384"/>
           <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
           <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
           <PARAMETER NAME="MASTER_TYPE" VALUE="BRAM_CTRL"/>
@@ -3266,16 +3355,12 @@
             <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out2"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="10" NAME="addrb" RIGHT="0" SIGIS="undef" SIGNAME="xlslice_1_Dout">
+        <PORT DIR="I" LEFT="10" NAME="addrb" RIGHT="0" SIGIS="undef" SIGNAME="xlslice_3_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="xlslice_1" PORT="Dout"/>
+            <CONNECTION INSTANCE="xlslice_3" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="doutb" RIGHT="0" SIGIS="undef" SIGNAME="blk_mem_gen_1_doutb">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="block_to_pixel_v1_0" PORT="bram_rddata"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="doutb" RIGHT="0" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="__NOC__" NAME="BRAM_PORTA" TYPE="TARGET">
@@ -3306,8 +3391,8 @@
     <MODULE FULLNAME="/block_to_pixel_v1_0" HWVERSION="1.0" INSTANCE="block_to_pixel_v1_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="block_to_pixel_v1" VLNV="user.org:user:block_to_pixel_v1:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="MAX_LIFE_COUNT" VALUE="60"/>
-        <PARAMETER NAME="DEFAULT_GRAY_LEVEL" VALUE="15"/>
+        <PARAMETER NAME="MAX_LIFE_COUNT" VALUE="2"/>
+        <PARAMETER NAME="DEFAULT_GRAY_LEVEL" VALUE="7"/>
         <PARAMETER NAME="LIFE_ZERO" VALUE="&quot;000000&quot;"/>
         <PARAMETER NAME="LIFE_ONE" VALUE="&quot;000001&quot;"/>
         <PARAMETER NAME="Component_Name" VALUE="design_1_block_to_pixel_v1_0_0"/>
@@ -3347,13 +3432,13 @@
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="bram_addr" RIGHT="0" SIGIS="undef" SIGNAME="block_to_pixel_v1_0_bram_addr">
           <CONNECTIONS>
+            <CONNECTION INSTANCE="xlslice_3" PORT="Din"/>
             <CONNECTION INSTANCE="blk_mem_gen_0" PORT="addrb"/>
-            <CONNECTION INSTANCE="xlslice_1" PORT="Din"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="bram_rddata" RIGHT="0" SIGIS="undef" SIGNAME="blk_mem_gen_1_doutb">
+        <PORT DIR="I" LEFT="31" NAME="bram_rddata" RIGHT="0" SIGIS="undef" SIGNAME="blk_mem_gen_0_doutb">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="blk_mem_gen_1" PORT="doutb"/>
+            <CONNECTION INSTANCE="blk_mem_gen_0" PORT="doutb"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="bram_en" SIGIS="undef" SIGNAME="block_to_pixel_v1_0_bram_en">
@@ -3911,16 +3996,16 @@
     <MODULE FULLNAME="/dvs_cdma_v3_0" HWVERSION="1.0" INSTANCE="dvs_cdma_v3_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="dvs_cdma_v3" VLNV="user.org:user:dvs_cdma_v3:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="MAX_LIFE_COUNT" VALUE="60"/>
+        <PARAMETER NAME="MAX_LIFE_COUNT" VALUE="2"/>
         <PARAMETER NAME="LIFE_ZERO" VALUE="&quot;000000&quot;"/>
         <PARAMETER NAME="LIFE_ONE" VALUE="&quot;000001&quot;"/>
         <PARAMETER NAME="Component_Name" VALUE="design_1_dvs_cdma_v3_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="pclk" SIGIS="undef" SIGNAME="util_vector_logic_0_Res">
+        <PORT DIR="I" NAME="pclk" SIGIS="undef" SIGNAME="External_Ports_PCLK">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="util_vector_logic_0" PORT="Res"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="PCLK"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="vsync" SIGIS="undef" SIGNAME="External_Ports_VSYNC">
@@ -4041,8 +4126,8 @@
         <PARAMETER NAME="C_WRITE_MODE_A" VALUE="WRITE_FIRST"/>
         <PARAMETER NAME="C_WRITE_WIDTH_A" VALUE="32"/>
         <PARAMETER NAME="C_READ_WIDTH_A" VALUE="32"/>
-        <PARAMETER NAME="C_WRITE_DEPTH_A" VALUE="2048"/>
-        <PARAMETER NAME="C_READ_DEPTH_A" VALUE="2048"/>
+        <PARAMETER NAME="C_WRITE_DEPTH_A" VALUE="4096"/>
+        <PARAMETER NAME="C_READ_DEPTH_A" VALUE="4096"/>
         <PARAMETER NAME="C_ADDRA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_HAS_RSTB" VALUE="1"/>
         <PARAMETER NAME="C_RST_PRIORITY_B" VALUE="CE"/>
@@ -4055,8 +4140,8 @@
         <PARAMETER NAME="C_WRITE_MODE_B" VALUE="WRITE_FIRST"/>
         <PARAMETER NAME="C_WRITE_WIDTH_B" VALUE="32"/>
         <PARAMETER NAME="C_READ_WIDTH_B" VALUE="32"/>
-        <PARAMETER NAME="C_WRITE_DEPTH_B" VALUE="2048"/>
-        <PARAMETER NAME="C_READ_DEPTH_B" VALUE="2048"/>
+        <PARAMETER NAME="C_WRITE_DEPTH_B" VALUE="4096"/>
+        <PARAMETER NAME="C_READ_DEPTH_B" VALUE="4096"/>
         <PARAMETER NAME="C_ADDRB_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_HAS_MEM_OUTPUT_REGS_A" VALUE="0"/>
         <PARAMETER NAME="C_HAS_MEM_OUTPUT_REGS_B" VALUE="0"/>
@@ -4080,9 +4165,9 @@
         <PARAMETER NAME="C_EN_SHUTDOWN_PIN" VALUE="0"/>
         <PARAMETER NAME="C_EN_SAFETY_CKT" VALUE="0"/>
         <PARAMETER NAME="C_DISABLE_WARN_BHV_RANGE" VALUE="0"/>
-        <PARAMETER NAME="C_COUNT_36K_BRAM" VALUE="2"/>
+        <PARAMETER NAME="C_COUNT_36K_BRAM" VALUE="4"/>
         <PARAMETER NAME="C_COUNT_18K_BRAM" VALUE="0"/>
-        <PARAMETER NAME="C_EST_POWER_SUMMARY" VALUE="Estimated Power for IP     :     10.7492 mW"/>
+        <PARAMETER NAME="C_EST_POWER_SUMMARY" VALUE="Estimated Power for IP     :     20.388 mW"/>
         <PARAMETER NAME="Component_Name" VALUE="design_1_blk_mem_gen_0_1"/>
         <PARAMETER NAME="Interface_Type" VALUE="Native"/>
         <PARAMETER NAME="AXI_Type" VALUE="AXI4_Full"/>
@@ -4109,7 +4194,7 @@
         <PARAMETER NAME="Primitive" VALUE="8kx2"/>
         <PARAMETER NAME="Assume_Synchronous_Clk" VALUE="false"/>
         <PARAMETER NAME="Write_Width_A" VALUE="32"/>
-        <PARAMETER NAME="Write_Depth_A" VALUE="2048"/>
+        <PARAMETER NAME="Write_Depth_A" VALUE="4096"/>
         <PARAMETER NAME="Read_Width_A" VALUE="32"/>
         <PARAMETER NAME="Operating_Mode_A" VALUE="WRITE_FIRST"/>
         <PARAMETER NAME="Enable_A" VALUE="Use_ENA_Pin"/>
@@ -4229,7 +4314,7 @@
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="axi_bram_ctrl_0_BRAM_PORTA" NAME="BRAM_PORTA" TYPE="TARGET">
-          <PARAMETER NAME="MEM_SIZE" VALUE="8192"/>
+          <PARAMETER NAME="MEM_SIZE" VALUE="16384"/>
           <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
           <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
           <PARAMETER NAME="MASTER_TYPE" VALUE="BRAM_CTRL"/>
@@ -4333,6 +4418,9 @@
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=processing_system7;v=v5_3;d=pg082-processing-system7.pdf"/>
       </DOCUMENTS>
       <ADDRESSBLOCKS>
+        <ADDRESSBLOCK ACCESS="" INTERFACE="S_AXI_HP1" NAME="HP1_DDR_LOWOCM" RANGE="536870912" USAGE="memory"/>
+      </ADDRESSBLOCKS>
+      <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="S_AXI_HP0" NAME="HP0_DDR_LOWOCM" RANGE="536870912" USAGE="memory"/>
       </ADDRESSBLOCKS>
       <PARAMETERS>
@@ -4367,7 +4455,7 @@
         <PARAMETER NAME="C_S_AXI_HP3_DATA_WIDTH" VALUE="64"/>
         <PARAMETER NAME="C_M_AXI_GP0_THREAD_ID_WIDTH" VALUE="12"/>
         <PARAMETER NAME="C_M_AXI_GP1_THREAD_ID_WIDTH" VALUE="12"/>
-        <PARAMETER NAME="C_NUM_F2P_INTR_INPUTS" VALUE="4"/>
+        <PARAMETER NAME="C_NUM_F2P_INTR_INPUTS" VALUE="5"/>
         <PARAMETER NAME="C_IRQ_F2P_MODE" VALUE="DIRECT"/>
         <PARAMETER NAME="C_DQ_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_DQS_WIDTH" VALUE="4"/>
@@ -4642,7 +4730,7 @@
         <PARAMETER NAME="PCW_S_AXI_GP1_FREQMHZ" VALUE="10"/>
         <PARAMETER NAME="PCW_S_AXI_ACP_FREQMHZ" VALUE="10"/>
         <PARAMETER NAME="PCW_S_AXI_HP0_FREQMHZ" VALUE="250"/>
-        <PARAMETER NAME="PCW_S_AXI_HP1_FREQMHZ" VALUE="10"/>
+        <PARAMETER NAME="PCW_S_AXI_HP1_FREQMHZ" VALUE="250"/>
         <PARAMETER NAME="PCW_S_AXI_HP2_FREQMHZ" VALUE="10"/>
         <PARAMETER NAME="PCW_S_AXI_HP3_FREQMHZ" VALUE="10"/>
         <PARAMETER NAME="PCW_USE_DMA0" VALUE="0"/>
@@ -4703,7 +4791,7 @@
         <PARAMETER NAME="PCW_S_AXI_HP2_DATA_WIDTH" VALUE="64"/>
         <PARAMETER NAME="PCW_S_AXI_HP3_ID_WIDTH" VALUE="6"/>
         <PARAMETER NAME="PCW_S_AXI_HP3_DATA_WIDTH" VALUE="64"/>
-        <PARAMETER NAME="PCW_NUM_F2P_INTR_INPUTS" VALUE="4"/>
+        <PARAMETER NAME="PCW_NUM_F2P_INTR_INPUTS" VALUE="5"/>
         <PARAMETER NAME="PCW_EN_DDR" VALUE="1"/>
         <PARAMETER NAME="PCW_EN_SMC" VALUE="0"/>
         <PARAMETER NAME="PCW_EN_QSPI" VALUE="1"/>
@@ -5866,7 +5954,7 @@
             <CONNECTION INSTANCE="axi_mem_intercon" PORT="M01_AXI_wstrb"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="3" NAME="IRQ_F2P" RIGHT="0" SENSITIVITY="NULL:NULL:NULL:LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="xlconcat_3_dout">
+        <PORT DIR="I" LEFT="4" NAME="IRQ_F2P" RIGHT="0" SENSITIVITY="NULL:NULL:NULL:NULL:LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="xlconcat_3_dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="xlconcat_3" PORT="dout"/>
           </CONNECTIONS>
@@ -5895,6 +5983,7 @@
             <CONNECTION INSTANCE="axi_mem_intercon" PORT="M01_ACLK"/>
             <CONNECTION INSTANCE="processing_system7_0_axi_periph_1" PORT="M01_ACLK"/>
             <CONNECTION INSTANCE="axi_mem_intercon" PORT="M02_ACLK"/>
+            <CONNECTION INSTANCE="axi_mem_intercon" PORT="M03_ACLK"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="FCLK_RESET0_N" SIGIS="rst" SIGNAME="processing_system7_0_FCLK_RESET0_N">
@@ -6201,7 +6290,7 @@
       </BUSINTERFACES>
       <MEMORYMAP>
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x41200000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x41200FFF" INSTANCE="axi_gpio_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI"/>
-        <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x8E200000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x8E201FFF" INSTANCE="axi_cdma_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP1" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI_LITE"/>
+        <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x8E200000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x8E203FFF" INSTANCE="axi_cdma_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP1" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI_LITE"/>
       </MEMORYMAP>
       <PERIPHERALS>
         <PERIPHERAL INSTANCE="axi_gpio_0"/>
@@ -7723,6 +7812,7 @@
             <CONNECTION INSTANCE="axi_mem_intercon" PORT="M01_ARESETN"/>
             <CONNECTION INSTANCE="processing_system7_0_axi_periph_1" PORT="M01_ARESETN"/>
             <CONNECTION INSTANCE="axi_mem_intercon" PORT="M02_ARESETN"/>
+            <CONNECTION INSTANCE="axi_mem_intercon" PORT="M03_ARESETN"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -7767,14 +7857,14 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_PCLK">
+        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="VGA_v4_0_Vsync">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="PCLK"/>
+            <CONNECTION INSTANCE="VGA_v4_0" PORT="Vsync"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="util_vector_logic_0_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="dvs_cdma_v3_0" PORT="pclk"/>
+            <CONNECTION INSTANCE="xlconcat_3" PORT="In4"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -7931,8 +8021,8 @@
         <PARAMETER NAME="IN29_WIDTH" VALUE="1"/>
         <PARAMETER NAME="IN30_WIDTH" VALUE="1"/>
         <PARAMETER NAME="IN31_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="dout_width" VALUE="4"/>
-        <PARAMETER NAME="NUM_PORTS" VALUE="4"/>
+        <PARAMETER NAME="dout_width" VALUE="5"/>
+        <PARAMETER NAME="NUM_PORTS" VALUE="5"/>
         <PARAMETER NAME="Component_Name" VALUE="design_1_xlconcat_3_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
@@ -7957,7 +8047,12 @@
             <CONNECTION INSTANCE="block_to_pixel_v1_0" PORT="get_new_block"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="3" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="xlconcat_3_dout">
+        <PORT DIR="I" LEFT="0" NAME="In4" RIGHT="0" SIGIS="undef" SIGNAME="util_vector_logic_0_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="util_vector_logic_0" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="4" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="xlconcat_3_dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="processing_system7_0" PORT="IRQ_F2P"/>
           </CONNECTIONS>
@@ -7989,30 +8084,6 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE FULLNAME="/xlslice_1" HWVERSION="1.0" INSTANCE="xlslice_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="DIN_WIDTH" VALUE="32"/>
-        <PARAMETER NAME="DIN_FROM" VALUE="10"/>
-        <PARAMETER NAME="DIN_TO" VALUE="0"/>
-        <PARAMETER NAME="DOUT_WIDTH" VALUE="11"/>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_1_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="31" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="block_to_pixel_v1_0_bram_addr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="block_to_pixel_v1_0" PORT="bram_addr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="10" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="xlslice_1_Dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="blk_mem_gen_1" PORT="addrb"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
     <MODULE FULLNAME="/xlslice_2" HWVERSION="1.0" INSTANCE="xlslice_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -8032,6 +8103,30 @@
         <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="xlslice_2_Dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="blk_mem_gen_1" PORT="wea"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE FULLNAME="/xlslice_3" HWVERSION="1.0" INSTANCE="xlslice_3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="10"/>
+        <PARAMETER NAME="DIN_TO" VALUE="0"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="11"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_3_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="31" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="block_to_pixel_v1_0_bram_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="block_to_pixel_v1_0" PORT="bram_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="10" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="xlslice_3_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="blk_mem_gen_1" PORT="addrb"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

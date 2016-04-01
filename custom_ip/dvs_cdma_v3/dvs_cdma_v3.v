@@ -48,10 +48,11 @@ module dvs_cdma_v3(
 
 //parameter LIFE_VARS_WIDTH = 4;
 //parameter LIFE_VARS_FROM = 3;
-parameter MAX_LIFE_COUNT = 60;
+parameter MAX_LIFE_COUNT = 2;
 parameter LIFE_ZERO = 6'd0;
 parameter LIFE_ONE = 6'd1;
 
+reg [1:0] block_counter;
 reg write_enable_out;
 reg [8:0] col_counter;
 reg [7:0] row_counter;
@@ -81,6 +82,18 @@ always @(negedge pclk or negedge reset) begin
         new_frame <= 1'b0;
         new_frame_life <= LIFE_ZERO;
       end
+  end
+end
+
+
+always @(posedge pclk or negedge reset) begin
+  if (reset == 1) begin
+    block_counter <= 0;
+  end
+  else begin
+    if( bram_addr == 32'd2048) begin
+        block_counter <= block_counter + 1;
+    end
   end
 end
 
@@ -177,7 +190,7 @@ end
    ************************************************************ */
 
 // bram address
-always @(posedge pclk or negedge reset) begin
+always @(negedge pclk or negedge reset) begin
   if ( reset == 1'b1 ) begin
     bram_addr <= 32'd0;
   end
@@ -186,8 +199,8 @@ always @(posedge pclk or negedge reset) begin
         bram_addr <= 32'd0;
     end
     else begin
-      if ( write_enable_out == 1'b1 &&
-           col_counter >= 9'd96 && col_counter <= 9'd224) begin
+      if ( write_enable_in == 1'b1 && pix_per_pack_count == 1'b0 &&
+           col_counter > 9'd96 && col_counter <= 9'd224) begin
              
           bram_addr <= bram_addr + 32'd1;
       end
@@ -205,7 +218,7 @@ end
  bit |  31 : 24 |  23:22  |  21 : 16  |  15 : 8  |  7 : 6  |   5 : 0   |
      -------------------------------------------------------------------
 */
-always @(posedge pclk or negedge reset) begin
+always @(negedge pclk or negedge reset) begin
   if ( reset == 1'b1 ) begin
     bram_wrdata <= 31'd0;
   end
@@ -215,41 +228,37 @@ always @(posedge pclk or negedge reset) begin
               
               bram_wrdata[21:16] <= pix_data[7:2];
               
-//              if( ($signed({1'b0, pix_data[7:0]}) - $signed({1'b0, bram_rddata[31:24]})) > $signed({1'b0, threshold[7:0]}) ) begin
-//                bram_wrdata[31:24] <= pix_data[7:0];
-//                //bram_wrdata[23:22] <= 2'b01; // green -- positive
-//                bram_wrdata[23:22] <= 2'b00; // green -- positive
-//              end
-//              else begin 
-//                if( ($signed({1'b0, pix_data[7:0]}) - $signed({1'b0, bram_rddata[31:24]})) < -$signed({1'b0, threshold[7:0]}) ) begin
-//                  bram_wrdata[31:24] <= pix_data[7:0];
-//                  //bram_wrdata[23:22] <= 2'b10; // red -- negative
-//                  bram_wrdata[23:22] <= 2'b00; // red -- negative
-//                end
-//                else begin
-//                  bram_wrdata[23:22] <= 2'b00;
-//                end
-//              end
+              if( ($signed({1'b0, pix_data[7:0]}) - $signed({1'b0, bram_rddata[31:24]})) > $signed({1'b0, threshold[7:0]}) ) begin
+                bram_wrdata[31:24] <= pix_data[7:0];
+                bram_wrdata[23:22] <= 2'b01; // green -- positive
+              end
+              else begin 
+                if( ($signed({1'b0, pix_data[7:0]}) - $signed({1'b0, bram_rddata[31:24]})) < -$signed({1'b0, threshold[7:0]}) ) begin
+                  bram_wrdata[31:24] <= pix_data[7:0];
+                  bram_wrdata[23:22] <= 2'b10; // red -- negative
+                end
+                else begin
+                  bram_wrdata[23:22] <= 2'b00;
+                end
+              end
             end
             else begin       
             
                 bram_wrdata[5:0] <= pix_data[7:2];
                 
-//                if( ($signed({1'b0, pix_data[7:0]}) - $signed({1'b0, bram_rddata[15:8]})) > $signed({1'b0, threshold[7:0]}) ) begin
-//                  bram_wrdata[15:8] <= pix_data[7:0];
-//                  //bram_wrdata[7:6] <= 2'b01; // green -- positive
-//                  bram_wrdata[7:6] <= 2'b00; // green -- positive
-//                end
-//                else begin 
-//                  if( ($signed({1'b0, pix_data[7:0]}) - $signed({1'b0, bram_rddata[15:8]})) < -$signed({1'b0, threshold[7:0]}) ) begin
-//                    bram_wrdata[15:8] <= pix_data[7:0];
-//                    //bram_wrdata[7:6] <= 2'b10; // red -- negative
-//                    bram_wrdata[7:6] <= 2'b00; // red -- negative
-//                  end
-//                  else begin
-//                    bram_wrdata[7:6] <= 2'b00;
-//                  end
-//                end
+                if( ($signed({1'b0, pix_data[7:0]}) - $signed({1'b0, bram_rddata[15:8]})) > $signed({1'b0, threshold[7:0]}) ) begin
+                  bram_wrdata[15:8] <= pix_data[7:0];
+                  bram_wrdata[7:6] <= 2'b01; // green -- positive
+                end
+                else begin 
+                  if( ($signed({1'b0, pix_data[7:0]}) - $signed({1'b0, bram_rddata[15:8]})) < -$signed({1'b0, threshold[7:0]}) ) begin
+                    bram_wrdata[15:8] <= pix_data[7:0];
+                    bram_wrdata[7:6] <= 2'b10; // red -- negative
+                  end
+                  else begin
+                    bram_wrdata[7:6] <= 2'b00;
+                  end
+                end
               
             end
       end

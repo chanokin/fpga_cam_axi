@@ -21,7 +21,8 @@
 
 module tb_dvs_cdma_v3();
 
-reg [8:0] loop_idx;
+reg [8:0] col_idx;
+reg [8:0] row_idx;
 
 reg pclk;
 reg vsync;
@@ -89,33 +90,38 @@ initial  begin
   
   #10 href = 1'b1;
   #5
-  for(loop_idx=9'd0; loop_idx < 9'd300; loop_idx = loop_idx + 9'b1) begin
-    bram_rddata = 32'd0;
-
-    #5 pix_data = 8'd10;
-
-    #5 write_enable_in = 1'b1;
-    #10 write_enable_in = 1'b0;
+  for(row_idx=9'd0; row_idx < 9'd34; row_idx = row_idx + 9'b1) begin
+      href = 1'b0;
+      #10 href = 1'b1;
+      #5
+      for(col_idx=9'd0; col_idx < 9'd80; col_idx = col_idx + 9'b1) begin
+        bram_rddata = 32'd0;
     
-
-    #5 pix_data = 8'd20;
-
-    #5 write_enable_in = 1'b1;
-    #10 write_enable_in = 1'b0;
-
-
-    bram_rddata = 32'h00002800;
-
-
-    #5 pix_data = 8'd10;
-
-    #5 write_enable_in = 1'b1;
-    #10 write_enable_in = 1'b0;
-
-    #5 pix_data = 8'd20;
-
-    #5 write_enable_in = 1'b1;
-    #10 write_enable_in = 1'b0;
+        #5 pix_data = 8'd10;
+    
+        #5 write_enable_in = 1'b1;
+        #10 write_enable_in = 1'b0;
+        
+    
+        #5 pix_data = 8'd20;
+    
+        #5 write_enable_in = 1'b1;
+        #10 write_enable_in = 1'b0;
+    
+    
+        bram_rddata = 32'h00002800;
+    
+    
+        #5 pix_data = 8'd30;
+    
+        #5 write_enable_in = 1'b1;
+        #10 write_enable_in = 1'b0;
+    
+        #5 pix_data = 8'd40;
+    
+        #5 write_enable_in = 1'b1;
+        #10 write_enable_in = 1'b0;
+      end
   end
   #40 $finish;
 end 

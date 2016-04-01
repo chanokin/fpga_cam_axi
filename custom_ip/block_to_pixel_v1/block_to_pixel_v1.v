@@ -27,8 +27,8 @@ module block_to_pixel_v1(input pclk,
       // block reset
                           input  reset);
 
-parameter MAX_LIFE_COUNT = 60;
-parameter DEFAULT_GRAY_LEVEL = 15;
+parameter MAX_LIFE_COUNT = 3;
+parameter DEFAULT_GRAY_LEVEL = 7;
 parameter LIFE_ZERO = 6'd0;
 parameter LIFE_ONE = 6'd1;
 
@@ -75,11 +75,15 @@ always @(posedge pclk or negedge reset) begin
     bram_addr <= 31'd0;
   end
   else begin
-    if ( get_new_block == 1'b0 || bram_addr >=  32'd2048) begin
+    if ( get_new_block == 1'b1 || bram_addr >=  32'd2048) begin
       bram_addr <= 32'd0;
     end
     else begin
-        if ( col_count >= 9'd96 && col_count <= 9'd224 ) begin
+        if ( col_count > 9'd96 && col_count <= 9'd224
+             && row_count >= 9'd56 && row_count <= 8'd184 
+
+             && even_odd_pixel == 1'b0 
+             ) begin
           bram_addr <= bram_addr + 32'd1;
         end
     end
