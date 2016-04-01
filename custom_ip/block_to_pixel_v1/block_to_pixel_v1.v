@@ -119,7 +119,7 @@ always @(posedge pclk or negedge reset) begin
     if ( col_count >= 9'd96 && col_count <= 9'd224 
           && row_count >= 9'd56 && row_count <= 8'd184 
          ) begin
-      if(even_odd_pixel == 1'b1) begin
+      if(even_odd_pixel == 1'b0) begin
         pixel_out <= {bram_rddata[21:16], 2'b0, bram_rddata[23:22]};
       end
       else begin

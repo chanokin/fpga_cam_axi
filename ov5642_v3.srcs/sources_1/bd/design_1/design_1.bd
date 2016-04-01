@@ -619,20 +619,20 @@
         </spirit:configurableElementValues>
       </spirit:componentInstance>
       <spirit:componentInstance>
+        <spirit:instanceName>dvs_cdma_v3_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="user" spirit:name="dvs_cdma_v3" spirit:vendor="user.org" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">design_1_dvs_cdma_v3_0_0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="MAX_LIFE_COUNT">2</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
         <spirit:instanceName>block_to_pixel_v1_0</spirit:instanceName>
         <spirit:componentRef spirit:library="user" spirit:name="block_to_pixel_v1" spirit:vendor="user.org" spirit:version="1.0"/>
         <spirit:configurableElementValues>
           <spirit:configurableElementValue spirit:referenceId="bd:xciName">design_1_block_to_pixel_v1_0_0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="MAX_LIFE_COUNT">2</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="DEFAULT_GRAY_LEVEL">7</spirit:configurableElementValue>
-        </spirit:configurableElementValues>
-      </spirit:componentInstance>
-      <spirit:componentInstance>
-        <spirit:instanceName>dvs_cdma_v3_0</spirit:instanceName>
-        <spirit:componentRef spirit:library="user" spirit:name="dvs_cdma_v3" spirit:vendor="user.org" spirit:version="1.0"/>
-        <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">design_1_dvs_cdma_v3_0_0</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="MAX_LIFE_COUNT">2</spirit:configurableElementValue>
         </spirit:configurableElementValues>
       </spirit:componentInstance>
     </spirit:componentInstances>
@@ -811,8 +811,8 @@
         <spirit:internalPortReference spirit:componentRef="axi_gpio_0" spirit:portRef="gpio_io_o"/>
         <spirit:externalPortReference spirit:portRef="PWDN"/>
         <spirit:internalPortReference spirit:componentRef="neg_reset" spirit:portRef="Op1"/>
-        <spirit:internalPortReference spirit:componentRef="block_to_pixel_v1_0" spirit:portRef="reset"/>
         <spirit:internalPortReference spirit:componentRef="dvs_cdma_v3_0" spirit:portRef="reset"/>
+        <spirit:internalPortReference spirit:componentRef="block_to_pixel_v1_0" spirit:portRef="reset"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>util_vector_logic_2_Res</spirit:name>

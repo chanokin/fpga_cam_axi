@@ -52,6 +52,7 @@ parameter MAX_LIFE_COUNT = 2;
 parameter LIFE_ZERO = 6'd0;
 parameter LIFE_ONE = 6'd1;
 
+reg first_pixel_done;
 reg [1:0] block_counter;
 reg write_enable_out;
 reg [8:0] col_counter;
@@ -119,6 +120,20 @@ always @(posedge pclk or negedge reset) begin
   
 end
 
+always @(posedge pclk or negedge reset) begin
+  if(reset == 1'b1) begin
+    first_pixel_done <= 1'b0;
+  end
+  else begin
+    if ( write_enable_in == 1'b1 && href == 1'b1 ) begin
+        first_pixel_done <= 1'b1;
+    end
+    if ( vsync == 1'b1 || href == 1'b0) begin
+        first_pixel_done <= 1'b0;
+    end
+  end
+end
+
 // count lines
 always @(negedge pclk or negedge reset) begin
   if(reset == 1'b1) begin
@@ -138,7 +153,7 @@ end
 
 
 // count columns 
-always @(negedge pclk or negedge reset) begin
+always @(posedge pclk or negedge reset) begin
 
   if(reset == 1'b1) begin
     col_counter <= 9'd0;
@@ -148,7 +163,7 @@ always @(negedge pclk or negedge reset) begin
       col_counter <= 9'd0;
     end
     else begin
-        if ( write_enable_in == 1'b1) begin
+        if ( write_enable_in == 1'b0 && href == 1'b1 && first_pixel_done == 1'b1) begin
             col_counter <= col_counter + 9'd1;
         end
     end
@@ -157,7 +172,7 @@ always @(negedge pclk or negedge reset) begin
 end
 
 // received pixels count
-always @(posedge pclk or negedge reset) begin
+always @(negedge pclk or negedge reset) begin
 
   if(reset == 1'b1) begin
     pix_per_pack_count <= 1'b0;
@@ -199,7 +214,8 @@ always @(negedge pclk or negedge reset) begin
         bram_addr <= 32'd0;
     end
     else begin
-      if ( write_enable_in == 1'b1 && pix_per_pack_count == 1'b0 &&
+      if ( write_enable_in == 1'b0 && pix_per_pack_count == 1'b1 &&
+           row_counter >= 9'd56  && row_counter <= 9'd184 &&
            col_counter > 9'd96 && col_counter <= 9'd224) begin
              
           bram_addr <= bram_addr + 32'd1;
@@ -273,8 +289,8 @@ always @(negedge pclk or negedge reset) begin
   end
   else begin
     if( col_counter >= 9'd96 && col_counter <= 9'd224 &&
-        row_counter >= 9'd88  && row_counter <= 9'd184 &&
-        pix_per_pack_count == 1'b0 && write_enable_in == 1'b0 ) begin
+        row_counter >= 9'd56  && row_counter <= 9'd184 &&
+        pix_per_pack_count == 1'b0 && write_enable_in == 1'b1 ) begin
 
         write_enable_out <= 1'b1;
     end

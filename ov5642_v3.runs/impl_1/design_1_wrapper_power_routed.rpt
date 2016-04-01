@@ -1,7 +1,7 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2015.3 (lin64) Build 1368829 Mon Sep 28 20:06:39 MDT 2015
-| Date             : Thu Mar 31 18:06:55 2016
+| Date             : Fri Apr  1 12:26:45 2016
 | Host             : cspc338.cs.man.ac.uk running 64-bit Fedora release 20 (Heisenbug)
 | Command          : 
 | Design           : design_1_wrapper
@@ -30,7 +30,7 @@ Table of Contents
 ----------
 
 +--------------------------+-------+
-| Total On-Chip Power (W)  | 1.953 |
+| Total On-Chip Power (W)  | 1.954 |
 | Dynamic (W)              | 1.789 |
 | Device Static (W)        | 0.165 |
 | Effective TJA (C/W)      | 11.5  |
@@ -50,22 +50,22 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |     0.052 |        7 |       --- |             --- |
-| Slice Logic              |     0.015 |    13127 |       --- |             --- |
-|   LUT as Logic           |     0.014 |     4978 |     53200 |            9.36 |
-|   Register               |    <0.001 |     5956 |    106400 |            5.60 |
+| Slice Logic              |     0.015 |    13135 |       --- |             --- |
+|   LUT as Logic           |     0.014 |     4986 |     53200 |            9.37 |
+|   Register               |    <0.001 |     5957 |    106400 |            5.60 |
 |   CARRY4                 |    <0.001 |      146 |     13300 |            1.10 |
 |   LUT as Distributed RAM |    <0.001 |      106 |     17400 |            0.61 |
 |   BUFG                   |    <0.001 |        2 |        32 |            6.25 |
 |   LUT as Shift Register  |    <0.001 |      263 |     17400 |            1.51 |
 |   F7/F8 Muxes            |    <0.001 |       69 |     53200 |            0.13 |
 |   Others                 |     0.000 |      514 |       --- |             --- |
-| Signals                  |     0.020 |     9417 |       --- |             --- |
+| Signals                  |     0.020 |     9420 |       --- |             --- |
 | Block RAM                |     0.021 |        8 |       140 |            5.71 |
 | MMCM                     |     0.126 |        1 |         4 |           25.00 |
 | I/O                      |     0.008 |       42 |       200 |           21.00 |
 | PS7                      |     1.548 |        1 |       --- |             --- |
 | Static Power             |     0.165 |          |           |                 |
-| Total                    |     1.953 |          |           |                 |
+| Total                    |     1.954 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -75,7 +75,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.123 |       0.106 |      0.017 |
+| Vccint    |       1.000 |     0.124 |       0.107 |      0.017 |
 | Vccaux    |       1.800 |     0.091 |       0.070 |      0.021 |
 | Vcco33    |       3.300 |     0.003 |       0.002 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -186,7 +186,7 @@ Table of Contents
 |         GEN_SIMPLE_MODE.I_SIMPLE_MODE_WRAP                           |     0.015 |
 |           GEN_DM_FULL.I_DATAMOVER_FULL                               |     0.013 |
 |             GEN_MM2S_FULL.I_MM2S_FULL_WRAPPER                        |     0.006 |
-|               I_ADDR_CNTL                                            |    <0.001 |
+|               I_ADDR_CNTL                                            |     0.001 |
 |                 GEN_ADDR_FIFO.I_ADDR_QUAL_FIFO                       |    <0.001 |
 |                   USE_SRL_FIFO.I_SYNC_FIFO                           |    <0.001 |
 |                     I_SRL_FIFO_RBU_F                                 |    <0.001 |
@@ -318,10 +318,10 @@ Table of Contents
 |                                 RAM_reg_0_31_6_11                    |    <0.001 |
 |                             rstblk                                   |    <0.001 |
 |               USE_WRITE.write_data_inst                              |    <0.001 |
-|       m01_couplers                                                   |     0.004 |
-|         auto_pc                                                      |     0.004 |
-|           inst                                                       |     0.004 |
-|             gen_axi4_axi3.axi3_conv_inst                             |     0.004 |
+|       m01_couplers                                                   |     0.005 |
+|         auto_pc                                                      |     0.005 |
+|           inst                                                       |     0.005 |
+|             gen_axi4_axi3.axi3_conv_inst                             |     0.005 |
 |               USE_READ.USE_SPLIT_R.read_addr_inst                    |     0.002 |
 |                 USE_R_CHANNEL.cmd_queue                              |    <0.001 |
 |                   inst                                               |    <0.001 |
@@ -446,24 +446,24 @@ Table of Contents
 |                                 RAM_reg_0_31_6_11                    |    <0.001 |
 |                             rstblk                                   |    <0.001 |
 |               USE_WRITE.write_data_inst                              |    <0.001 |
-|       s00_couplers                                                   |     0.006 |
-|         auto_us                                                      |     0.006 |
-|           inst                                                       |     0.006 |
-|             gen_upsizer.gen_full_upsizer.axi_upsizer_inst            |     0.006 |
+|       s00_couplers                                                   |     0.007 |
+|         auto_us                                                      |     0.007 |
+|           inst                                                       |     0.007 |
+|             gen_upsizer.gen_full_upsizer.axi_upsizer_inst            |     0.007 |
 |               USE_READ.gen_non_fifo_r_upsizer.mi_register_slice_inst |     0.001 |
 |                 r_pipe                                               |     0.001 |
 |               USE_READ.gen_non_fifo_r_upsizer.read_data_inst         |    <0.001 |
 |               USE_READ.read_addr_inst                                |    <0.001 |
 |                 GEN_CMD_QUEUE.cmd_queue                              |    <0.001 |
-|               USE_WRITE.gen_non_fifo_w_upsizer.write_data_inst       |     0.001 |
-|               USE_WRITE.write_addr_inst                              |    <0.001 |
+|               USE_WRITE.gen_non_fifo_w_upsizer.write_data_inst       |     0.002 |
+|               USE_WRITE.write_addr_inst                              |     0.001 |
 |                 GEN_CMD_QUEUE.cmd_queue                              |    <0.001 |
 |               si_register_slice_inst                                 |     0.001 |
 |                 ar_pipe                                              |    <0.001 |
 |                 aw_pipe                                              |    <0.001 |
 |       xbar                                                           |     0.007 |
 |         inst                                                         |     0.007 |
-|           gen_samd.crossbar_samd                                     |     0.006 |
+|           gen_samd.crossbar_samd                                     |     0.007 |
 |             addr_arbiter_ar                                          |    <0.001 |
 |             addr_arbiter_aw                                          |    <0.001 |
 |             gen_decerr_slave.decerr_slave_inst                       |    <0.001 |
@@ -545,7 +545,7 @@ Table of Contents
 |               RD.r_channel_0                                         |     0.003 |
 |                 rd_data_fifo_0                                       |     0.002 |
 |                 transaction_fifo_0                                   |    <0.001 |
-|               SI_REG                                                 |     0.003 |
+|               SI_REG                                                 |     0.004 |
 |                 ar_pipe                                              |     0.001 |
 |                 aw_pipe                                              |     0.001 |
 |                 b_pipe                                               |    <0.001 |
@@ -567,7 +567,7 @@ Table of Contents
 |             reg_slice_r                                              |    <0.001 |
 |             splitter_ar                                              |    <0.001 |
 |             splitter_aw                                              |    <0.001 |
-|     processing_system7_0_axi_periph_1                                |     0.011 |
+|     processing_system7_0_axi_periph_1                                |     0.012 |
 |       s00_couplers                                                   |     0.010 |
 |         auto_pc                                                      |     0.010 |
 |           inst                                                       |     0.010 |
@@ -581,7 +581,7 @@ Table of Contents
 |                 rd_data_fifo_0                                       |     0.002 |
 |                 transaction_fifo_0                                   |    <0.001 |
 |               SI_REG                                                 |     0.003 |
-|                 ar_pipe                                              |    <0.001 |
+|                 ar_pipe                                              |     0.001 |
 |                 aw_pipe                                              |    <0.001 |
 |                 b_pipe                                               |    <0.001 |
 |                 r_pipe                                               |    <0.001 |

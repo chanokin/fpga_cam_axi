@@ -1,7 +1,7 @@
 //Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2015.3 (lin64) Build 1368829 Mon Sep 28 20:06:39 MDT 2015
-//Date        : Thu Mar 31 17:58:11 2016
+//Date        : Fri Apr  1 12:17:53 2016
 //Host        : cspc338.cs.man.ac.uk running 64-bit Fedora release 20 (Heisenbug)
 //Command     : generate_target design_1.bd
 //Design      : design_1

@@ -1,6 +1,6 @@
-09:56:31 **** Incremental Build of configuration Debug for project cdma_transfer_test ****
+12:28:11 **** Incremental Build of configuration Debug for project cdma_transfer_test ****
 make all 
 make: Nothing to be done for `all'.
 
-09:56:31 Build Finished (took 61ms)
+12:28:11 Build Finished (took 61ms)
 

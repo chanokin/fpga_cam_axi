@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Mar 31 17:58:33 2016" VIVADOVERSION="2015.3">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Apr  1 12:18:19 2016" VIVADOVERSION="2015.3">
 
   <SYSTEMINFO ARCH="zynq" BOARD="em.avnet.com:zed:part0:1.3" DEVICE="7z020" NAME="design_1" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
@@ -1623,8 +1623,8 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="PWDN"/>
             <CONNECTION INSTANCE="neg_reset" PORT="Op1"/>
-            <CONNECTION INSTANCE="block_to_pixel_v1_0" PORT="reset"/>
             <CONNECTION INSTANCE="dvs_cdma_v3_0" PORT="reset"/>
+            <CONNECTION INSTANCE="block_to_pixel_v1_0" PORT="reset"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="gpio2_io_o" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_0_gpio2_io_o">

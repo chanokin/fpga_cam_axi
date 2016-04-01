@@ -21,6 +21,7 @@
 
 module tb_dvs_cdma_v3();
 
+reg even_odd_row;
 reg [8:0] col_idx;
 reg [8:0] row_idx;
 
@@ -72,6 +73,7 @@ initial  begin
   $dumpfile ("vcd_dvs_cdma.vcd"); 
   $dumpvars;//(tb_dvs_cdma_v1); 
   
+  even_odd_row = 1'b0;
   vsync = 1'b0;
   href = 1'b0;
   pix_data = 8'd0;
@@ -88,9 +90,8 @@ initial  begin
   
   #10 vsync = 1'b0;
   
-  #10 href = 1'b1;
-  #5
-  for(row_idx=9'd0; row_idx < 9'd34; row_idx = row_idx + 9'b1) begin
+
+  for(row_idx=9'd0; row_idx < 9'd150; row_idx = row_idx + 9'b1) begin
       href = 1'b0;
       #10 href = 1'b1;
       #5
@@ -121,7 +122,12 @@ initial  begin
     
         #5 write_enable_in = 1'b1;
         #10 write_enable_in = 1'b0;
+        
       end
+//      if (even_odd_row == 1'b0) begin
+      #5 even_odd_row = even_odd_row + 1'b1;
+//      end
+//      even_odd_row = even_odd_row + 1'b1;
   end
   #40 $finish;
 end 

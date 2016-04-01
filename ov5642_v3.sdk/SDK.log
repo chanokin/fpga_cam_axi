@@ -2085,3 +2085,41 @@ com.xilinx.sdk.targetmanager.TMException: Connection to Board Failed
 09:56:35 INFO  : ps7_init is completed.
 09:56:35 INFO  : ps7_post_config is completed.
 09:56:35 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:26:39 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1459506381000,  Project:1459444035000
+11:26:39 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+11:26:41 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+11:26:46 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+11:26:53 INFO  : 
+11:26:54 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+11:26:54 INFO  : Clearing existing target manager status.
+11:26:54 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+11:26:54 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+11:26:56 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+11:26:56 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+11:32:49 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:32:49 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+11:32:55 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+11:33:03 INFO  : ps7_init is completed.
+11:33:03 INFO  : ps7_post_config is completed.
+11:33:04 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:33:45 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:35:05 INFO  : Processor reset is completed for ps7_cortexa9_0
+12:27:33 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1459510025000,  Project:1459506381000
+12:27:33 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+12:27:38 INFO  : Copied contents of /opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper.hdf into /design_1_wrapper_hw_platform_0/system.hdf.
+12:27:43 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+12:27:45 INFO  : 
+12:27:45 INFO  : Updating hardware inferred compiler options for cdma_transfer_test.
+12:27:45 INFO  : Clearing existing target manager status.
+12:27:45 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+12:27:46 INFO  : Closing and re-opening the MSS file of ther project cdma_transfer_test_bsp
+12:27:47 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+12:27:47 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+12:27:58 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:28:01 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248690442" && level==0} -index 1' command is executed.
+12:28:07 INFO  : FPGA configured successfully with bitstream "/opt/Copy/Doctorado_SpiNNaker/SpiNNaker/fpga_cam/ov5642_v4_axi/ov5642_v3.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+12:28:14 INFO  : ps7_init is completed.
+12:28:14 INFO  : ps7_post_config is completed.
+12:28:15 INFO  : Processor reset is completed for ps7_cortexa9_0
